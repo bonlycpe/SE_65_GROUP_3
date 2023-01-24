@@ -9,8 +9,8 @@ public class OurGroup {
 		groupMembers = new Vector<String>();
 		groupMembers.add("Chalermchai Kamlungdach");
 		groupMembers.add("Thitipon Sawangsri");
-		groupMembers.add("Peerawat Wongmek")
-		
+		groupMembers.add("Peerawat Wongmek");
+		groupMembers.add("Chanakan Srisarutiporn");
 	}
 	
 	public Vector<String> getGroupMemmbers(){

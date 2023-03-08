@@ -7,6 +7,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Exception;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
   
 class GoogleController extends Controller
 {
@@ -52,7 +53,16 @@ class GoogleController extends Controller
             }
         
         } catch (Exception $e) {
-            return redirect('/login');
+            // echo "<script>
+            // function getCurrentURL () {
+            //     return window.location.href;
+            //   }
+              
+            //     alert('can't login');
+            //     getCurrentURL ();
+            //     window.location.href='../../login';
+            // </script>";
+            return Redirect::to("/login")->withFail("ไม่มีบัญชีนี้ในระบบ");
         }
     }
 }

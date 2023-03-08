@@ -29,16 +29,25 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-              <div class="loggedin-forgot">
+              <!--div class="loggedin-forgot">
                 <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label for="remember" class="pt-3 pb-2">Keep me logged in</label>
-              </div>
-              <button type="submit" class="btn btn-primary font-weight-bold mt-3">Log in</button><br>
-              <div class="flex items-center justify-end mt-4 align-middle ">
+              </div>--> 
+              <div class="flex items-center justify-end mt-4 align-middle " style="display: flex;justify-content: center;align-items:center;">
                 <a href="{{ route('auth.google') }}">
-                    <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" style="margin-left: 3em;">
+                    <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png"/>
                 </a>
-            </div>
+              </div>
+              <div style="display: flex;justify-content: center;align-items:center;">
+                <button type="submit" class="btn btn-primary font-weight-bold mt-3">Log in</button>
+              </div>
+             
+            <br>
+            @if(Session::has('fail'))
+                <div class="alert alert-danger">
+                  {{Session::get('fail')}}
+                </div>
+            @endif
               <!--<a class="mt-3 d-block text-primary" href="#!">Forget Password?</a>-->
               <a class="mt-3 d-inline-block text-primary" href="{{ route('register') }}">Register Now</a>
 

@@ -45,7 +45,7 @@ class LoginController extends Controller
         $this->username = filter_var($loginValue,FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         #merge values
         request()->merge([$this->username => $loginValue]); 
-        dd(property_exists($this,'username') ? $this->username : 'email'());
+        #dd(property_exists($this,'username') ? $this->username : 'email'());
         #return login type
         return property_exists($this,'username') ? $this->username : 'email';
     }

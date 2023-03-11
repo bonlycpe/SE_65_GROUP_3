@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -25,7 +26,22 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('home',['user'=>$user]);
+        if($user->role == 'STAFF'){
+           $staff =  DB::table('Staff')->where('Id', $user->id)->first();
+           if($staff->Type == 'SYSTEMADMIN'){
+                return view('homeAdmin',['user'=>$user]);
+           }
+           else if($staff->Type == 'MONEY'){
+                return view('homeMoney',['user'=>$user]);
+           }
+           else{
+                return view('homeVerify',['user'=>$user]);
+           }
+        }
+        else{
+            return view('home',['user'=>$user]);
+        }
+        
     }
 
     public function logout(){

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2023 at 02:51 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Mar 11, 2023 at 04:21 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -245,19 +245,16 @@ INSERT INTO `progress` (`Id`, `Number`, `Name`, `Description`, `campaign_money_i
 
 CREATE TABLE `staff` (
   `Id` int(11) NOT NULL,
-  `Name` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `Role` enum('MONEY','VERIFY') NOT NULL
+  `Type` enum('MONEY','VERIFY','SYSTEMADMIN') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`Id`, `Name`, `Email`, `Password`, `Role`) VALUES
-(1, 'staff_money', 'staff_money@gmail.com', '123456', 'MONEY'),
-(2, 'staff_verify', 'staff_verify@gmail.com', '123456', 'VERIFY');
+INSERT INTO `staff` (`Id`, `Type`) VALUES
+(1, 'SYSTEMADMIN'),
+(2, 'VERIFY');
 
 -- --------------------------------------------------------
 
@@ -299,6 +296,7 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `permission` enum('NULL','REQUEST','APPROVE') NOT NULL DEFAULT 'NULL',
+  `role` enum('USER','STAFF') NOT NULL DEFAULT 'USER',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -307,20 +305,16 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `email`, `username`, `email_verified_at`, `remember_token`, `password`, `permission`, `created_at`, `updated_at`) VALUES
-(1, 'Peerawat', 'Wongmek', 'peace260745@gmail.com', 'peacechy', NULL, NULL, '$2y$10$5tvEmo8iFu7meBLWrH2liOR.WWYU/amWpY4L9RDh/RUkFjXnrdXwi', 'NULL', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(2, 'Peerawat', 'Wongmek', 'abc@gmail.com', 'vaok2004', NULL, NULL, '$2y$10$6qZ3iPHCuqOBeoVkb0R60OSNNmiVchC1whlK.sHDanFg/0Mt4GdhG', 'NULL', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(3, 'Peerawat', 'Wongmej', 'peace@gmail.com', 'peacec', NULL, NULL, '$2y$10$wy5JLP06S7OunixEfDWghOwFkf60hmf7Kk12KoMFsBkmWeiXZRfZa', 'NULL', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(4, 'a', 'b', 'abcd@gmail.com', 'ter', NULL, NULL, '$2y$10$34V2GkNb2f4TjapfFZ0P4.dZZ9SOkz2YSFKLjgkXMcBz8PqsI/aGe', 'NULL', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(5, 'a', 'b', 'abcde@gmail.com', 'terter', NULL, NULL, '$2y$10$txjpI.deBypp1Y8m824Sh.Lowyfn9cJu5A6Tdi0HApmtktby653ZS', 'NULL', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(6, 'A', 'B', 'avsadas@gmail.com', 'ppp', NULL, NULL, '$2y$10$z4VI1u9S/SMDvkrGdjouUeV7vMIa7.FQ/Xmu.nb5ukBT1wGj3MGiO', 'NULL', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(7, 'ฟ', 'a', 'abcasd@gmail.com', 'abcdsad@gmail.com', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'NULL', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(8, 'User_Test_1_Firstname', 'User_Test_1_Lastname', 'User_Test_1_Username', 'User_Test_1_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'NULL', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(9, 'User_Test_2_Firstname', 'User_Test_2_Lastname', 'User_Test_2_Username', 'User_Test_2_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(10, 'User_Test_3_Firstname', 'User_Test_3_Lastname', 'User_Test_3_Username', 'User_Test_3_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(11, 'User_Test_4_Firstname', 'User_Test_4_Lastname', 'User_Test_4_Username', 'User_Test_4_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(12, 'User_Test_5_Firstname', 'User_Test_5_Lastname', 'User_Test_5_Username', 'User_Test_5_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(13, 'User_Test_6_Firstname', 'User_Test_6_Lastname', 'User_Test_6_Username', 'User_Test_6_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'REQUEST', '2023-03-09 04:32:09', '2023-03-09 04:32:09');
+INSERT INTO `users` (`id`, `name`, `surname`, `email`, `username`, `email_verified_at`, `remember_token`, `password`, `permission`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'Peerawat', 'Wongmek', 'peace260745@gmail.com', 'peacechy', NULL, NULL, '$2y$10$5tvEmo8iFu7meBLWrH2liOR.WWYU/amWpY4L9RDh/RUkFjXnrdXwi', 'NULL', 'STAFF', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(2, 'Peerawat', 'Wongmek', 'abc@gmail.com', 'vaok2004', NULL, NULL, '$2y$10$6qZ3iPHCuqOBeoVkb0R60OSNNmiVchC1whlK.sHDanFg/0Mt4GdhG', 'NULL', 'STAFF', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(3, 'Peerawat', 'Wongmej', 'peace@gmail.com', 'peacec', NULL, NULL, '$2y$10$wy5JLP06S7OunixEfDWghOwFkf60hmf7Kk12KoMFsBkmWeiXZRfZa', 'NULL', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(4, 'User_Test_1_Firstname', 'User_Test_1_Lastname', 'User_Test_1_Username', 'User_Test_1_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'NULL', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(5, 'User_Test_2_Firstname', 'User_Test_2_Lastname', 'User_Test_2_Username', 'User_Test_2_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(6, 'User_Test_3_Firstname', 'User_Test_3_Lastname', 'User_Test_3_Username', 'User_Test_3_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(7, 'User_Test_4_Firstname', 'User_Test_4_Lastname', 'User_Test_4_Username', 'User_Test_4_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(8, 'User_Test_5_Firstname', 'User_Test_5_Lastname', 'User_Test_5_Username', 'User_Test_5_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(9, 'User_Test_6_Firstname', 'User_Test_6_Lastname', 'User_Test_6_Username', 'User_Test_6_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'REQUEST', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09');
 
 --
 -- Indexes for dumped tables
@@ -486,7 +480,7 @@ ALTER TABLE `tag_user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

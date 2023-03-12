@@ -1,0 +1,26 @@
+
+@font-face {
+    font-family: 'Korea1';
+    src: url('layijisarangheyo-webfont.woff2') format('woff2'),
+         url('layijisarangheyo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+div{
+    font-family: 'Korea1' ;
+}
+
+
+@font-face {
+    font-family: 'Korea';
+    src: url('layijisarangheyo-webfont.woff2') format('woff2'),
+         url('layijisarangheyo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+div{
+    font-family: 'Korea' ;
+}

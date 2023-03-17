@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2023 at 04:21 PM
+-- Generation Time: Mar 17, 2023 at 02:10 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -174,19 +174,7 @@ CREATE TABLE `campaign_user_donate` (
 --
 
 INSERT INTO `campaign_user_donate` (`Id`, `Name`, `Amount`, `Status`, `campaign_money_id`, `user_id`) VALUES
-(1, NULL, 500, 'REQUEST', 1, 9);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(1, 'AAA', 500, 'REQUEST', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -254,7 +242,8 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`Id`, `Type`) VALUES
 (1, 'SYSTEMADMIN'),
-(2, 'VERIFY');
+(2, 'VERIFY'),
+(3, 'MONEY');
 
 -- --------------------------------------------------------
 
@@ -308,13 +297,13 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `username`, `email_verified_at`, `remember_token`, `password`, `permission`, `role`, `created_at`, `updated_at`) VALUES
 (1, 'Peerawat', 'Wongmek', 'peace260745@gmail.com', 'peacechy', NULL, NULL, '$2y$10$5tvEmo8iFu7meBLWrH2liOR.WWYU/amWpY4L9RDh/RUkFjXnrdXwi', 'NULL', 'STAFF', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
 (2, 'Peerawat', 'Wongmek', 'abc@gmail.com', 'vaok2004', NULL, NULL, '$2y$10$6qZ3iPHCuqOBeoVkb0R60OSNNmiVchC1whlK.sHDanFg/0Mt4GdhG', 'NULL', 'STAFF', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(3, 'Peerawat', 'Wongmej', 'peace@gmail.com', 'peacec', NULL, NULL, '$2y$10$wy5JLP06S7OunixEfDWghOwFkf60hmf7Kk12KoMFsBkmWeiXZRfZa', 'NULL', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(4, 'User_Test_1_Firstname', 'User_Test_1_Lastname', 'User_Test_1_Username', 'User_Test_1_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'NULL', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(5, 'User_Test_2_Firstname', 'User_Test_2_Lastname', 'User_Test_2_Username', 'User_Test_2_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(6, 'User_Test_3_Firstname', 'User_Test_3_Lastname', 'User_Test_3_Username', 'User_Test_3_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(7, 'User_Test_4_Firstname', 'User_Test_4_Lastname', 'User_Test_4_Username', 'User_Test_4_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(8, 'User_Test_5_Firstname', 'User_Test_5_Lastname', 'User_Test_5_Username', 'User_Test_5_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
-(9, 'User_Test_6_Firstname', 'User_Test_6_Lastname', 'User_Test_6_Username', 'User_Test_6_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'REQUEST', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09');
+(3, 'Peerawat', 'Wongmej', 'peace@gmail.com', 'peacec', NULL, NULL, '$2y$10$wy5JLP06S7OunixEfDWghOwFkf60hmf7Kk12KoMFsBkmWeiXZRfZa', 'NULL', 'STAFF', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(8, 'User_Test_1_Firstname', 'User_Test_1_Lastname', 'User_Test_1_Username', 'User_Test_1_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'NULL', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(9, 'User_Test_2_Firstname', 'User_Test_2_Lastname', 'User_Test_2_Username', 'User_Test_2_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(10, 'User_Test_3_Firstname', 'User_Test_3_Lastname', 'User_Test_3_Username', 'User_Test_3_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(11, 'User_Test_4_Firstname', 'User_Test_4_Lastname', 'User_Test_4_Username', 'User_Test_4_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(12, 'User_Test_5_Firstname', 'User_Test_5_Lastname', 'User_Test_5_Username', 'User_Test_5_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'APPROVE', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09'),
+(13, 'User_Test_6_Firstname', 'User_Test_6_Lastname', 'User_Test_6_Username', 'User_Test_6_Username', NULL, NULL, '$2y$10$ffMVqEQQGNn0SUCsNefomOk3hEgQJnNMUlq9DlGMVLTItGdglTS6i', 'REQUEST', 'USER', '2023-03-09 04:32:09', '2023-03-09 04:32:09');
 
 --
 -- Indexes for dumped tables
@@ -364,12 +353,6 @@ ALTER TABLE `campaign_user_donate`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `campaign_money_id` (`campaign_money_id`,`user_id`),
   ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `object`
@@ -441,12 +424,6 @@ ALTER TABLE `campaign_user_donate`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `object`
 --
 ALTER TABLE `object`
@@ -462,7 +439,7 @@ ALTER TABLE `progress`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tag_campaign_object`
@@ -480,7 +457,7 @@ ALTER TABLE `tag_user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -531,6 +508,12 @@ ALTER TABLE `object`
 --
 ALTER TABLE `progress`
   ADD CONSTRAINT `progress_ibfk_1` FOREIGN KEY (`campaign_money_id`) REFERENCES `campaign_money` (`campaign_money_id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `staff`
+--
+ALTER TABLE `staff`
+  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`Id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tag_campaign_object`

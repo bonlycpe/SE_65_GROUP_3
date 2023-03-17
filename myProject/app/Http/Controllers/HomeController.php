@@ -25,22 +25,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $user = Auth::user();
-        // if($user->role == 'STAFF'){
-        //    $staff =  DB::table('Staff')->where('Id', $user->id)->first();
-        //    if($staff->Type == 'SYSTEMADMIN'){
-        //         return view('index',['user'=>$user]);
-        //    }
-        //    else if($staff->Type == 'MONEY'){
-        //         return view('index',['user'=>$user]);
-        //    }
-        //    else{
-        //         return view('index',['user'=>$user]);
-        //    }
-        // }
-        // else{
-        //     return view('index',['user'=>$user]);
-        // }
+        $user = Auth::user();
+        if($user->role == 'STAFF'){
+           $staff =  DB::table('Staff')->where('Id', $user->id)->first();
+           if($staff->Type == 'SYSTEMADMIN'){
+                //return view('index',['user'=>$user]);
+           }
+           else if($staff->Type == 'MONEY'){
+                return view('staff.staff_money',['user'=>$user]);
+           }
+           else{
+                return view('staff.staff_verify',['user'=>$user]);
+           }
+        }
+        else{
+            return view('index',['user'=>$user]);
+        }
         return view('index');
     }
 

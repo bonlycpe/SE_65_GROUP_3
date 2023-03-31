@@ -1,6 +1,42 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
+
+:root {
+    --white-color:                  #ffffff;
+    --primary-color:                #00CC99;
+    --secondary-color:              #0066CC;
+    --section-bg-color:             #f0f8ff;
+    --custom-btn-bg-color:          #0066CC;
+    --custom-btn-bg-hover-color:    #00CC99;
+    --dark-color:                   #000000;
+    --p-color:                      #717275;
+    --border-color:                 #7fffd4;
+    --link-hover-color:             #0066CC;
+  
+    --body-font-family:             'Montserrat', sans-serif;
+    --title-font-family:            'Sono', sans-serif;
+  
+    --h1-font-size:                 58px;
+    --h2-font-size:                 46px;
+    --h3-font-size:                 32px;
+    --h4-font-size:                 28px;
+    --h5-font-size:                 24px;
+    --h6-font-size:                 22px;
+    --p-font-size:                  16px;
+    --menu-font-size:               14px;
+  
+    --border-radius-large:          100px;
+    --border-radius-medium:         20px;
+    --border-radius-small:          10px;
+  
+    --font-weight-light:            300;
+    --font-weight-normal:           400;
+    --font-weight-medium:           500;
+    --font-weight-semibold:         600;
+    --font-weight-bold:             700;
+  }
+
 .clearfix:before,.clearfix:after{
     content: "";
     display: table;
@@ -46,6 +82,167 @@ input[type="submit"]{
 }
 input[type="submit"]:hover{
     background-color: #024978;
+}
+
+/**/
+
+.detail {
+    width: 100%;
+}
+
+.detail-block {
+    background: #0066CC;
+    border: 1px solid rgba(223, 61, 61, 0.623);
+    border-radius: #0066CC;
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+  
+.detail-block-full {
+    background-color: var(--section-bg-color);
+    border-color: transparent;
+    border-radius: 20px;
+}
+
+.detail-block-image-wrap {
+    position: relative;
+    display: block;
+    height: 100%;
+}
+  
+.detail-block-image-wrap > a {
+    display: block;
+}
+
+.detail-block-image {
+    border-radius: var(--border-radius-medium);
+    display: block;
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+}
+
+.detail-block-image-detail-page .detail-block-image {
+    width: 100%;
+    height: 212px;
+}
+  
+.detail-block-info {
+    display: block;
+    padding: 10px 20px;
+    padding-bottom: 0;
+}
+
+.detail-block-bottom a:hover span {
+    color: var(--primary-color);
+}
+  
+.detail-block-bottom a span {
+    font-family: var(--title-font-family);
+    color: var(--p-color);
+    text-transform: uppercase;
+    margin-left: 3px;
+}
+
+.detail-block-full {
+    background-color: var(--section-bg-color);
+    border-color: transparent;
+}
+  
+.detail-block-full:hover {
+    border-color: rgb(40, 140, 197);
+}
+  
+.detail-block-full .detail-block-info {
+    padding: 20px;
+    padding-bottom: 0;
+}
+  
+.detail-block-full .detail-block-image {
+    width: 1920px;
+    height: 500px;
+}
+
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.detail-section-padding {
+    padding-top: 180px;
+    padding-bottom: 100px;
+    background-color: #0067ab46;
+}
+
+.address {
+    width: 500px;
+    margin-right : 50px;
+    height: 200px;
+    padding: 20px;
+}
+
+.address-block {
+    background: #0066CC;
+    border: 1px solid rgba(223, 61, 61, 0.623);
+    border-radius: #0066CC;
+    position: relative;
+    overflow: hidden;
+    left: 1165px;
+    bottom: 800px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.address-block-full {
+    background-color: var(--section-bg-color);
+    border-color: transparent;
+    border-radius: 20px;
+}
+
+.address-block-full {
+    background-color: var(--section-bg-color);
+    border-color: transparent;
+}
+  
+.address-block-full:hover {
+    border-color: rgb(40, 140, 197);
+}
+  
+.address-block-full .address-block-info {
+    padding: 20px;
+    padding-bottom: 0;
+}
+  
+.address-block-full .address-block-image {
+    width: 1920px;
+    height: 500px;
+}
+
+.address-block-info {
+    display: block;
+    padding: 10px 20px;
+    padding-bottom: 0;
+}
+
+
+.tag {
+    width: 100%;
+    
+}
+.taga {
+    /* width: 500px; */
+    margin-top : 100px;
+    /* margin-left : 100px; */
+    height: 100px;
+    background-color: #002A59;
+    padding: 20px;
 }
 
 /*! jQuery UI - v1.12.1 - 2016-09-14

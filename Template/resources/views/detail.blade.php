@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device=width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>Details</title>
     <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/981942107730243604/1083608810524004432/nt.png">
 
@@ -89,7 +89,7 @@
                                     </li>
                                 </ol>
                             
-<!-- 
+                                <!-- 
                                 <div class="mt-2">
                                     <a href="" class="btn custom-btn">
                                     บริจาคทันที
@@ -103,6 +103,7 @@
                         </div>
                     </div>    
                     </div>
+
 
                     <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                         <div class="detail">
@@ -132,6 +133,9 @@
                             </div>
                         </div>    
                     </div>
+
+     
+            
 
                     <!-- <div class="detail">
                         <div class="detail-block detail-block-full">
@@ -190,6 +194,23 @@
                                    
                 </div>
             </div>
+            {{-- <div class="col-lg-4 col-12 mb-4 mb-lg-0"> --}}
+            <div class="address">
+                <div class="address-block address-block-full">
+
+                    <div class="address-block-info"> 
+                            <p> <i class="bi bi-telephone-fill"></i>  0 2225 4403</p>
+                                
+                            <p>  <i class="bi bi-envelope-fill"></i> sanlukmuang@gmail.com</p>
+                                
+                            <p>  <i class="bi bi-geo-alt-fill"></i> สำนักงานกิจการศาลหลักเมือง ถนนหลักเมือง แขวงพระบรมมหาราชวัง เขตพระนคร กรุงเทพมหานคร 10200</p>              
+                    </div>
+
+                </div>
+            </div>    
+            {{-- </div> --}}
+        {{-- </div> --}}
+    
         </section>
        
     </main>

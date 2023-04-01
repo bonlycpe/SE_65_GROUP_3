@@ -28,6 +28,7 @@
                         <th scope="col">นามสกุล</th>
                         <th scope="col">Email</th>
                         <th scope="col">Username</th>
+                        <th scope="col">Info</th>
                     </tr>
                 </thead>
                 <tbody>

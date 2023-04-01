@@ -25,7 +25,7 @@
             <div class="col-lg-8">
                 <!-- Recently Favorited -->
                 <div class="widget dashboard-container my-adslist">
-                    <h3 class="widget-header">แคมเปญบริจาค</h3>
+                    <h3 class="widget-header">แคมเปญรับบริจาค</h3>
                     <table class="table table-responsive product-dashboard-table">
                         <thead>
                             <tr>
@@ -35,25 +35,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($statusDonate as $ud)
+                            @foreach($statusObject as $so)
                             <tr>
                                 <td class="product-details">
-                                    <h3 class="title">{{$ud->Name}}</h3>
-                                    <span class="add-id">{{$ud->Description}}</span>
+                                    <h3 class="title">{{$so->Name}}</h3>
+                                    <span class="add-id">{{$so->Description}}</span>
                                 </td>
                                 <td class="product-details">
-                                    <h5 class="title">{{$ud->Amount}}</h5>
+                                    <h5 class="title">{{$so->Amount}}</h5>
                                 </td>
                                 <td class="action" data-title="Action">
                                     <div class="">
                                         <ul class="list-inline justify-content-center">
                                             <li class="list-inline-item">
-                                                <?php if($ud->Status == "REQUEST") {echo "<span>รอยืนยันการบริจาค</span>";}
-                                                    else if($ud->Status =="APPROVE"){
-                                                        echo "<span>บริจาคสำเร็จ</span>";
+                                                <?php if($so->Status == "REQUEST") {echo "<span>รอยืนยันการรับบริจาค</span>";}
+                                                    else if($so->Status =="APPROVE"){
+                                                        echo "<span>รับบริจาคสำเร็จ</span>";
                                                     }
                                                     else{
-                                                        echo "<span>บริจาคไม่สำเร็จ</span>";
+                                                        echo "<span>รับบริจาคไม่สำเร็จ</span>";
                                                     }
                                                 ?>
                                             </li>

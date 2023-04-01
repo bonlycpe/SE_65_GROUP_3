@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserDonate;
+use App\Models\ManagerRequest;
 
 class HomeController extends Controller
 {
@@ -38,7 +39,10 @@ class HomeController extends Controller
                 return view('staff.staff_money',compact(['donate','donateAll']));
            }
            else{
-                return view('staff.staff_verify',['user'=>$user]);
+
+                $managers = ManagerRequest::getAll();
+                $allApprove = ManagerRequest::getAllApprove();
+                return view('staff.staff_verify',compact(['managers','allApprove']));
            }
         }
         else{

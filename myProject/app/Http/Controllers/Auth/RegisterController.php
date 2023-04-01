@@ -75,4 +75,16 @@ class RegisterController extends Controller
             'permission' => 'NULL',
         ]);
     }
+    protected function createStaff(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'surname' => $data['surname'],
+            'email' => $data['email'],
+            'username' => $data['username'],
+            'password' => Hash::make($data['password']),
+            'permission' => 'NULL',
+            'role' => $data['role']
+        ]);
+    }
 }

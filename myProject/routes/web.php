@@ -44,3 +44,4 @@ Route::get('/staff_verify/deny/{id}',[App\Http\Controllers\ManagerController::cl
 
 //Admin
 Route::get('/admin',[App\Http\Controllers\StaffController::class,'index'])->name('admin');
+Route::get('/admin/search/',[App\Http\Controllers\StaffController::class,'search'])->name('search');

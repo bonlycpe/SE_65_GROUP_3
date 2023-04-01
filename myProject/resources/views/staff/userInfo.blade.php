@@ -16,7 +16,8 @@
 <body>
     @foreach ($info as $i)
     <div style="width: 400px;" class="container">
-        <br><h2 style="text-align: center;">ข้อมูลผู้ส่งคำขอ</h2>
+        <br>
+        <h2 style="text-align: center;">ข้อมูลผู้ส่งคำขอ</h2>
         <br>
         <br>
         <h5>รหัสบัตรประชาชน</h5>
@@ -34,7 +35,11 @@
         <h5>ที่อยู่</h5>
         <input class="form-control" type="text" value="{{$i->address}}" aria-label="Disabled input example" disabled readonly>
         <br>
-        <a href="{{route('staff_verify')}}" class="btn btn-secondary" style="justify-content: center; display: flex;">Go Back</a>
+        <div style="justify-content: center; display: flex;">
+            <a href="{{route('verify_approve', [$m->Id])}}" class="btn btn-success">อนุมัติ</a>
+            <a href="{{route('verify_deny', [$m->Id])}}" class="btn btn-danger">ไม่อนุมัติ</a>
+            <a href="{{route('staff_verify')}}" class="btn btn-secondary">Go Back</a>
+        </div>
     </div>
     @endforeach
 </body>

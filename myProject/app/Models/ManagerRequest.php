@@ -46,4 +46,10 @@ class ManagerRequest extends Model
                 ->where('Id', $id)
                 ->update(['permission' => 'NULL' ]);
     }
+    public static function info($id){
+        $info = DB::table('users')
+                ->where('Id', $id)
+                ->select('Id','name','surname','email','username','citizen_id','phone','address');
+        return $info;
+    }
 }

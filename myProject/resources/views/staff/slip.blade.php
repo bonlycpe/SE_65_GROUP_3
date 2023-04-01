@@ -22,13 +22,24 @@
         <br>
         <img src="images/eslip/{{$e->eslip}}">
         <br>
+        <h5>ชื่อผู้บริจาค</h5>
+        <input class="form-control" type="text" value="" aria-label="Disabled input example" disabled readonly>
+        <br>
         <h5>เวลาโอน</h5>
         <input class="form-control" type="text" value="" aria-label="Disabled input example" disabled readonly>
         <br>
         <h5>จำนวนเงิน</h5>
-        <input class="form-control" type="text" value="" aria-label="Disabled input example" disabled readonly>
+        <input class="form-control" type="text" value="{{$e->Amount}} บาท" aria-label="Disabled input example" disabled readonly>
         <br>
-        <a href="{{route('staff_money')}}" class="btn btn-secondary" style="justify-content: center; display: flex;">Go Back</a>
+        <div  style="justify-content: center; display: flex;">
+            <a href="{{route('staff_approve', [$e->Id])}}" class="btn btn-success">อนุมัติ</a>
+            &nbsp
+            &nbsp
+            <a href="{{route('staff_deny', [$e->Id])}}" class="btn btn-danger">ไม่อนุมัติ</a>
+            &nbsp
+            &nbsp
+            <a href="{{route('staff_money')}}" class="btn btn-secondary">Go Back</a>
+        </div>
     </div>
     @endforeach
 </body>

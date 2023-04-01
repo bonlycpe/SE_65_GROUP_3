@@ -29,7 +29,6 @@
                         <th scope="col">บริจาคให้</th>
                         <th scope="col">จำนวนเงิน</th>
                         <th scope="col">E-Slip</th>
-                        <th scope="col">การดำเนินการ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,10 +42,6 @@
                         <td>{{$d->Amount}} บาท</td>
                         <td>
                             <a href="{{route('eslip', [$d->Id])}}" class="btn btn-info">Show E-Slip</a>
-                        </td>
-                        <td>
-                            <a href="{{route('staff_approve', [$d->Id])}}" class="btn btn-success">อนุมัติ</a>
-                            <a href="{{route('staff_deny', [$d->Id])}}" class="btn btn-danger">ไม่อนุมัติ</a>
                         </td>
                         
                     </tr>

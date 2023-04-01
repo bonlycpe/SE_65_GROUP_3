@@ -83,7 +83,7 @@ class UserDonate extends Model
         ->join('campaign_money','campaign_user_donate.campaign_money_id','=','campaign.Id')
         ->join('users','campaign_user_donate.user_id','=','users.Id')
         ->where('campaign_user_donate.Id',$id)
-        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign_user_donate.Status','campaign_user_donate.eslip','campaign_money.Goal','campaign.total')
+        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign_user_donate.Status','campaign_user_donate.eslip','campaign_money.Goal','campaign_money.total')
         ->get();  
         return $eslip;
     }

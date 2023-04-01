@@ -51,16 +51,15 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ml-auto main-nav ">
-                                <li class="nav-item @@home">
-                                    <a class="nav-link" href="{{url('/openCampaignObject')}}">เปิดแคมเปญให้ของ</a>
+                            <ul class="navbar-nav ml-auto mt-10">
+                                <li class="nav-item">
+                                    <a class="nav-link login-button" href="{{url('/logout')}}">ออกจากระบบ</a>
                                 </li>
-                                <li class="nav-item @@profile">
-                                    <a class="nav-link" href="{{url('/openCampaignMoney')}}">เปิดแคมเปญบริจาคเงิน</a>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white add-button" href="ad-listing.html"><i
+                                            class="fa fa-plus-circle"></i> Add Listing</a>
                                 </li>
-                                <li class="nav-item @@profile">
-                                    <a class="nav-link" href="{{url('/home')}}">กลับหน้าหลัก</a>
-                                </li>
+                            </ul>
                         </div>
                     </nav>
                 </div>

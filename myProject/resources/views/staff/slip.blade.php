@@ -1,4 +1,4 @@
-@extends('layouts.MainLayoutAfterLogin')
+@extends('layouts.LayoutStaff')
 
 @section('content')
 <!DOCTYPE html>

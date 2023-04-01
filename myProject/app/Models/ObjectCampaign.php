@@ -12,6 +12,9 @@ class ObjectCampaign extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public $timestamps = false;
+    public $table = "campaign_object";
+
     protected $fillable = [
         'Tag'
     ];

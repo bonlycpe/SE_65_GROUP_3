@@ -35,7 +35,6 @@ Route::get('/request/{id}', [App\Http\Controllers\RequestController::class, 'ind
 Route::post('/requested', [App\Http\Controllers\RequestController::class, 'create']);
 
 //Profile
-
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index']);
 Route::get('/statusDonate/{id}', [App\Http\Controllers\ProfileController::class, 'statusDonate']);
 Route::get('/statusObject/{id}', [App\Http\Controllers\ProfileController::class, 'statusObject']);
@@ -48,21 +47,23 @@ Route::get('/progress/{id}', [App\Http\Controllers\ProgressController::class, 'i
 //Request Manager Permission
 Route::get('/requestVerify', [App\Http\Controllers\RequestPermissionController::class, 'index']);
 Route::post('/requestVerify/update', [App\Http\Controllers\RequestPermissionController::class, 'update']);
-
-//For Manager 
 Route::get('/managerPage', [App\Http\Controllers\ManagerPageController::class, 'index']);
+
+//For Manager Open Money Campaign
 Route::get('/openCampaignMoney', [App\Http\Controllers\openCampaignMoneyController::class, 'index']);
 Route::post('/openCampaignMoneyController/create', [App\Http\Controllers\openCampaignMoneyController::class, 'create']);
 
-//Staff
+//For Manager Open Object Campaign
+Route::get('/openCampaignObject', [App\Http\Controllers\openCampaignObjectController::class, 'index']);
+Route::post('/openCampaignObjectController/create', [App\Http\Controllers\openCampaignObjectController::class, 'create']);
 
+//Staff
 Route::get('/staff_money',[App\Http\Controllers\UserDonateController::class, 'index'])->name('staff_money');
 Route::get('/staff_verify',[App\Http\Controllers\ManagerController::class, 'index'])->name('staff_verify');
 
-Route::get('/staff_money/approve/{id}/{amount}',[App\Http\Controllers\UserDonateController::class, 'approve'])->name('staff_approve');
+Route::get('/staff_money/approve/{id}/{amount}/{campaign_money_id}',[App\Http\Controllers\UserDonateController::class, 'approve'])->name('staff_approve');
 Route::get('/staff_money/deny/{id}',[App\Http\Controllers\UserDonateController::class, 'deny'])->name('staff_deny');
 Route::get('/staff_verify/eslip/{id}',[App\Http\Controllers\UserDonateController::class, 'eslip'])->name('eslip');
-
 
 Route::get('/staff_verify/approve/{id}',[App\Http\Controllers\ManagerController::class, 'approve'])->name('verify_approve');
 Route::get('/staff_verify/deny/{id}',[App\Http\Controllers\ManagerController::class, 'deny'])->name('verify_deny');

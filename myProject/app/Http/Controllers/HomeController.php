@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\UserDonate;
 use App\Models\MoneyCampaign;
 use App\Models\ObjectCampaign;
+use App\Models\ManagerRequest;
+use App\Models\Staff;
 
 class HomeController extends Controller
 {
@@ -29,29 +31,30 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user->role == 'STAFF'){
-           $staff =  DB::table('Staff')->where('Id', $user->id)->first();
-           if($staff->Type == 'SYSTEMADMIN'){
-                //return view('index',['user'=>$user]);
-           }
-           else if($staff->Type == 'MONEY'){
+        if ($user->role == 'STAFF') {
+            $staff =  DB::table('Staff')->where('Id', $user->id)->first();
+            if ($staff->Type == 'SYSTEMADMIN') {
+                $staff = Staff::getAllStaff();
+                return view('admin.admin', compact('staff'));
+            } else if ($staff->Type == 'MONEY') {
                 $donate = UserDonate::getAllRequest();
                 $donateAll = Userdonate::getAll();
-                return view('staff.staff_money',compact(['donate','donateAll']));
-           }
-           else{
-                return view('staff.staff_verify',['user'=>$user]);
-           }
-        }
-        else{
+                return view('staff.staff_money', compact(['donate', 'donateAll']));
+            } else if ($staff->Type == 'VERIFY') {
+                $managers = ManagerRequest::getAll();
+                $allApprove = ManagerRequest::getAllApprove();
+                return view('staff.staff_verify', compact(['managers', 'allApprove']));
+            }
+        } else {
             $campaignMoney = MoneyCampaign::getAll();
             $campaignObject = ObjectCampaign::getAll();
-            return view('index',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject]);
+            return view('index', ['campaignMoney' => $campaignMoney], ['campaignObject' => $campaignObject]);
         }
         //return view('index');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect('/login');
     }

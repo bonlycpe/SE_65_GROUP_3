@@ -57,9 +57,7 @@ class HomeController extends Controller
             $campaignObject = ObjectCampaign::getAll();
             return view('index', ['campaignMoney' => $campaignMoney], ['campaignObject' => $campaignObject]);
         }
-        //return view('index');
     }
-
     public function logout()
     {
         Auth::logout();

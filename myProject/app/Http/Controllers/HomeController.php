@@ -55,7 +55,11 @@ class HomeController extends Controller
         } else {
             $campaignMoney = MoneyCampaign::getAll();
             $campaignObject = ObjectCampaign::getAll();
-            return view('index', ['campaignMoney' => $campaignMoney], ['campaignObject' => $campaignObject]);
+            if($user ->permission == 'APPROVE'){
+                return view('indexM',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject]);
+            }else{
+                return view('index',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject]);
+            }
         }
     }
     public function logout()

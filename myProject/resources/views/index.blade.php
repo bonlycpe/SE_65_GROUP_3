@@ -1,4 +1,4 @@
-@extends('layouts.MainLayoutAfterLogin')
+@extends('layouts.MainLayoutUser')
 
 @section('content')
 <section class="popular-deals section bg-gray">

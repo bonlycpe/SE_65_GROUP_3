@@ -30,6 +30,14 @@ Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout']);
 //Profile
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index']);
+Route::get('/statusDonate/{id}', [App\Http\Controllers\ProfileController::class, 'statusDonate']);
+Route::get('/statusObject/{id}', [App\Http\Controllers\ProfileController::class, 'statusObject']);
+Route::get('/editProfile', [App\Http\Controllers\ProfileController::class, 'editProfile']);
+Route::post('/updateProfile', [App\Http\Controllers\ProfileController::class, 'update']);
+
+//Request Manager Permission
+Route::get('/requestVerify', [App\Http\Controllers\RequestPermissionController::class, 'index']);
+Route::post('/requestVerify/update', [App\Http\Controllers\RequestPermissionController::class, 'update']);
 
 //Staff
 

@@ -1,4 +1,4 @@
-@extends('layouts.MainLayoutAfterLogin')
+@extends('layouts.MainLayoutUser')
 
 @section('content')
 <section class="dashboard section">
@@ -12,13 +12,13 @@
                     <div class="widget user-dashboard-profile">
                         <!-- User Image -->
                         <div class="profile-thumb">
-                            <img src="images/user/user-thumb.jpg" alt="" class="rounded-circle" width="50%"
+                            <img src="{{asset('images/user/user-thumb.jpg')}}" alt="" class="rounded-circle" width="50%"
                                 height="50%">
                         </div>
                         <!-- User Name -->
                         <h5>คุณ {{$user->name}} {{$user->surname}}</h5>
                         <p>เข้าร่วมเมื่อ {{$user->created_at}}</p>
-                        <a href="user-profile.html" class="btn btn-main-sm">Edit Profile</a>
+                        <a href="editProfile" class="btn btn-main-sm">Edit Profile</a>
                     </div>
                 </div>
             </div>
@@ -29,48 +29,46 @@
                     <table class="table table-responsive product-dashboard-table">
                         <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Product Title</th>
-                                <th class="text-center">Category</th>
+                                <th>ชื่อโปรเจค</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($userDonate as $ud)
                             <tr>
-                                <td class="product-thumb">
-                                    <img width="80px" height="auto" src="images/products/products-1.jpg"
-                                        alt="image description">
-                                </td>
                                 <td class="product-details">
                                     <h3 class="title">{{$ud->Name}}</h3>
-                                    <span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
-                                    <span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
-                                    <span class="status active"><strong>Status</strong>Active</span>
-                                    <span class="location"><strong>Location</strong>Dhaka,Bangladesh</span>
+                                    <span class="add-id">{{$ud->Description}}</span>
                                 </td>
-                                <td class="product-category"><span class="categories">Laptops</span></td>
                                 <td class="action" data-title="Action">
                                     <div class="">
                                         <ul class="list-inline justify-content-center">
                                             <li class="list-inline-item">
                                                 <a data-toggle="tooltip" data-placement="top" title="view" class="view"
-                                                    href="category.html">
-                                                    <i class="fa fa-eye"></i>
+                                                    href="/statusDonate/{{$ud->campaign_money_id}}">
+                                                    <i class=" fa fa-eye"></i>
                                                 </a>
                                             </li>
-                                            <!--<li class="list-inline-item">
-                                                <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit"
-                                                    href="dashboard.html">
-                                                    <i class="fa fa-pencil"></i>
-                                                </a>
-                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                            @foreach($userObject as $uo)
+                            <tr>
+                                <td class="product-details">
+                                    <h3 class="title">{{$uo->Name}}</h3>
+                                    <span class="add-id">{{$uo->Description}}</span>
+                                </td>
+                                <td class="action" data-title="Action">
+                                    <div class="">
+                                        <ul class="list-inline justify-content-center">
                                             <li class="list-inline-item">
-                                                <a class="delete" data-toggle="tooltip" data-placement="top"
-                                                    title="Delete" href="dashboard.html">
-                                                    <i class="fa fa-trash"></i>
+                                                <a data-toggle="tooltip" data-placement="top" title="view" class="view"
+                                                    href="/statusObject/{{$uo->campaign_object_id}}">
+                                                    <i class=" fa fa-eye"></i>
                                                 </a>
-                                            </li>-->
+                                            </li>
                                         </ul>
                                     </div>
                                 </td>
@@ -81,7 +79,7 @@
 
                 </div>
 
-                <!-- pagination -->
+                <!-- pagination 
                 <div class="pagination justify-content-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
@@ -102,7 +100,7 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div>-->
                 <!-- pagination -->
 
             </div>

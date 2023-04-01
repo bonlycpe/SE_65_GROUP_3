@@ -31,40 +31,37 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user->role == 'STAFF'){
-           $staff =  DB::table('Staff')->where('Id', $user->id)->first();
-           if($staff->Type == 'SYSTEMADMIN'){
-            $staff = Staff::getAllStaff();
-                return view('admin.admin',compact('staff'));
+        if ($user->role == 'STAFF') {
+            $staff =  DB::table('Staff')->where('Id', $user->id)->first();
+            if ($staff->Type == 'SYSTEMADMIN') {
+                $staff = Staff::getAllStaff();
+                return view('admin.admin', compact('staff'));
                 //return view('index',['user'=>$user]);
-           }
-           else if($staff->Type == 'MONEY'){
+            } else if ($staff->Type == 'MONEY') {
                 $donate = UserDonate::getAllRequest();
                 $donateAll = Userdonate::getAll();
-                return view('staff.staff_money',compact(['donate','donateAll']));
-           }
-           else if($staff->Type == 'VERIFY'){
+                return view('staff.staff_money', compact(['donate', 'donateAll']));
+            } else if ($staff->Type == 'VERIFY') {
 
-            $managers = ManagerRequest::getAll();
-            $allApprove = ManagerRequest::getAllApprove();
-            return view('staff.staff_verify',compact(['managers','allApprove']));
-           }
-            else{
-                return view('index',['user'=>$user]);
+                $managers = ManagerRequest::getAll();
+                $allApprove = ManagerRequest::getAllApprove();
+                return view('staff.staff_verify', compact(['managers', 'allApprove']));
+            } else {
+                return view('index', ['user' => $user]);
                 $campaignMoney = MoneyCampaign::getAll();
                 $campaignObject = ObjectCampaign::getAll();
-                return view('index',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject]);
+                return view('index', ['campaignMoney' => $campaignMoney], ['campaignObject' => $campaignObject]);
             }
-        }
-        else{
+        } else {
             $campaignMoney = MoneyCampaign::getAll();
             $campaignObject = ObjectCampaign::getAll();
-            return view('index',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject]);
+            return view('index', ['campaignMoney' => $campaignMoney], ['campaignObject' => $campaignObject]);
         }
         //return view('index');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect('/login');
     }

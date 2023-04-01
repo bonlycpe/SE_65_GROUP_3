@@ -28,7 +28,6 @@
                         <th scope="col">นามสกุล</th>
                         <th scope="col">Email</th>
                         <th scope="col">Username</th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,10 +41,6 @@
                         <td>{{$m->username}}</td>
                         <td>
                             <a href="{{route('info', [$m->Id])}}" class="btn btn-info">Info</a>
-                        </td>
-                        <td>
-                            <a href="{{route('verify_approve', [$m->Id])}}" class="btn btn-success">อนุมัติ</a>
-                            <a href="{{route('verify_deny', [$m->Id])}}" class="btn btn-danger">ไม่อนุมัติ</a>
                         </td>
                     </tr>
                     @endforeach

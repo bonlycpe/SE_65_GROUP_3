@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ManagerRequest extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
         'id',
         'firstname',
@@ -16,10 +17,11 @@ class ManagerRequest extends Model
         'email_adress',
         'username'
     ];
+
     public static function getAll(){
         $managers = DB::table('users')
                 ->where('permission','=','REQUEST')
-                ->select('Id','name','surname','email','username','citizen_id','phone','address')
+                ->select('Id','name','surname','email','username')
                 ->get();
         return $managers;
     }
@@ -27,7 +29,7 @@ class ManagerRequest extends Model
     public static function getAllApprove(){
         $managers = DB::table('users')
                 ->where('permission','=','APPROVE')
-                ->select('Id','name','surname','email','username','citizen_id','phone','address')
+                ->select('Id','name','surname','email','username')
                 ->get();
         return $managers;
     }
@@ -43,12 +45,5 @@ class ManagerRequest extends Model
         $deny = DB::table('users')
                 ->where('Id', $id)
                 ->update(['permission' => 'NULL' ]);
-    }
-    public static function info($id){
-        $info = DB::table('users')
-                ->where('Id', $id)
-                ->select('name','surname','email','username','citizen_id','phone','address')
-                ->get();
-        return $info;
     }
 }

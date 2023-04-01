@@ -10,6 +10,11 @@ use App\Models\ObjectRequest;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     function index()
     {
         $user = Auth::user();
@@ -20,6 +25,7 @@ class ProfileController extends Controller
 
     function editProfile(){
         $user = Auth::user();
+        
         return view('profile.edit',compact(['user']));
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserDonate;
 
 class HomeController extends Controller
 {
@@ -32,7 +33,9 @@ class HomeController extends Controller
                 //return view('index',['user'=>$user]);
            }
            else if($staff->Type == 'MONEY'){
-                return view('staff.staff_money',['user'=>$user]);
+                $donate = UserDonate::getAllRequest();
+                $donateAll = Userdonate::getAll();
+                return view('staff.staff_money',compact(['donate','donateAll']));
            }
            else{
                 return view('staff.staff_verify',['user'=>$user]);

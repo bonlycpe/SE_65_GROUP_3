@@ -53,7 +53,10 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto main-nav ">
                                 <li class="nav-item @@home">
-                                    <a class="nav-link" href="{{url('/home')}}">Home</a>
+                                    <a class="nav-link" href="{{url('/home')}}">หน้าหลัก</a>
+                                </li>
+                                <li class="nav-item @@profile">
+                                    <a class="nav-link" href="{{url('/profile')}}">โปรไฟล์</a>
                                 </li>
                                 <!--<li class="nav-item dropdown dropdown-slide @@dashboard">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#!">Dashboard<span><i class="fa fa-angle-down"></i></span>
@@ -117,7 +120,7 @@
 						</ul>-->
                                 <ul class="navbar-nav ml-auto mt-10">
                                     <li class="nav-item">
-                                        <a class="nav-link login-button" href="{{url('/logout')}}">Logout</a>
+                                        <a class="nav-link login-button" href="{{url('/logout')}}">ออกจากระบบ</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-white add-button" href="ad-listing.html"><i

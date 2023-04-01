@@ -12,7 +12,7 @@
                     <div class="widget user-dashboard-profile">
                         <!-- User Image -->
                         <div class="profile-thumb">
-                            <img src="images/user/user-thumb.jpg" alt="" class="rounded-circle" width="50%"
+                            <img src="{{asset('images/user/user-thumb.jpg')}}" alt="" class="rounded-circle" width="50%"
                                 height="50%">
                         </div>
                         <!-- User Name -->
@@ -25,7 +25,7 @@
             <div class="col-lg-8">
                 <!-- Recently Favorited -->
                 <div class="widget dashboard-container my-adslist">
-                    <h3 class="widget-header">โครงการที่บริจาคและรับบริจาค</h3>
+                    <h3 class="widget-header">แคมเปญบริจาคและรับบริจาค</h3>
                     <table class="table table-responsive product-dashboard-table">
                         <thead>
                             <tr>
@@ -34,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($userDonate as $ud)
+                            @foreach($statusDonate as $ud)
                             <tr>
                                 <td class="product-details">
                                     <h3 class="title">{{$ud->Name}}</h3>
@@ -44,10 +44,14 @@
                                     <div class="">
                                         <ul class="list-inline justify-content-center">
                                             <li class="list-inline-item">
-                                                <a data-toggle="tooltip" data-placement="top" title="view" class="view"
-                                                    href="/statusDonate/{{$ud->campaign_money_id}}">
-                                                    <i class=" fa fa-eye"></i>
-                                                </a>
+                                                <?php if($ud->Status == "REQUEST") {echo "<span>รอยืนยันการบริจาค</span>";}
+                                                    else if($ud->Status =="APPROVE"){
+                                                        echo "<span>บริจาคสำเร็จ</span>";
+                                                    }
+                                                    else{
+                                                        echo "<span>บริจาคไม่สำเร็จ</span>";
+                                                    }
+                                                ?>
                                             </li>
                                         </ul>
                                     </div>
@@ -59,34 +63,12 @@
 
                 </div>
 
-                <!-- pagination -->
-                <div class="pagination justify-content-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="dashboard.html" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="dashboard.html">1</a></li>
-                            <li class="page-item"><a class="page-link" href="dashboard.html">2</a></li>
-                            <li class="page-item"><a class="page-link" href="dashboard.html">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="dashboard.html" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <!-- pagination -->
-
+                <a href="profile">
+                    <button>กลับ</button>
+                </a>
             </div>
+            <!-- Row End -->
         </div>
-        <!-- Row End -->
-    </div>
-    <!-- Container End -->
+        <!-- Container End -->
 </section>
 @endsection

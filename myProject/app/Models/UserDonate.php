@@ -80,10 +80,10 @@ class UserDonate extends Model
     public static function eslip($id){
         $eslip = DB::table('campaign_user_donate')
         ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
-        ->join('campaign_money','campaign_user_donate.campaign_money_id','=','campaign.Id')
         ->join('users','campaign_user_donate.user_id','=','users.Id')
         ->where('campaign_user_donate.Id',$id)
-        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign_user_donate.Status','campaign_user_donate.eslip','campaign_money.Goal','campaign_money.total')
+        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign_user_donate.Status','campaign_user_donate.eslip','campaign_user_donate.campaign_money_id')
+        //->first();
         ->get();  
         return $eslip;
     }
@@ -105,6 +105,13 @@ class UserDonate extends Model
         $finished = DB::table('campaign')
         ->where('Id',$id)
         ->update(['Status' => 'FINISHED']);
+    }
+    public static function getCampaignMoney($id){
+        $money = DB::table('campaign_money')
+        ->where('campaign_money_id',$id)
+        ->select('campaign_money_id','Goal','total')
+        ->get();
+        return $money;
     }
 
 }

@@ -22,7 +22,12 @@ class UserDonateController extends Controller
 
     function approve(Request $req){
         UserDonate::approve($req->id);
-        UserDonate::addMoney($req->id,(float)$req->amount);
+        UserDonate::addMoney($req->campaign_money_id,(float)$req->amount);
+        $money = UserDonate::getCampaignMoney($req->campaign_money_id);
+        if((float)$money->get('total') >= (float)$money->get('Goal')){
+            UserDonate::setCampaignFinished($req->campaign_money_id);
+        }
+
         return redirect('staff_money');
     }
     function deny($id){

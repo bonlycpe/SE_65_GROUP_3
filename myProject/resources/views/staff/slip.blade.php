@@ -33,7 +33,7 @@
         <br>
         <div  style="justify-content: center; display: flex;">
         @if ($e->Status == "REQUEST")
-            <a href="{{route('staff_approve', [$e->Id,$e->Amount]}}" class="btn btn-success">อนุมัติ</a>
+            <a href="{{route('staff_approve', [$e->Id,$e->Amount,$e->campaign_money_id])}}" class="btn btn-success">อนุมัติ</a>
             &nbsp
             &nbsp
             <a href="{{route('staff_deny', [$e->Id])}}" class="btn btn-danger">ไม่อนุมัติ</a>

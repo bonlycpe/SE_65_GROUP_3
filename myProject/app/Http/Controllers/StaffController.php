@@ -45,4 +45,28 @@ class StaffController extends Controller
 
         return redirect()->route('admin');
     }
+
+    function deleteStaff($id){
+        $users = User::findOrfail($id);
+        $users->delete();
+        return redirect()->route('admin');
+    }
+
+    function editStaff($id){
+        $user = DB::table('users')
+        ->where('users.id', $id)
+        ->get();
+        return view('admin.adminEditStaff', compact('user'));
+    }
+
+    function updateStaff(Request $request, $id){
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->save();
+
+        return redirect()->route('admin');
+    }
 }

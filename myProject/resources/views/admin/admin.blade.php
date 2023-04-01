@@ -18,12 +18,11 @@
         <h1 style="text-align: center;">Welcome to Admin Page</h1><br><br>
     </div>
     <div class="input-group mb-3" style="width: 30%; margin-left: 10%;">
-        <!-- <input id="search" name="searching" type="text" class="form-control" placeholder="Type Something..." aria-label="Recipient's username" aria-describedby="button-addon2">
-        <a href="{{route('search')}}" class="btn btn-primary">Search</a> -->
-        <form action="{{ route('search') }}" method="get">
-            <input id="search" name="searching" type="text" class="form-control" placeholder="Type Something..." aria-label="Recipient's username" aria-describedby="button-addon2">
-            <!-- <a href="{{route('search')}}" class="btn btn-primary">Search</a> -->
-            <button type="submit" class="btn btn-info">Search</button>
+        <form action="{{ route('search') }}" method="get"> 
+            <div class="input-group mb-3">
+                <input type="text"  name="searching" class="form-control" placeholder="Type Something..." aria-label="Search" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="submit" id="button-Search">Search</button>
+            </div>
         </form>
     </div>
     <div class="container">
@@ -52,8 +51,8 @@
                         <td>{{$s->Type}}</td>
                         <td>
                             <div style="display: flex; align-items:center; justify-content:center">
-                                <a href="" class="btn btn-primary">EDIT</a>&nbsp
-                                <a href="" class="btn btn-danger">DELETE</a>
+                                <a href="{{route('editStaff', [$s->id])}}" class="btn btn-primary">EDIT</a>&nbsp
+                                <a href="{{route('deleteStaff',[$s->id])}}"  onClick="return confirm('Are you sure for delete this Staff?')" class="btn btn-danger">DELETE</a>
                             </div>
                         </td>
 

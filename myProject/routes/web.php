@@ -58,3 +58,6 @@ Route::get('/admin',[App\Http\Controllers\StaffController::class,'index'])->name
 Route::get('/admin/search/',[App\Http\Controllers\StaffController::class,'search'])->name('search');
 Route::get('/admin/createStaff/',[App\Http\Controllers\StaffController::class,'createStaffPage'])->name('createStaffPage');
 Route::post('admin/postStaff', [App\Http\Controllers\StaffController::class,'createStaffFromCreatePage'])->name('createStaff');
+Route::get('admin/delete/{id}', [App\Http\Controllers\StaffController::class,'deleteStaff'])->name('deleteStaff');
+Route::get('admin/edit/{id}', [App\Http\Controllers\StaffController::class,'editStaff'])->name('editStaff');
+Route::get('admin/update/{id}', [App\Http\Controllers\StaffController::class,'updateStaff'])->name('updateStaff');

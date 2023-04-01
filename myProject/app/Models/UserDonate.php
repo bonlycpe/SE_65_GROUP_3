@@ -11,11 +11,13 @@ class UserDonate extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public $timestamps = false;
+    public $table = "campaign_user_donate";
+
     protected $fillable = [
-        'firstname',
-        'lastname',
-        'campaign_name',
-        'amount'
+        'Name',
+        'Description',
+        'Status'
     ];
     
 
@@ -73,14 +75,5 @@ class UserDonate extends Model
         $deny = DB::table('campaign_user_donate')
                 ->where('Id', $id)
                 ->update(['Status' => 'DENY']);
-    }
-    public static function eslip($id){
-        $eslip = DB::table('campaign_user_donate')
-        ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
-        ->join('users','campaign_user_donate.user_id','=','users.Id')
-        ->where('campaign_user_donate.Id',$id)
-        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign_user_donate.Status','campaign_user_donate.eslip')
-        ->get();  
-        return $eslip;
     }
 }

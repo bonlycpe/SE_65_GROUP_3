@@ -9,19 +9,18 @@ use Illuminate\Support\Facades\DB;
 class Campaign extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
     
     protected $fillable = [
-        'id',
-        'Name',
-        'Description',
-        'Status'
+        
     ];
 
     public static function getById($id){
-        $managers = DB::table('campaign')
+        $campaign = DB::table('campaign')
                 ->where('Id','=',$id)
                 ->first();
-        return $managers;
+        return $campaign;
     }
 
     public static function getAll(){

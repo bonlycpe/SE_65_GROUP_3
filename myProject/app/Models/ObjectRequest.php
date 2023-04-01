@@ -10,6 +10,9 @@ class ObjectRequest extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    
+    public $timestamps = false;
+    public $table = "campaign_object_request";
 
     protected $fillable = [
         'Amount',
@@ -18,17 +21,6 @@ class ObjectRequest extends Model
         'CampaignObjectId',
         'CampaignObjectId'
     ];
-
-    public static function getAllRequest() {
-        $donate = DB::table('campaign_user_donate')
-        ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
-        ->join('users','campaign_user_donate.user_id','=','users.Id')
-        ->where('campaign_user_donate.Status','=','REQUEST')
-        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name')
-        ->get();    
-
-        return $donate;
-    }
 
     public static function getAllRequestAndUser($id) {
         $donate = DB::table('campaign_object_request')
@@ -48,17 +40,6 @@ class ObjectRequest extends Model
         ->where('campaign_object_request.campaign_object_id','=',$id)
         ->where('campaign_object_request.user_id','=',$userId)
         ->select('campaign_object_request.Id','users.name','users.surname','Amount','campaign.Name','campaign.Description','campaign_object_request.Status','campaign_object_id')
-        ->get();    
-
-        return $donate;
-    }
-
-    public static function getAll() {
-        $donate = DB::table('campaign_user_donate')
-        ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
-        ->join('users','campaign_user_donate.user_id','=','users.Id')
-        ->whereNot('campaign_user_donate.Status','=','REQUEST')
-        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign_user_donate.Status')
         ->get();    
 
         return $donate;

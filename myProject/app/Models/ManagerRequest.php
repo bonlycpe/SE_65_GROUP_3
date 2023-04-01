@@ -19,7 +19,7 @@ class ManagerRequest extends Model
     public static function getAll(){
         $managers = DB::table('users')
                 ->where('permission','=','REQUEST')
-                ->select('Id','name','surname','email','username')
+                ->select('Id','name','surname','email','username','citizen_id','phone','address')
                 ->get();
         return $managers;
     }
@@ -27,7 +27,7 @@ class ManagerRequest extends Model
     public static function getAllApprove(){
         $managers = DB::table('users')
                 ->where('permission','=','APPROVE')
-                ->select('Id','name','surname','email','username')
+                ->select('Id','name','surname','email','username','citizen_id','phone','address')
                 ->get();
         return $managers;
     }
@@ -43,5 +43,12 @@ class ManagerRequest extends Model
         $deny = DB::table('users')
                 ->where('Id', $id)
                 ->update(['permission' => 'NULL' ]);
+    }
+    public static function info($id){
+        $info = DB::table('users')
+                ->where('Id', $id)
+                ->select('name','surname','email','username','citizen_id','phone','address')
+                ->get();
+        return $info;
     }
 }

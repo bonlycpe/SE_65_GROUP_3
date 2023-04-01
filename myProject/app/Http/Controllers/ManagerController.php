@@ -28,4 +28,9 @@ class ManagerController extends Controller
         ManagerRequest::deny($id);
         return redirect('staff_verify');
     }
+    function info($id)
+    {
+        $info = ManagerRequest::info($id);
+        return view('staff.userInfo',compact('info'));
+    }
 }

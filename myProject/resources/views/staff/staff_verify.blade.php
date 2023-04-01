@@ -41,7 +41,9 @@
                         <td>{{$m->surname}}</td>
                         <td>{{$m->email}}</td>
                         <td>{{$m->username}}</td>
-                        <td><button class="btn btn-info">info</button></td>
+                        <td>
+                            <a href="{{route('info', [$m->Id])}}" class="btn btn-info">Info</a>
+                        </td>
                         <td>
                             <a href="{{route('verify_approve', [$m->Id])}}" class="btn btn-success">อนุมัติ</a>
                             <a href="{{route('verify_deny', [$m->Id])}}" class="btn btn-danger">ไม่อนุมัติ</a>
@@ -74,7 +76,9 @@
                             <td>{{$a->surname}}</td>
                             <td>{{$a->email}}</td>
                             <td>{{$a->username}}</td>
-                            <td><button class="btn btn-info">info</button></td>
+                            <td>
+                                <a href="{{route('info', [$a->Id])}}" class="btn btn-info">Info</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

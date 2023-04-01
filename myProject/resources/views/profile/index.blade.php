@@ -12,7 +12,7 @@
                     <div class="widget user-dashboard-profile">
                         <!-- User Image -->
                         <div class="profile-thumb">
-                            <img src="images/user/user-thumb.jpg" alt="" class="rounded-circle" width="50%"
+                            <img src="{{asset('images/user/user-thumb.jpg')}}" alt="" class="rounded-circle" width="50%"
                                 height="50%">
                         </div>
                         <!-- User Name -->
@@ -54,12 +54,32 @@
                                 </td>
                             </tr>
                             @endforeach
+                            @foreach($userObject as $uo)
+                            <tr>
+                                <td class="product-details">
+                                    <h3 class="title">{{$uo->Name}}</h3>
+                                    <span class="add-id">{{$uo->Description}}</span>
+                                </td>
+                                <td class="action" data-title="Action">
+                                    <div class="">
+                                        <ul class="list-inline justify-content-center">
+                                            <li class="list-inline-item">
+                                                <a data-toggle="tooltip" data-placement="top" title="view" class="view"
+                                                    href="/statusObject/{{$uo->campaign_object_id}}">
+                                                    <i class=" fa fa-eye"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
                 </div>
 
-                <!-- pagination -->
+                <!-- pagination 
                 <div class="pagination justify-content-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
@@ -80,7 +100,7 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div>-->
                 <!-- pagination -->
 
             </div>

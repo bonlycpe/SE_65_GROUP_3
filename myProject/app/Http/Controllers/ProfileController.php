@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserDonate;
+use App\Models\ObjectRequest;
 
 class ProfileController extends Controller
 {
@@ -13,7 +14,8 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $userDonate = UserDonate::getAllRequestAndUser($user->id);
-        return view('profile.index',compact(['user','userDonate']));
+        $userObject = ObjectRequest::getAllRequestAndUser($user->id);
+        return view('profile.index',compact(['user','userDonate','userObject']));
     }
 
     function editProfile(){
@@ -25,6 +27,18 @@ class ProfileController extends Controller
         $user = Auth::user();
         DB::table('users')->where('id',$user->id)->update(['name'=>$request->name,'surname'=>$request->surname]);
         return redirect('/profile');
+    }
+
+    function statusDonate($id){
+        $user = Auth::user();
+        $statusDonate = UserDonate::getAllByCampaingIdAndUser($id,$user->id);
+        return view('profile.statusDonate',compact(['user','statusDonate']));
+    }
+
+    function statusObject($id){
+        $user = Auth::user();
+        $statusObject = ObjectRequest::getAllByCampaingIdAndUser($id,$user->id);
+        return view('profile.statusObject',compact(['user','statusObject']));
     }
 
 }

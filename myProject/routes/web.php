@@ -31,6 +31,7 @@ Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout']);
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index']);
 Route::get('/statusDonate/{id}', [App\Http\Controllers\ProfileController::class, 'statusDonate']);
+Route::get('/statusObject/{id}', [App\Http\Controllers\ProfileController::class, 'statusObject']);
 Route::get('/editProfile', [App\Http\Controllers\ProfileController::class, 'editProfile']);
 Route::post('/updateProfile', [App\Http\Controllers\ProfileController::class, 'update']);
 
@@ -44,6 +45,3 @@ Route::get('/staff_money/deny/{id}',[App\Http\Controllers\UserDonateController::
 
 Route::get('/staff_verify/approve/{id}',[App\Http\Controllers\ManagerController::class, 'approve'])->name('verify_approve');
 Route::get('/staff_verify/deny/{id}',[App\Http\Controllers\ManagerController::class, 'deny'])->name('verify_deny');
-
-//Admin
-Route::get('/admin',[App\Http\Controllers\StaffController::class,'index'])->name('admin');

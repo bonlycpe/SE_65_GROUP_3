@@ -39,7 +39,7 @@ class Staff extends Model
     }
     public static function search($data){
         $subquery = DB::table('staff')
-        ->select('users.name', 'users.username', 'users.surname', 'users.email', 'users.role', 'staff.Type')
+        ->select('users.name', 'users.username', 'users.surname', 'users.email', 'users.role', 'staff.Type','users.id')
         ->join('users', 'staff.Id', '=', 'users.id')
         ->where('staff.Type', '!=', 'SYSTEMADMIN');
 

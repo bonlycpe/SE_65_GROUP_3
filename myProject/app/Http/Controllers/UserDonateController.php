@@ -23,5 +23,9 @@ class UserDonateController extends Controller
         UserDonate::deny($id);
         return redirect('staff_money');
     }
+    function eslip($id){
+        $eslip = UserDonate::eslip($id);
+        return view('staff.slip',compact('eslip'));
+    }
 
 }

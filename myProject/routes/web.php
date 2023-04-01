@@ -46,6 +46,8 @@ Route::get('/staff_verify',[App\Http\Controllers\ManagerController::class, 'inde
 
 Route::get('/staff_money/approve/{id}',[App\Http\Controllers\UserDonateController::class, 'approve'])->name('staff_approve');
 Route::get('/staff_money/deny/{id}',[App\Http\Controllers\UserDonateController::class, 'deny'])->name('staff_deny');
+Route::get('/staff_verify/eslip/{id}',[App\Http\Controllers\UserDonateController::class, 'eslip'])->name('eslip');
+
 
 Route::get('/staff_verify/approve/{id}',[App\Http\Controllers\ManagerController::class, 'approve'])->name('verify_approve');
 Route::get('/staff_verify/deny/{id}',[App\Http\Controllers\ManagerController::class, 'deny'])->name('verify_deny');
@@ -54,3 +56,4 @@ Route::get('/staff_verify/info/{id}',[App\Http\Controllers\ManagerController::cl
 //Admin
 Route::get('/admin',[App\Http\Controllers\StaffController::class,'index'])->name('admin');
 Route::get('/admin/search/',[App\Http\Controllers\StaffController::class,'search'])->name('search');
+

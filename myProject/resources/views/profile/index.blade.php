@@ -36,13 +36,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($userDonate as $ud)
                             <tr>
                                 <td class="product-thumb">
                                     <img width="80px" height="auto" src="images/products/products-1.jpg"
                                         alt="image description">
                                 </td>
                                 <td class="product-details">
-                                    <h3 class="title">กองทุนส่งเสริมอนุรักษ์ม้าลาย</h3>
+                                    <h3 class="title">{{$ud->Name}}</h3>
                                     <span class="add-id"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
                                     <span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
                                     <span class="status active"><strong>Status</strong>Active</span>
@@ -74,6 +75,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
 

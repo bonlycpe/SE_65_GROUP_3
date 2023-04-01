@@ -18,19 +18,19 @@
     <meta name="theme-name" content="classimax" />
 
     <!-- favicon -->
-    <link href="images/favicon.png" rel="shortcut icon">
+    <link href="{{ asset('images/favicon.png')}}" rel="shortcut icon">
 
     <!-- 
   Essential stylesheets
   =====================================-->
-    <link href="plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="plugins/bootstrap/bootstrap-slider.css" rel="stylesheet">
-    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="plugins/slick/slick.css" rel="stylesheet">
-    <link href="plugins/slick/slick-theme.css" rel="stylesheet">
-    <link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+    <link href="{{ asset('plugins/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('plugins/bootstrap/bootstrap-slider.css')}}" rel="stylesheet">
+    <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('plugins/slick/slick.css')}}" rel="stylesheet">
+    <link href="{{ asset('plugins/slick/slick-theme.css')}}" rel="stylesheet">
+    <link href="{{ asset('plugins/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
 
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css')}}" rel="stylesheet">
     @yield('headLink')
 </head>
 
@@ -155,19 +155,19 @@
 Essential Scripts
 =====================================-->
     @yield('script')
-    <script src="plugins/jquery/jquery.min.js"></script>
-    <script src="plugins/bootstrap/popper.min.js"></script>
-    <script src="plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="plugins/bootstrap/bootstrap-slider.js"></script>
-    <script src="plugins/tether/js/tether.min.js"></script>
-    <script src="plugins/raty/jquery.raty-fa.js"></script>
-    <script src="plugins/slick/slick.min.js"></script>
-    <script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="{{ asset('plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset('plugins/bootstrap/popper.min.js')}}"></script>
+    <script src="{{ asset('plugins/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('plugins/bootstrap/bootstrap-slider.js')}}"></script>
+    <script src="{{ asset('plugins/tether/js/tether.min.js')}}"></script>
+    <script src="{{ asset('plugins/raty/jquery.raty-fa.js')}}"></script>
+    <script src="{{ asset('plugins/slick/slick.min.js')}}"></script>
+    <script src="{{ asset('plugins/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
     <!-- google map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
-    <script src="plugins/google-map/map.js" defer></script>
+    <script src="{{ asset('plugins/google-map/map.js')}}" defer></script>
 
-    <script src="js/script.js"></script>
+    <script src="{{ asset('js/script.js')}}"></script>
 
 </body>
 

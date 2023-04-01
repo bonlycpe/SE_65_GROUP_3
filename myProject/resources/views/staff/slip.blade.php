@@ -32,12 +32,14 @@
         <input class="form-control" type="text" value="{{$e->Amount}} บาท" aria-label="Disabled input example" disabled readonly>
         <br>
         <div  style="justify-content: center; display: flex;">
-            <a href="{{route('staff_approve', [$e->Id])}}" class="btn btn-success">อนุมัติ</a>
+        @if ($e->Status == "REQUEST")
+            <a href="{{route('staff_approve', [$e->Id,$e->Amount]}}" class="btn btn-success">อนุมัติ</a>
             &nbsp
             &nbsp
             <a href="{{route('staff_deny', [$e->Id])}}" class="btn btn-danger">ไม่อนุมัติ</a>
             &nbsp
             &nbsp
+        @endif
             <a href="{{route('staff_money')}}" class="btn btn-secondary">Go Back</a>
         </div>
     </div>

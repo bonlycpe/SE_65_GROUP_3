@@ -36,11 +36,17 @@
         <input class="form-control" type="text" value="{{$i->address}}" aria-label="Disabled input example" disabled readonly>
         <br>
         <div style="justify-content: center; display: flex;">
-            <a href="{{route('verify_approve', [$m->Id])}}" class="btn btn-success">อนุมัติ</a>
-            <a href="{{route('verify_deny', [$m->Id])}}" class="btn btn-danger">ไม่อนุมัติ</a>
+        @if ($i->permission != "APPROVE")
+            <a href="{{route('verify_approve', [$i->Id])}}" class="btn btn-success">อนุมัติ</a>
+            &nbsp
+            &nbsp
+            <a href="{{route('verify_deny', [$i->Id])}}" class="btn btn-danger">ไม่อนุมัติ</a>
+            &nbsp
+            &nbsp
+        @endif
             <a href="{{route('staff_verify')}}" class="btn btn-secondary">Go Back</a>
         </div>
-    </div>
+    </div> 
     @endforeach
 </body>
 

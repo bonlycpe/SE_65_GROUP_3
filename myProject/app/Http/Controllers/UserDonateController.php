@@ -20,8 +20,9 @@ class UserDonateController extends Controller
         return view('staff.staff_money',compact(['donate','donateAll']));
     }
 
-    function approve($id){
-        UserDonate::approve($id);
+    function approve(Request $req){
+        UserDonate::approve($req->id);
+        UserDonate::addMoney($req->id,(float)$req->amount);
         return redirect('staff_money');
     }
     function deny($id){

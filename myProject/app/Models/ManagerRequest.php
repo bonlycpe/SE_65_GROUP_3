@@ -49,7 +49,7 @@ class ManagerRequest extends Model
     public static function info($id){
         $info = DB::table('users')
                 ->where('Id', $id)
-                ->select('Id','name','surname','email','username','citizen_id','phone','address')
+                ->select('Id','name','surname','email','username','citizen_id','phone','address','permission')
                 ->get();
         return $info;
     }

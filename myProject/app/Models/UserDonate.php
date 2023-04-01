@@ -76,4 +76,35 @@ class UserDonate extends Model
                 ->where('Id', $id)
                 ->update(['Status' => 'DENY']);
     }
+
+    public static function eslip($id){
+        $eslip = DB::table('campaign_user_donate')
+        ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
+        ->join('campaign_money','campaign_user_donate.campaign_money_id','=','campaign.Id')
+        ->join('users','campaign_user_donate.user_id','=','users.Id')
+        ->where('campaign_user_donate.Id',$id)
+        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign_user_donate.Status','campaign_user_donate.eslip','campaign_money.Goal','campaign.total')
+        ->get();  
+        return $eslip;
+    }
+    public static function addMoney($id,$amount){
+        $add = DB::table('campaign_money')
+        ->where('campaign_money_id',$id)
+        ->increment('total',$amount);
+    }
+    public static function getById($id){
+        $campaign = DB::table('campaign_user_donate')
+        ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
+        ->join('users','campaign_user_donate.user_id','=','users.Id')
+        ->where('campaign_user_donate.Id',$id)
+        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign_user_donate.Status','campaign_user_donate.eslip')
+        ->get();
+        return $campaign; 
+    }
+    public static function setCampaignFinished($id){
+        $finished = DB::table('campaign')
+        ->where('Id',$id)
+        ->update(['Status' => 'FINISHED']);
+    }
+
 }

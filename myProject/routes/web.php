@@ -44,7 +44,7 @@ Route::post('/requestVerify/update', [App\Http\Controllers\RequestPermissionCont
 Route::get('/staff_money',[App\Http\Controllers\UserDonateController::class, 'index'])->name('staff_money');
 Route::get('/staff_verify',[App\Http\Controllers\ManagerController::class, 'index'])->name('staff_verify');
 
-Route::get('/staff_money/approve/{id}',[App\Http\Controllers\UserDonateController::class, 'approve'])->name('staff_approve');
+Route::get('/staff_money/approve/{id}/{amount}',[App\Http\Controllers\UserDonateController::class, 'approve'])->name('staff_approve');
 Route::get('/staff_money/deny/{id}',[App\Http\Controllers\UserDonateController::class, 'deny'])->name('staff_deny');
 Route::get('/staff_verify/eslip/{id}',[App\Http\Controllers\UserDonateController::class, 'eslip'])->name('eslip');
 

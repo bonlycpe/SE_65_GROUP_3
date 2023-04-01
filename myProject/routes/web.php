@@ -30,6 +30,9 @@ Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout']);
 //Profile
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index']);
+Route::get('/statusDonate/{id}', [App\Http\Controllers\ProfileController::class, 'statusDonate']);
+Route::get('/editProfile', [App\Http\Controllers\ProfileController::class, 'editProfile']);
+Route::post('/updateProfile', [App\Http\Controllers\ProfileController::class, 'update']);
 
 //Staff
 

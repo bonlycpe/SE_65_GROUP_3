@@ -28,6 +28,31 @@ class UserDonate extends Model
 
         return $donate;
     }
+
+    public static function getAllRequestAndUser($id) {
+        $donate = DB::table('campaign_user_donate')
+        ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
+        ->join('users','campaign_user_donate.user_id','=','users.Id')
+        ->where('campaign_user_donate.Status','=','REQUEST')
+        ->where('campaign_user_donate.user_id','=',$id)
+        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign.Description','campaign_user_donate.Status','campaign_money_id')
+        ->get();    
+
+        return $donate;
+    }
+
+    public static function getAllByCampaingIdAndUser($id,$userId) {
+        $donate = DB::table('campaign_user_donate')
+        ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
+        ->join('users','campaign_user_donate.user_id','=','users.Id')
+        ->where('campaign_user_donate.campaign_money_id','=',$id)
+        ->where('campaign_user_donate.user_id','=',$userId)
+        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign.Description','campaign_user_donate.Status','campaign_money_id')
+        ->get();    
+
+        return $donate;
+    }
+
     public static function getAll() {
         $donate = DB::table('campaign_user_donate')
         ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')

@@ -27,6 +27,7 @@ class Progress extends Model
         ->join('campaign','progress.campaign_money_id','=','campaign.Id')
         ->where('progress.campaign_money_id','=',$id)
         ->select('progress.Name as progressName','progress.Timer','progress.Description','progress.Date','campaign.Name','progress.Image')
+        ->orderBy('progress.Date', 'desc')
         ->get();    
         return $donate;
     }

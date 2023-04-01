@@ -1,0 +1,34 @@
+@extends('layouts.MainLayoutAfterLogin')
+
+@section('content')
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    @foreach ($eslip as $e)
+    <div style="width: 400px;" class="container">
+        <br>
+        <h2 style="text-align: center;">E-Slip</h2>
+        <br>
+        <br>
+        <img src="images/eslip/{{$e->eslip}}">
+        <br>
+        <h5>เวลาโอน</h5>
+        <input class="form-control" type="text" value="" aria-label="Disabled input example" disabled readonly>
+        <br>
+        <a href="{{route('staff_money')}}" class="btn btn-secondary" style="justify-content: center; display: flex;">Go Back</a>
+    </div>
+    @endforeach
+</body>
+
+</html>
+@endsection

@@ -38,13 +38,19 @@ class Staff extends Model
         return $staff;
     }
     public static function search($data){
-        $search = DB::table('users')
-        ->join('staff','staff.Id','=','users.Id')
-        ->where('users.name','LIKE',"%{$data}%")
-        ->orWhere('users.surname','LIKE',"%{$data}%")
-        ->orWhere('users.email','LIKE',"%{$data}%")
-        ->orWhere('users.username','LIKE',"%{$data}%")
-        ->orWhere('staff.Type','LIKE',"%{$data}%")
+        $subquery = DB::table('staff')
+        ->select('users.name', 'users.username', 'users.surname', 'users.email', 'users.role', 'staff.Type')
+        ->join('users', 'staff.Id', '=', 'users.id')
+        ->where('staff.Type', '!=', 'SYSTEMADMIN');
+
+        $search = DB::table(DB::raw("({$subquery->toSql()}) AS US"))
+        ->mergeBindings($subquery)
+        ->select('*')
+        ->orwhere('US.name','LIKE','%'.$data.'%')
+        ->orWhere('US.surname','LIKE','%'.$data.'%')
+        ->orWhere('US.email','LIKE','%'.$data.'%')
+        ->orWhere('US.username','LIKE','%'.$data.'%')
+        ->orWhere('US.Type','LIKE','%'.$data.'%')
         ->get();
         return $search;
     }

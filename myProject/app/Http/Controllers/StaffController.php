@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Staff;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 class StaffController extends Controller
 {
     function index(){
@@ -13,8 +15,10 @@ class StaffController extends Controller
     }
 
     function search(Request $request){
-        $data = $request->input('searching');
+        
+        $data = $request->searching;
         $staff = Staff::search($data);
+
         return view('admin.admin', compact('staff'));
     }
     

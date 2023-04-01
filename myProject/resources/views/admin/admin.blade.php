@@ -18,8 +18,13 @@
         <h1 style="text-align: center;">Welcome to Admin Page</h1><br><br>
     </div>
     <div class="input-group mb-3" style="width: 30%; margin-left: 10%;">
-        <input id="search" name="searching" type="text" class="form-control" placeholder="Type Something..." aria-label="Recipient's username" aria-describedby="button-addon2">
-        <a href="{{route('search')}}" class="btn btn-primary">Search</a>
+        <!-- <input id="search" name="searching" type="text" class="form-control" placeholder="Type Something..." aria-label="Recipient's username" aria-describedby="button-addon2">
+        <a href="{{route('search')}}" class="btn btn-primary">Search</a> -->
+        <form action="{{ route('search') }}" method="get">
+            <input id="search" name="searching" type="text" class="form-control" placeholder="Type Something..." aria-label="Recipient's username" aria-describedby="button-addon2">
+            <!-- <a href="{{route('search')}}" class="btn btn-primary">Search</a> -->
+            <button type="submit" class="btn btn-info">Search</button>
+        </form>
     </div>
     <div class="container">
         <div class="row">

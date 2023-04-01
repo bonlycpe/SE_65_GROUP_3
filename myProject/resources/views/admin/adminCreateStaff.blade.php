@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-8 align-item-center">
                 <div class="border border">
-                    <h3 class="bg-gray p-4">Register Now</h3>
+                    <h3 class="bg-gray p-4">Create Staff Now</h3>
                     <form method="POST" action="{{ route('createStaff') }}">
                         @csrf
                         <fieldset class="p-4">
@@ -68,7 +68,7 @@
                             </div>
                             <br>
                             <br>
-                            <button type="submit" class="btn btn-primary font-weight-bold mt-3">Register Now</button>
+                            <button type="submit" class="btn btn-primary font-weight-bold mt-3">Create Now</button>
                         </fieldset>
                     </form>
                 </div>

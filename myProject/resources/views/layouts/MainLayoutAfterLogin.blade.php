@@ -43,7 +43,7 @@
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-lg navbar-light navigation">
                         <a class="navbar-brand" href="{{url('/home')}}">
-                            <img src="images/logo.png" width="98" height="38">
+                            <img src="{{ asset('images/logo.png') }}" width="98" height="38">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

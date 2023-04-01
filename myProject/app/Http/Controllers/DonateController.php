@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Campaign;
 use App\Models\UserDonate;
+use App\Models\MoneyCampaign;
 
 class DonateController extends Controller
 {
@@ -18,8 +19,8 @@ class DonateController extends Controller
 
     public function index($id)
     {
-        $campaign = Campaign::getById($id);
-        return view('user.donate',['campaign'=>$campaign]);
+        $money = MoneyCampaign::getById($id);
+        return view('user.donate',['campaign'=>$money]);
     }
 
     public function create(Request $request)

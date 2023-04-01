@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-8">
                         <div class="widget personal-info">
-                            <form method="POST" action="donated">
+                            <form method="POST" action="{{url('/donated')}}" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="campaignId" value="{{$campaign->Id}}" />
                                 <!-- First Name -->
@@ -31,8 +31,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="last-name">จำนวน</label>
-                                    <input type="text" name="Amount" class="form-control" id="last-name" value=""
-                                        required pattern="^[0-9]{10}$" title="เบอร์โทรศัพท์ควรเป็นตัวเลข">
+                                    <input type="number" name="amount" class="form-control" id="last-name" value=""
+                                        required pattern="\d{10}" title="จำนวนควรเป็นตัวเลข">
                                 </div>
                                 <div class="form-group">
                                     <label for="last-name">อัพโหลดรูปภาพ</label>
@@ -40,7 +40,7 @@
                                     <div class="form-group choose-file d-inline-flex">
 
                                         <i class="fa fa-amazon-pay text-center px-3"></i>
-                                        <input type="file" name="profile_image" class="form-control-file mt-2 pt-1"
+                                        <input type="file" name="slip_image" class="form-control-file mt-2 pt-1"
                                             id="input-file">
                                     </div>
                                 </div>
@@ -52,7 +52,8 @@
                     </div>
                     <div class="col-lg-5 col-md-8">
                         <div class="profile-thumb">
-                            <img src="{{asset('images/promptpay.png')}}" alt="" class="rounded mx-auto d-block">
+                            <img src="{{ url('/images/qrcode/'.$campaign->Image)}}" alt=""
+                                class="rounded mx-auto d-block">
                         </div>
                     </div>
                 </div>

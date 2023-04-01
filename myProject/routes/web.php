@@ -27,6 +27,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout']);
 
 
+//donate
+Route::get('/donate/{id}', [App\Http\Controllers\DonateController::class, 'index']);
+Route::post('/donated', [App\Http\Controllers\DonateController::class, 'create']);
+
+Route::get('/request/{id}', [App\Http\Controllers\RequestController::class, 'index']);
+Route::post('/requested', [App\Http\Controllers\RequestController::class, 'create']);
+
 //Profile
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index']);
@@ -34,6 +41,9 @@ Route::get('/statusDonate/{id}', [App\Http\Controllers\ProfileController::class,
 Route::get('/statusObject/{id}', [App\Http\Controllers\ProfileController::class, 'statusObject']);
 Route::get('/editProfile', [App\Http\Controllers\ProfileController::class, 'editProfile']);
 Route::post('/updateProfile', [App\Http\Controllers\ProfileController::class, 'update']);
+
+//progress
+Route::get('/progress/{id}', [App\Http\Controllers\ProgressController::class, 'index']);
 
 //Request Manager Permission
 Route::get('/requestVerify', [App\Http\Controllers\RequestPermissionController::class, 'index']);

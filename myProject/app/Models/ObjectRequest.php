@@ -44,4 +44,16 @@ class ObjectRequest extends Model
 
         return $donate;
     }
+
+    public static function getAllByCampaingIdAndUserId($id,$userId) {
+        $donate = DB::table('campaign_object_request')
+        ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
+        ->join('users','campaign_object_request.user_id','=','users.Id')
+        ->where('campaign_object_request.campaign_object_id','=',$id)
+        ->where('campaign_object_request.user_id','=',$userId)
+        ->select('users.name','users.surname','Amount','campaign.Name','campaign.Description','campaign_object_request.Status','campaign_object_id')->distinct()
+        ->get();    
+
+        return $donate;
+    }
 }

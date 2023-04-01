@@ -11,10 +11,8 @@
                     <!-- User Widget -->
                     <div class="widget user-dashboard-profile">
                         <!-- User Image -->
-                        <div class="profile-thumb">
-                            <img src="images/user/{{$user->image}}" alt="" class="rounded-circle" width="50%"
-                                height="50%">
-                        </div>
+                        <img src="{{ url('images/user/'.$user->image)}}" alt="" class="rounded-circle" width="50%"
+                            height="40%">
                         <!-- User Name -->
                         <h5>คุณ {{$user->name}} {{$user->surname}}</h5>
                         <p>เข้าร่วมเมื่อ {{$user->created_at}}</p>

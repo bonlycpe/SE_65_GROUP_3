@@ -25,7 +25,7 @@
             <!-- offer 01 -->
             <div class="col-lg-12">
                 <div class="row">
-                    @foreach($campaignMoney as $money)
+                    @foreach($campaignMoney as $key => $money)
                     @if ($money->Status == "TERMINATE")
                     <div class="col-sm-12 col-lg-4">
                         <div class="product-item bg-light">
@@ -56,7 +56,8 @@
                                     <img class="card-img-top img-fluid" src="@@img-src" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="/progress">{{$money->Name}}</a></h4>
+                                    <h4 class="card-title"><a
+                                            href="/progress/{{$money->campaign_money_id}}">{{$money->Name}}</a></h4>
                                     <p class="card-text">{{$money->Description}}</p>
                                     <div class="row">
                                         <ul class="list-inline product-meta">
@@ -69,10 +70,12 @@
                                     </div>
                                     <div class="product-ratings">
                                         <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                                aria-valuemin="0" aria-valuemax="100" style="width:10%">
-                                                <span class="sr-only">70% Complete</span>
-                                            </div>
+                                            <?php echo '<div class="progress-bar" role="progressbar"
+                                                 aria-valuemin="0" aria-valuemax="100"
+                                                style="width: '.$progressBar[$key].'%"> <span class="sr-only">
+                                                70% Complete</span>
+                                            </div>';?>
+
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +128,8 @@
                                     <img class="card-img-top img-fluid" src="@@img-src" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="/progress">{{$object->Name}}</a></h4>
+                                    <h4 class="card-title"><a
+                                            href="/progress/{{$object->campaign_object_Id}}">{{$object->Name}}</a></h4>
                                     <p class="card-text">{{$object->Description}}</p>
                                     <div class="row">
                                         <ul class="list-inline product-meta">

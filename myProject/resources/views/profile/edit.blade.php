@@ -16,7 +16,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="widget personal-info">
                             <h3 class="widget-header user">Edit Personal Information</h3>
-                            <form method="POST" action="updateProfile">
+                            <form method="POST" action="updateProfile" enctype="multipart/form-data">
                                 @csrf
                                 <!-- First Name -->
                                 <div class="form-group">
@@ -33,8 +33,10 @@
                                 <!-- File chooser -->
                                 <div class="form-group choose-file d-inline-flex">
                                     <i class="fa fa-user text-center px-3"></i>
-                                    <input type="file" class="form-control-file mt-2 pt-1" id="input-file">
+                                    <input type="file" name="profile_image" class="form-control-file mt-2 pt-1" id="input-file">
                                 </div>
+
+
                                 <button type="submit" class="btn btn-primary font-weight-bold mt-3">แก้ไขข้อมูล</button>
                             </form>
                         </div>

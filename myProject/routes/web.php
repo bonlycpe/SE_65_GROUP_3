@@ -41,3 +41,6 @@ Route::get('/staff_money/deny/{id}',[App\Http\Controllers\UserDonateController::
 
 Route::get('/staff_verify/approve/{id}',[App\Http\Controllers\ManagerController::class, 'approve'])->name('verify_approve');
 Route::get('/staff_verify/deny/{id}',[App\Http\Controllers\ManagerController::class, 'deny'])->name('verify_deny');
+
+//Admin
+Route::get('/admin',[App\Http\Controllers\StaffController::class,'index'])->name('admin');

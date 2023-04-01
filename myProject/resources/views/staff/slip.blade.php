@@ -25,6 +25,9 @@
         <h5>เวลาโอน</h5>
         <input class="form-control" type="text" value="" aria-label="Disabled input example" disabled readonly>
         <br>
+        <h5>จำนวนเงิน</h5>
+        <input class="form-control" type="text" value="" aria-label="Disabled input example" disabled readonly>
+        <br>
         <a href="{{route('staff_money')}}" class="btn btn-secondary" style="justify-content: center; display: flex;">Go Back</a>
     </div>
     @endforeach

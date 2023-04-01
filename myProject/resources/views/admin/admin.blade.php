@@ -57,7 +57,7 @@
                 </tbody>
             </table>
             <div style="display: flex; align-items:center; justify-content:center">
-                <a href="" class="btn btn-success">Create Staff</a>
+                <a href="{{ route('createStaffPage') }}" class="btn btn-success">Create Staff</a>
             </div>
         </div>
 </body>

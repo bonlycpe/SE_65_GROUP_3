@@ -56,4 +56,5 @@ Route::get('/staff_verify/info/{id}',[App\Http\Controllers\ManagerController::cl
 //Admin
 Route::get('/admin',[App\Http\Controllers\StaffController::class,'index'])->name('admin');
 Route::get('/admin/search/',[App\Http\Controllers\StaffController::class,'search'])->name('search');
-
+Route::get('/admin/createStaff/',[App\Http\Controllers\StaffController::class,'createStaffPage'])->name('createStaffPage');
+Route::post('admin/postStaff', [App\Http\Controllers\StaffController::class,'createStaffFromCreatePage'])->name('createStaff');

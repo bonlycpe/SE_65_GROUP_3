@@ -11,6 +11,7 @@ use Symfony\Component\Console\Input\Input;
 class Staff extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     public static function getAllStaffVerify(){
         $staffVerify = DB::table('staff')
@@ -46,5 +47,13 @@ class Staff extends Model
         ->orWhere('staff.Type','LIKE',"%{$data}%")
         ->get();
         return $search;
+    }
+    public static function getStaffByUser($username, $email){
+        $staff = DB::table('users')
+        ->select('users.id')
+        ->where('users.username', '=', $username)
+        ->where('users.email', '=', $email)
+        ->get()->toArray();
+        return $staff;
     }
 }

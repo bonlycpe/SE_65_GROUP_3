@@ -8,6 +8,11 @@ use App\Models\UserDonate;
 
 class UserDonateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     function index()
     {
         $donate = UserDonate::getAllRequest();
@@ -23,6 +28,7 @@ class UserDonateController extends Controller
         UserDonate::deny($id);
         return redirect('staff_money');
     }
+
     function eslip($id){
         $eslip = UserDonate::eslip($id);
         return view('staff.slip',compact('eslip'));

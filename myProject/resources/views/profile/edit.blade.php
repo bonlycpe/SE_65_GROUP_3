@@ -21,12 +21,14 @@
                                 <!-- First Name -->
                                 <div class="form-group">
                                     <label for="first-name">ชื่อ</label>
-                                    <input type="text" name="name" class="form-control" id="first-name">
+                                    <input type="text" name="name" class="form-control" id="first-name"
+                                        value="{{$user->name}}">
                                 </div>
                                 <!-- Last Name -->
                                 <div class="form-group">
                                     <label for="last-name">นามสกุล</label>
-                                    <input type="text" name="surname" class="form-control" id="last-name">
+                                    <input type="text" name="surname" class="form-control" id="last-name"
+                                        value="{{$user->surname}}">
                                 </div>
                                 <!-- File chooser -->
                                 <div class="form-group choose-file d-inline-flex">

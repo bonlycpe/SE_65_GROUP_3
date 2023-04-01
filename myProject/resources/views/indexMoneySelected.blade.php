@@ -24,7 +24,7 @@
         <div class="row">
             <!-- offer 01 -->
             <div class="col-lg-12">
-                <div class="row">
+                <div class="trending-ads-slide">
                     @foreach($campaignMoney as $money)
                     @if ($money->Status == "TERMINATE")
                     <div class="col-sm-12 col-lg-4">
@@ -38,9 +38,6 @@
                                     <ul class="list-inline product-meta">
                                         <li class="list-inline-item">
                                             <i class="fa fas fa-ban"></i>บริจาคเงิน
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <i class="fa fas fa-ban"></i>บริจาค
                                         </li>
                                     </ul>
                                     <p class="card-text">ยุติแคมเปญ</p>
@@ -56,17 +53,13 @@
                                     <img class="card-img-top img-fluid" src="@@img-src" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="/progress">{{$money->Name}}</a></h4>
+                                    <h4 class="card-title"><a href="single.html">{{$money->Name}}</a></h4>
+                                    <ul class="list-inline product-meta">
+                                        <li class="list-inline-item">
+                                            <a href="single.html"><i class="fa fab fa-angellist"></i>บริจาคเงิน</a>
+                                        </li>
+                                    </ul>
                                     <p class="card-text">{{$money->Description}}</p>
-                                    <div class="row">
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <a href="/donate"><i class="fa fab fa-angellist"></i>บริจาคเงิน</a>
-                                            </li>
-                                            <a
-                                                href="/donate/{{$money->campaign_money_id}}"><button>บริจาคเงิน</button></a>
-                                        </ul>
-                                    </div>
                                     <div class="product-ratings">
                                         <div class="progress">
                                             <div class="progress-bar" role="progressbar" aria-valuenow="70"
@@ -97,9 +90,8 @@
         </div>
         <div class="row">
             <!-- offer 01 -->
-
             <div class="col-lg-12">
-                <div class="row">
+                <div class="trending-ads-slide">
                     @foreach($campaignObject as $object)
                     <div class="col-sm-12 col-lg-4">
                         <div class="product-item bg-light">
@@ -110,14 +102,11 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">{{$object->Name}}</a></h4>
-                                    <div class=" row">
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <i class="fa fas fa-ban"></i>{{$object->Tag}}
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <ul class="list-inline product-meta">
+                                        <li class="list-inline-item">
+                                            <i class="fa fas fa-ban"></i>{{$object->Tag}}</a>
+                                        </li>
+                                    </ul>
                                     <p class="card-text">ยุติแคมเปญ</p>
                                 </div>
                                 @else
@@ -125,18 +114,14 @@
                                     <img class="card-img-top img-fluid" src="@@img-src" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title"><a href="/progress">{{$object->Name}}</a></h4>
+                                    <h4 class="card-title"><a href="single.html">{{$object->Name}}</a></h4>
+                                    <ul class="list-inline product-meta">
+                                        <li class="list-inline-item">
+                                            <a href="single.html"><i
+                                                    class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
+                                        </li>
+                                    </ul>
                                     <p class="card-text">{{$object->Description}}</p>
-                                    <div class="row">
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <a href="/request"><i
-                                                        class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
-                                            </li>
-                                            <a
-                                                href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a>
-                                        </ul>
-                                    </div>
                                 </div>
                                 @endif
                             </div>

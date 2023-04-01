@@ -25,7 +25,15 @@ class ProfileController extends Controller
 
     function update(Request $request){
         $user = Auth::user();
-        DB::table('users')->where('id',$user->id)->update(['name'=>$request->name,'surname'=>$request->surname]);
+        if($request->hasFile('profile_image')){
+            $image = $request->file('profile_image');
+            $image_name = $request->name.'.'.$image->getClientOriginalExtension();
+            $path = $image->move(public_path('images/user'), $image_name);
+            DB::table('users')->where('id',$user->id)->update(['name'=>$request->name,'surname'=>$request->surname, 'image'=>$image_name]);
+        }
+        else{
+            DB::table('users')->where('id',$user->id)->update(['name'=>$request->name,'surname'=>$request->surname]);
+        }
         return redirect('/profile');
     }
 

@@ -12,7 +12,7 @@
                     <div class="widget user-dashboard-profile">
                         <!-- User Image -->
                         <div class="profile-thumb">
-                            <img src="{{asset('images/user/user-thumb.jpg')}}" alt="" class="rounded-circle" width="50%"
+                            <img src="images/user/{{$user->image}}" alt="" class="rounded-circle" width="50%"
                                 height="50%">
                         </div>
                         <!-- User Name -->

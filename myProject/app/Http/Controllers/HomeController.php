@@ -56,7 +56,7 @@ class HomeController extends Controller
             $campaignMoney = MoneyCampaign::getAll();
             $campaignObject = ObjectCampaign::getAll();
             if($user ->permission == 'APPROVE'){
-                return view('indexM',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject]);
+                return view('index',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject]);
             }else{
                 return view('index',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject]);
             }

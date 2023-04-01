@@ -24,6 +24,4 @@ class MoneyCampaign extends Model
         return $campaign;
     }
 
-    public
-
 }

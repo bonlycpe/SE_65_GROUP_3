@@ -17,6 +17,7 @@ class UserDonate extends Model
         'campaign_name',
         'amount'
     ];
+    
 
     public static function getAllRequest() {
         $donate = DB::table('campaign_user_donate')

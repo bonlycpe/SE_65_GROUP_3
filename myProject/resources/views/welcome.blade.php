@@ -264,6 +264,7 @@
                 <div class="row">
                     <!-- offer 01 -->
                     <div class="col-lg-12">
+
                         <div class="trending-ads-slide">
                             <div class="col-sm-12 col-lg-4">
                                 <div class="product-item bg-light">

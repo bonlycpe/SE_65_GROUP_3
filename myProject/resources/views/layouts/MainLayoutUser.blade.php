@@ -58,6 +58,9 @@
                                 <li class="nav-item @@profile">
                                     <a class="nav-link" href="{{url('/profile')}}">โปรไฟล์</a>
                                 </li>
+                                <li class="nav-item @@profile">
+                                    <a class="nav-link" href="{{url('/requestVerify')}}">ขอสิทธ์เป็นผู้เปิดแคมเปญ</a>
+                                </li>
                                 <!--<li class="nav-item dropdown dropdown-slide @@dashboard">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#!">Dashboard<span><i class="fa fa-angle-down"></i></span>
 								</a>-->

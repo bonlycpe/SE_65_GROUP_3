@@ -35,6 +35,10 @@ Route::get('/statusObject/{id}', [App\Http\Controllers\ProfileController::class,
 Route::get('/editProfile', [App\Http\Controllers\ProfileController::class, 'editProfile']);
 Route::post('/updateProfile', [App\Http\Controllers\ProfileController::class, 'update']);
 
+//Request Manager Permission
+Route::get('/requestVerify', [App\Http\Controllers\RequestPermissionController::class, 'index']);
+Route::post('/requestVerify/update', [App\Http\Controllers\RequestPermissionController::class, 'update']);
+
 //Staff
 
 Route::get('/staff_money',[App\Http\Controllers\UserDonateController::class, 'index'])->name('staff_money');

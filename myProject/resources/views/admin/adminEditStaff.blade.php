@@ -1,4 +1,4 @@
-@extends('layouts.MainLayoutAfterLogin')
+@extends('layouts.LayoutAdmin')
 @section('content')
 <section class="login py-5 border-top-1">
     <div class="container">

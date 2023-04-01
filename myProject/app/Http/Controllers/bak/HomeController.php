@@ -55,18 +55,10 @@ class HomeController extends Controller
         } else {
             $campaignMoney = MoneyCampaign::getAll();
             $campaignObject = ObjectCampaign::getAll();
-            $progressBar = Array();
-            for($i = 0 ; $i < sizeof($campaignMoney); $i++){
-                $total = $campaignMoney[$i]->total;
-                $goal = $campaignMoney[$i]->Goal;
-                $percent = (($goal-$total)/$goal)*100;
-                $progressBar[$i] = $percent;
-            }
             if($user ->permission == 'APPROVE'){
-                return view('indexM',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject,'progressBar'=>$progressBar]);
+                return view('indexM',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject]);
             }else{
-                //dd($progressBar);
-                return view('index',['campaignMoney'=>$campaignMoney,'campaignObject'=>$campaignObject,'progressBar'=>$progressBar]);
+                return view('index',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject]);
             }
         }
     }

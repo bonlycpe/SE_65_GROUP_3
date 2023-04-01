@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', [App\Http\Controllers\CampaignController::class, 'index']);
+
 Route::get('auth/google', [App\Http\Controllers\GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [App\Http\Controllers\GoogleController::class, 'handleGoogleCallback']);
 
@@ -27,13 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout']);
 
 
-//donate
-Route::get('/donate/{id}', [App\Http\Controllers\DonateController::class, 'index']);
-Route::post('/donated', [App\Http\Controllers\DonateController::class, 'create']);
-
-Route::get('/request/{id}', [App\Http\Controllers\RequestController::class, 'index']);
-Route::post('/requested', [App\Http\Controllers\RequestController::class, 'create']);
-
 //Profile
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index']);
@@ -41,9 +36,6 @@ Route::get('/statusDonate/{id}', [App\Http\Controllers\ProfileController::class,
 Route::get('/statusObject/{id}', [App\Http\Controllers\ProfileController::class, 'statusObject']);
 Route::get('/editProfile', [App\Http\Controllers\ProfileController::class, 'editProfile']);
 Route::post('/updateProfile', [App\Http\Controllers\ProfileController::class, 'update']);
-
-//progress
-Route::get('/progress/{id}', [App\Http\Controllers\ProgressController::class, 'index']);
 
 //Request Manager Permission
 Route::get('/requestVerify', [App\Http\Controllers\RequestPermissionController::class, 'index']);
@@ -59,7 +51,7 @@ Route::post('/openCampaignMoneyController/create', [App\Http\Controllers\openCam
 Route::get('/staff_money',[App\Http\Controllers\UserDonateController::class, 'index'])->name('staff_money');
 Route::get('/staff_verify',[App\Http\Controllers\ManagerController::class, 'index'])->name('staff_verify');
 
-Route::get('/staff_money/approve/{id}/{amount}',[App\Http\Controllers\UserDonateController::class, 'approve'])->name('staff_approve');
+Route::get('/staff_money/approve/{id}',[App\Http\Controllers\UserDonateController::class, 'approve'])->name('staff_approve');
 Route::get('/staff_money/deny/{id}',[App\Http\Controllers\UserDonateController::class, 'deny'])->name('staff_deny');
 Route::get('/staff_verify/eslip/{id}',[App\Http\Controllers\UserDonateController::class, 'eslip'])->name('eslip');
 
@@ -73,6 +65,3 @@ Route::get('/admin',[App\Http\Controllers\StaffController::class,'index'])->name
 Route::get('/admin/search/',[App\Http\Controllers\StaffController::class,'search'])->name('search');
 Route::get('/admin/createStaff/',[App\Http\Controllers\StaffController::class,'createStaffPage'])->name('createStaffPage');
 Route::post('admin/postStaff', [App\Http\Controllers\StaffController::class,'createStaffFromCreatePage'])->name('createStaff');
-Route::get('admin/delete/{id}', [App\Http\Controllers\StaffController::class,'deleteStaff'])->name('deleteStaff');
-Route::get('admin/edit/{id}', [App\Http\Controllers\StaffController::class,'editStaff'])->name('editStaff');
-Route::get('admin/update/{id}', [App\Http\Controllers\StaffController::class,'updateStaff'])->name('updateStaff');

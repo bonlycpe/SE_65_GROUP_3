@@ -11,6 +11,7 @@ class Campaign extends Model
     use HasFactory;
 
     public $timestamps = false;
+    public $table = "campaign";
     
     protected $fillable = [
         
@@ -19,6 +20,13 @@ class Campaign extends Model
     public static function getById($id){
         $campaign = DB::table('campaign')
                 ->where('Id','=',$id)
+                ->first();
+        return $campaign;
+    }
+
+    public static function getByName($name){
+        $campaign = DB::table('campaign')
+                ->where('Name','=',$name)
                 ->first();
         return $campaign;
     }

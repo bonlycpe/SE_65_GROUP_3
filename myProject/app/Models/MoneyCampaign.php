@@ -12,6 +12,9 @@ class MoneyCampaign extends Model
     use HasFactory;
     use SoftDeletes;
 
+    public $timestamps = false;
+    public $table = "campaign_money";
+
     protected $fillable = [
         'Goal',
     ];

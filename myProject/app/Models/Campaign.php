@@ -40,7 +40,7 @@ class Campaign extends Model
     public static function getMoney(){
         $campaignMoney = DB::table('campaign')
         ->join('campaign_money','campaign.Id','=','campaign_money.campaign_money_id')
-        ->select('campaign.Id','campaign_money.Goal','campaign.Name','campaign.Description','campaign.Status','campaign.Image','campaign_money.campaign_money_id')->get();       
+        ->select('campaign.Id','campaign_money.Goal','campaign_money.total','campaign.Name','campaign.Description','campaign.Status','campaign.Image','campaign_money.campaign_money_id')->get();       
         return $campaignMoney;
     }
 

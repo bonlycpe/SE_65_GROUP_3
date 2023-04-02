@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Campaign;
 use App\Models\MoneyCampaign;
+use App\Models\ObjectCampaign;
 use App\Models\UseInCampaign;
 class openCampaignMoneyController extends Controller
 {
@@ -59,6 +60,17 @@ class openCampaignMoneyController extends Controller
         $in_campaign->Role = 'CHAIRMAN';
         $in_campaign->save();
 
-        return redirect('managerPage');
+
+        $campaignMoney = MoneyCampaign::getAll();
+        $campaignObject = ObjectCampaign::getAll();
+        $progressBar = Array();
+        for($i = 0 ; $i < sizeof($campaignMoney); $i++){
+            $total = $campaignMoney[$i]->total;
+            $goal = $campaignMoney[$i]->Goal;
+            $percent = ($total/$goal)*100;
+            $progressBar[$i] = $percent;
+        }
+
+        return view('managerPage',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject,'progressBar'=>$progressBar]);
     }
 }

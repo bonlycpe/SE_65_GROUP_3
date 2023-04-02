@@ -50,4 +50,11 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public static function getAll(){
+        $users = DB::table('users')
+                ->select('email','permission')
+                ->get();
+        return $users;
+    }
 }

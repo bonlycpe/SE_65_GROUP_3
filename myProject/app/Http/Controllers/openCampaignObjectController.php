@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Campaign;
 use App\Models\ObjectInCampaign;
+use App\Models\MoneyCampaign;
 use App\Models\ObjectCampaign;
 use App\Models\UseInCampaign;
+use App\Models\User;
 class openCampaignObjectController extends Controller
 {
 
@@ -24,37 +26,38 @@ class openCampaignObjectController extends Controller
     }
 
     public function create(Request $request){
-        $user = Auth::user();
 
-        $campaign_name = $request->campaignName;
-        $object_name = $request->objectName;
-        $description = $request->description;
-        $object_amount = $request->objectAmount;
-        $campaign_tag = $request->tag;
+        // $user = Auth::user();
 
-        //for image
-        $campaign_image = $request->file('campaign_image');
-        $campaign_image_name = $request->name.'.'.$campaign_image->getClientOriginalExtension();
-        $path = $campaign_image->move(public_path('images/campaign'), $campaign_image_name);
+        // $campaign_name = $request->campaignName;
+        // $object_name = $request->objectName;
+        // $description = $request->description;
+        // $object_amount = $request->objectAmount;
+        // $campaign_tag = $request->tag;
 
-        $campaign = new Campaign;
-        $campaign->Name = $campaign_name;
-        $campaign->Description = $description;
-        $campaign->Status = 'ACTIVE';
-        $campaign->Image = $campaign_image->getClientOriginalName();
-        $campaign->save();
+        // //for image
+        // $campaign_image = $request->file('campaign_image');
+        // $campaign_image_name = $request->name.'.'.$campaign_image->getClientOriginalExtension();
+        // $path = $campaign_image->move(public_path('images/campaign'), $campaign_image_name);
 
-        $campaign_id = (Campaign::getByName($campaign_name))->Id;
-        $object_campaign = new ObjectCampaign;
-        $object_campaign->campaign_object_id = $campaign_id;
-        $object_campaign->Tag = $campaign_tag;
-        $object_campaign->save();
+        // $campaign = new Campaign;
+        // $campaign->Name = $campaign_name;
+        // $campaign->Description = $description;
+        // $campaign->Status = 'ACTIVE';
+        // $campaign->Image = $campaign_image->getClientOriginalName();
+        // $campaign->save();
 
-        $object = new ObjectInCampaign;
-        $object->Name = $object_name;
-        $object->Amount = $object_amount;
-        $object->campaign_object_id = $campaign_id;
-        $object->save();
+        // $campaign_id = (Campaign::getByName($campaign_name))->Id;
+        // $object_campaign = new ObjectCampaign;
+        // $object_campaign->campaign_object_id = $campaign_id;
+        // $object_campaign->Tag = $campaign_tag;
+        // $object_campaign->save();
+
+        // $object = new ObjectInCampaign;
+        // $object->Name = $object_name;
+        // $object->Amount = $object_amount;
+        // $object->campaign_object_id = $campaign_id;
+        // $object->save();
 
         // $in_campaign = new UseInCampaign;
         // $in_campaign->campaign_id = $campaign_id;
@@ -62,6 +65,16 @@ class openCampaignObjectController extends Controller
         // $in_campaign->Role = 'CHAIRMAN';
         // $in_campaign->save();
 
-        return redirect('managerPage');
+        $campaignMoney = MoneyCampaign::getAll();
+        $campaignObject = ObjectCampaign::getAll();
+        $progressBar = Array();
+        for($i = 0 ; $i < sizeof($campaignMoney); $i++){
+            $total = $campaignMoney[$i]->total;
+            $goal = $campaignMoney[$i]->Goal;
+            $percent = ($total/$goal)*100;
+            $progressBar[$i] = $percent;
+        }
+
+        return view('managerPage',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject,'progressBar'=>$progressBar]);
     }
 }

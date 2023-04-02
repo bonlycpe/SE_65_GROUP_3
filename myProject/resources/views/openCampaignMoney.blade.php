@@ -1,4 +1,4 @@
-@extends('layouts.LayoutManagerOpenCampaign')
+@extends('layouts.LayoutManager')
 
 @section('content')
 <!DOCTYPE html>

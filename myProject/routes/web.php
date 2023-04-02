@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', [App\Http\Controllers\CampaignController::class, 'index'])->name('welcome');
-Route::get('/food', [App\Http\Controllers\CampaignController::class, 'food'])->name('food');
-Route::get('/apparel', [App\Http\Controllers\CampaignController::class, 'apparel'])->name('apparel');
-Route::get('/medicine', [App\Http\Controllers\CampaignController::class, 'medicine'])->name('medicine');
-Route::get('/money', [App\Http\Controllers\CampaignController::class, 'money'])->name('money');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('auth/google', [App\Http\Controllers\GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [App\Http\Controllers\GoogleController::class, 'handleGoogleCallback']);
@@ -56,6 +54,7 @@ Route::get('/openCampaignMoney', [App\Http\Controllers\openCampaignMoneyControll
 Route::post('/openCampaignMoneyController/create', [App\Http\Controllers\openCampaignMoneyController::class, 'create']);
 
 //For Manager Open Object Campaign
+Route::get('/openCampaignObject/callOpenCampaign', [App\Http\Controllers\ManagerPageController::class, 'callOpenCampaign']);
 Route::get('/openCampaignObject', [App\Http\Controllers\openCampaignObjectController::class, 'index']);
 Route::post('/openCampaignObjectController/create', [App\Http\Controllers\openCampaignObjectController::class, 'create']);
 

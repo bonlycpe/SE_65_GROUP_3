@@ -35,7 +35,7 @@ class openCampaignObjectController extends Controller
         // $object_amount = $request->objectAmount;
         // $campaign_tag = $request->tag;
 
-        // //for image
+        // //campaign
         // $campaign_image = $request->file('campaign_image');
         // $campaign_image_name = $request->name.'.'.$campaign_image->getClientOriginalExtension();
         // $path = $campaign_image->move(public_path('images/campaign'), $campaign_image_name);
@@ -47,23 +47,31 @@ class openCampaignObjectController extends Controller
         // $campaign->Image = $campaign_image->getClientOriginalName();
         // $campaign->save();
 
+        // //campaign object
         // $campaign_id = (Campaign::getByName($campaign_name))->Id;
         // $object_campaign = new ObjectCampaign;
         // $object_campaign->campaign_object_id = $campaign_id;
         // $object_campaign->Tag = $campaign_tag;
         // $object_campaign->save();
 
+        // //object
         // $object = new ObjectInCampaign;
         // $object->Name = $object_name;
         // $object->Amount = $object_amount;
         // $object->campaign_object_id = $campaign_id;
         // $object->save();
-
-        // $in_campaign = new UseInCampaign;
-        // $in_campaign->campaign_id = $campaign_id;
-        // $in_campaign->user_id = $user->id;
-        // $in_campaign->Role = 'CHAIRMAN';
-        // $in_campaign->save();
+        
+        //Campaign manager
+        $board_id = array($user->id,$request->id_board_1,$request->id_board_2,$request->id_board_3);
+        //$board_id = array($user->id,14,14,14);
+        for($i = 0; $i<4 ;$i++){
+            $in_campaign = new UseInCampaign;
+            $in_campaign->campaign_id = $campaign_id;
+            $in_campaign->user_id = $board_id[$i];
+            if($i!=0) $in_campaign->Role = 'BOARD';
+            else $in_campaign->Role = 'CHAIRMAN';
+            $in_campaign->save();    
+        }
 
         $campaignMoney = MoneyCampaign::getAll();
         $campaignObject = ObjectCampaign::getAll();

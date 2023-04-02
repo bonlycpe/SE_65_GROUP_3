@@ -22,7 +22,7 @@ class ObjectCampaign extends Model
     public static function getAll() {
         $campaign = DB::table('campaign_object')
         ->join('campaign','campaign_object_Id','=','campaign.Id')
-        ->select('campaign_object.campaign_object_Id','campaign.Name','campaign.Description','campaign.Status','Tag')
+        ->select('campaign_object.campaign_object_Id','campaign.Name','campaign.Description','campaign.Status','Tag','campaign.Image')
         ->get();    
         return $campaign;
     }

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-     <div class="col-lg-8">
+     <div class="col-lg-8 mx-auto">
         <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
          <h2 class="mb-2 title-color">เปิดแคมเปญบริจาคเงิน</h2>
             <form  class="appoinment-form" method="POST" action="{{ url('openCampaignMoneyController/create') }}" enctype="multipart/form-data">
@@ -31,13 +31,13 @@
                         </div>
                         <div class="form-group text-center">
                             <label>จำนวนเงินที่จะรับบริจาค</label>
-                            <input name="goal" id="goal" type="text" class="form-control" required>
+                            <input name="goal" id="goal" type="number" class="form-control" required min=0 pattern="[0-9]+">
                         </div>
-                        <div class="form-group text-center">
+                        <div class="form-group text-left">
                             <label>รูปภาพ</label>
                             <input type="file" name="campaign_image" class="form-control-file mt-2 pt-1" id="input-file">
                         </div>
-                        <div class="form-group text-center">
+                        <div class="form-group text-left">
                             <label>รูป QR CODE สำหรับโอนเงิน</label>
                             <input type="file" name="QR_image" class="form-control-file mt-2 pt-1" id="input-file">
                         </div>

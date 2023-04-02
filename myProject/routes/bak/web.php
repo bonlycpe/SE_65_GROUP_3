@@ -58,6 +58,9 @@ Route::get('/openCampaignObject/callOpenCampaign', [App\Http\Controllers\Manager
 Route::get('/openCampaignObject', [App\Http\Controllers\openCampaignObjectController::class, 'index']);
 Route::post('/openCampaignObjectController/create', [App\Http\Controllers\openCampaignObjectController::class, 'create']);
 
+// Update Money Campaign Progress
+
+
 //Staff
 Route::get('/staff_money',[App\Http\Controllers\UserDonateController::class, 'index'])->name('staff_money');
 Route::get('/staff_verify',[App\Http\Controllers\ManagerController::class, 'index'])->name('staff_verify');

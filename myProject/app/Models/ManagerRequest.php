@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 class ManagerRequest extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
     
     protected $fillable = [
         'id',

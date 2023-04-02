@@ -12,10 +12,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  </head>
+</head>
+<style>
+    .form-group.text-center.d-flex.align-items-center label {
+        margin-right: 10px;
+    }
+    .form-group.text-center.d-flex.align-items-center input {
+        margin-left: 10px; 
+    }
+    p {
+        font-weight: bold;
+        color: #ff8080;
+    }
+
+    .container.m-1 {
+        margin-bottom: 1.5rem;
+    }
+</style>
 
 <body>
-     <div class="col-lg-8">
+     <div class="col-lg-8 mx-auto">
         <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
          <h2 class="mb-2 title-color">เปิดแคมเปญบริจาคของ</h2>
             <form  name="openObjectCampaign" onsubmit="return validateForm()" method="POST" action="{{ url('openCampaignObjectController/create') }}" enctype="multipart/form-data">
@@ -36,9 +52,9 @@
                         </div>
                         <div class="form-group text-center">
                             <label>จำนวนของที่ให้บริจาค</label>
-                            <input name="objectAmount" id="objectAmount" type="text" class="form-control" required>
+                            <input name="objectAmount" id="objectAmount" type="number" class="form-control" required min=0 pattern="[0-9]+">
                         </div>
-                        <div class="container m-0">
+                        <div class="container text-center">
                             <label>Tag</label>
                             <select class="form-select" aria-label="Default select example" name="tag">
                                 <option value="Foods">Foods</option>
@@ -46,25 +62,30 @@
                                 <option value="Medicine">Medicine</option>
                             </select>
                         </div>
+                        <div class="container m-9 ym-3 my-3 text-center">
+                            <label>เพิ่ม Board ให้โครงการของคุณ</label>
+                            <p>* ต้องเป็นผู้ลงทะเบียนกับระบบ</p>
+                            <p>* ต้องเป็นผู้มีสิทธิบริหารแคมเปญ</p>
+                        </div>                          
                         <div class="form-group text-center">
-                            <label>เพิ่ม Board ให้โครงการขอคุณโดยให้ใส่เป็น Email ที่ลงทะเบียนไว้กับระบบและต้องผ่านการยืนยันสิทธิเปิดแคมเปญแล้ว</label>
-                        </div>
-                        <div class="form-group text-center">
-                            <label>Email</label>
+                            <label>Email </label>
                             <input name="board_01" id="board_01" type="text">
+                            <input type="hidden" name="id_board_1" id="id_board_1" value="">
                             <span id="boardError1" class="text-danger"></span>
                         </div>
                         <div class="form-group text-center">
                             <label>Email</label>
                             <input name="board_02" id="board_02" type="text" >
+                            <input type="hidden" name="id_board_2" id="id_board_2" value="">
                             <span id="boardError2" class="text-danger"></span>
                         </div>                        
                         <div class="form-group text-center">
                             <label>Email</label>
                             <input name="board_03" id="board_03" type="text">
+                            <input type="hidden" name="id_board_3" id="id_board_3" value="">
                             <span id="boardError3" class="text-danger"></span>
                         </div>
-                        <div class="form-group text-center">
+                        <div class="form-group text-left">
                             <label>รูปภาพ</label>
                             <input type="file" name="campaign_image" class="form-control-file mt-2 pt-1" id="input-file">
                         </div>
@@ -79,7 +100,7 @@
 @endsection
 
 <script>
-function emailValidation(email){
+function emailValidation(email,board){
     const userEmail = {!! json_encode($userEmail) !!};
     if(userEmail == email) return 1;
 
@@ -87,6 +108,13 @@ function emailValidation(email){
     for(var i = 0 ; i<users.length ; i++){
             if(email == users[i].email){
                 if(users[i].permission == 'REQUEST' || users[i].permission == 'NULL' ) return 2;
+                if(board==1){
+                    document.getElementById("id_board_1").value = users[i].id;
+                }else if(board==2){
+                    document.getElementById("id_board_2").value = users[i].id;
+                }else if(board==3){
+                    document.getElementById("id_board_3").value = users[i].id;
+                }
                 return 0;
             }
     }
@@ -106,13 +134,13 @@ function validateForm() {
         document.getElementById("boardError1").innerHTML = "กรุณากรอกอีเมล";
         return false;
     } else {
-        if (emailValidation(board_01)==1) {
+        if (emailValidation(board_01,1)==1) {
             document.getElementById("boardError1").innerHTML = "คุณได้สิทธิบริหารแคมเปญนี้แล้ว";
             return false;
-        }else if(emailValidation(board_01)==2){
+        }else if(emailValidation(board_01,1)==2){
             document.getElementById("boardError1").innerHTML = "อีเมลนี้ยังไม่ได้รับสิทธิการบริหารแคมเปญ";
             return false;
-        }else if(emailValidation(board_01)==3){
+        }else if(emailValidation(board_01,1)==3){
             document.getElementById("boardError1").innerHTML = "อีเมลไม่ถูกต้อง";
             return false;
         }
@@ -125,13 +153,13 @@ function validateForm() {
         return false;
 
     }else {
-        if (emailValidation(board_02)==1) {
+        if (emailValidation(board_02,2)==1) {
             document.getElementById("boardError2").innerHTML = "คุณได้สิทธิบริหารแคมเปญนี้แล้ว";
             return false;
-        }else if(emailValidation(board_02)==2){
+        }else if(emailValidation(board_02,2)==2){
             document.getElementById("boardError2").innerHTML = "อีเมลนี้ยังไม่ได้รับสิทธิการบริหารแคมเปญ";
             return false;
-        }else if(emailValidation(board_02)==3){
+        }else if(emailValidation(board_02,2)==3){
             document.getElementById("boardError2").innerHTML = "อีเมลไม่ถูกต้อง";
             return false;
         }
@@ -144,13 +172,13 @@ function validateForm() {
         return false;
 
     }else {
-        if (emailValidation(board_03)==1) {
+        if (emailValidation(board_03,3)==1) {
             document.getElementById("boardError3").innerHTML = "คุณได้สิทธิบริหารแคมเปญนี้แล้ว";
             return false;
-        }else if(emailValidation(board_03)==2){
+        }else if(emailValidation(board_03,3)==2){
             document.getElementById("boardError3").innerHTML = "อีเมลนี้ยังไม่ได้รับสิทธิการบริหารแคมเปญ";
             return false;
-        }else if(emailValidation(board_03)==3){
+        }else if(emailValidation(board_03,3)==3){
             document.getElementById("boardError3").innerHTML = "อีเมลไม่ถูกต้อง";
             return false;
         }

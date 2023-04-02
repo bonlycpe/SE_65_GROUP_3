@@ -1,4 +1,4 @@
-@extends('layouts.MainLayoutUser')
+@extends('layouts.LayoutProfile')
 
 @section('content')
 <section class="user-profile section">

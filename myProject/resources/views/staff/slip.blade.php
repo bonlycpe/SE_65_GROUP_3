@@ -20,13 +20,16 @@
         <h2 style="text-align: center;">E-Slip</h2>
         <br>
         <br>
-        <img src="images/eslip/{{$e->eslip}}">
+        <img src="images/eslip/{{$e->eSlip}}">
         <br>
         <h5>ชื่อผู้บริจาค</h5>
-        <input class="form-control" type="text" value="" aria-label="Disabled input example" disabled readonly>
+        <input class="form-control" type="text" value="{{$e->name}}" aria-label="Disabled input example" disabled readonly>
         <br>
-        <h5>เวลาโอน</h5>
-        <input class="form-control" type="text" value="" aria-label="Disabled input example" disabled readonly>
+        <h5>วัน</h5>
+        <input class="form-control" type="text" value="{{$e->Date}}" aria-label="Disabled input example" disabled readonly>
+        <br>
+        <h5>เวลา</h5>
+        <input class="form-control" type="text" value="{{$e->Timer}}" aria-label="Disabled input example" disabled readonly>
         <br>
         <h5>จำนวนเงิน</h5>
         <input class="form-control" type="text" value="{{$e->Amount}} บาท" aria-label="Disabled input example" disabled readonly>

@@ -261,6 +261,8 @@ ol {
     border-radius: 100px;
     color: #ffffff;
     padding: 5px;
+    width: 70px;
+    text-align: center;
     font-size: 15px;
   }
 

@@ -59,7 +59,7 @@ class HomeController extends Controller
             for($i = 0 ; $i < sizeof($campaignMoney); $i++){
                 $total = $campaignMoney[$i]->total;
                 $goal = $campaignMoney[$i]->Goal;
-                $percent = (($goal-$total)/$goal)*100;
+                $percent = ($total/$goal)*100;
                 $progressBar[$i] = $percent;
             }
             if($user ->permission == 'APPROVE'){

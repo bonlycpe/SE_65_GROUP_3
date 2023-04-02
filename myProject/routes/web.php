@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\CampaignController::class, 'index'])->name('welcome');
+Route::get('/food', [App\Http\Controllers\CampaignController::class, 'food'])->name('food');
+Route::get('/apparel', [App\Http\Controllers\CampaignController::class, 'apparel'])->name('apparel');
+Route::get('/medicine', [App\Http\Controllers\CampaignController::class, 'medicine'])->name('medicine');
+Route::get('/money', [App\Http\Controllers\CampaignController::class, 'money'])->name('money');
 
 Route::get('auth/google', [App\Http\Controllers\GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [App\Http\Controllers\GoogleController::class, 'handleGoogleCallback']);
@@ -25,7 +27,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout']);
-
+Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::get('/indexM', [App\Http\Controllers\HomeController::class, 'index'])->name('indexM');
 
 //donate
 Route::get('/donate/{id}', [App\Http\Controllers\DonateController::class, 'index']);

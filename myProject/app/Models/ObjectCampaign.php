@@ -30,7 +30,7 @@ class ObjectCampaign extends Model
     public static function searchByName($name){
         $campaign = DB::table('campaign_object')
         ->join('campaign','campaign_object_Id','=','campaign.Id')
-        ->whereLike('campaign_object.Tag','LIKE',$name)
+        ->where('campaign_object.Tag','like','%'.$name.'%')
         ->select('campaign_object.campaign_object_Id','campaign.Name','campaign.Description','campaign.Status','Tag','campaign.Image')
         ->get();   
         return $campaign;

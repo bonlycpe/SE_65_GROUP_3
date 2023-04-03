@@ -34,7 +34,7 @@ class ProfileController extends Controller
         if($request->hasFile('profile_image')){
             $image = $request->file('profile_image');
             $image_name = $request->name.'.'.$image->getClientOriginalExtension();
-            $path = $image->move(public_path('images/e-slip'), $image_name);
+            $path = $image->move(public_path('images/user'), $image_name);
             DB::table('users')->where('id',$user->id)->update(['name'=>$request->name,'surname'=>$request->surname, 'image'=>$image_name]);
         }
         else{

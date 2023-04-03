@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-12 col-12">
                 <div class="sectione-title-wrap">
-                    <h4 class="sectione-title">แคมเปญขอรับบริจาคเงิน </h4>
+                    <h4 class="sectione-title">แคมเปญขอรับบริจาคเงิน</h4>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a

@@ -31,7 +31,7 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a

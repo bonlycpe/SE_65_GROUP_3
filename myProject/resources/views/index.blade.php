@@ -7,10 +7,10 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <a>หมวดหมู่ : </a>
-                    <a href="/food">อาหาร</a>
-                    <a href="/apparel">เครื่องนุ่งห่ม</a>
-                    <a href="/medicine">ยา</a>
-                    <a href="/money">บริจาคเงิน</a>
+                    <a href="/foodU">อาหาร</a>
+                    <a href="/apparelU">เครื่องนุ่งห่ม</a>
+                    <a href="/medicineU">ยา</a>
+                    <a href="/moneyU">บริจาคเงิน</a>
                 </div>
             </div>
         </div>

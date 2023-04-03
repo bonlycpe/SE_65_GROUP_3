@@ -54,7 +54,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto main-nav ">
                                 <li class="nav-item @@home">
-                                    <a class="nav-link" href="{{url('/')}}">หน้าหลัก</a>
+                                    <a class="nav-link" href="{{url('/home')}}">หน้าหลัก</a>
                                 </li>
                                 <li class="nav-item @@profile">
                                     <a class="nav-link" href="{{url('/profile')}}">โปรไฟล์</a>
@@ -109,7 +109,7 @@
                                 @if ( $co->Status == 'ACTIVE' )
                                 <div class="col-sm-12">
                                     <div class="product-item bg-light">
-                                        <div class="card">
+                                        <div class="cardcard">
                                             <div class="thumb-content">
                                                 <a href="">
                                                     <img class="card-img-top img-fluid" src="{{$co->Image}}" alt="Card image cap">
@@ -129,20 +129,20 @@
                                                         </li>
                                                         <a
                                                             href=""><button>รับบริจาค</button>
-                                                        </a>
+                                                        </a><span class="SttausA">{{$co->Status}}</span>
                                                     </ul>
                                                 </div>
-                                                <div class="product-ratings">
+                                                {{-- <div class="product-ratings">
                                                     <div class="progress">
                                                         <div class="progress-bar" role="progressbar" aria-valuenow="70"
                                                             aria-valuemin="0" aria-valuemax="100" style="width:50%">
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 
                                             </div>
-                                            <span class="SttausA">{{$co->Status}}</span>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@
                             @elseif ( $co->Status == 'TERMINATE' )
                                 <div class="col-sm-12">
                                     <div class="product-item bg-light">
-                                        <div class="card">
+                                        <div class="cardcard">
                                             <div class="thumb-content">
                                                 <a href="">
                                                     <img class="card-img-top img-fluid" src="{{$co->Image}}" alt="Card image cap">
@@ -158,14 +158,15 @@
                                             </div>
                                             <div class="card-body">
                                                 <h4 class="cardt"><a href="">{{$co->Name}}</a></h4>
+                                                <p class="cardd">{{$co->Description}}</p>
                                                 <p class="badges">{{$co->Tag}}</p>
                                                 <ul class="list-inline product-meta">
                                                     <li class="list-inline-item">
                                                         <i class="fa fas fa-ban">ยุติแคมเปญ</i>
-                                                    </li>                                                  
+                                                    </li>   <span class="SttausT">{{$co->Status}}</span>                                               
                                                 </ul>
                                             </div>
-                                            <span class="SttausT">{{$co->Status}}</span>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -173,7 +174,7 @@
                             @elseif ( $co->Status == 'FINISHED' )
                                 <div class="col-sm-12">
                                     <div class="product-item bg-light">
-                                        <div class="card">
+                                        <div class="cardcard">
                                             <div class="thumb-content">
                                                 <a href="">
                                                     <img class="card-img-top img-fluid" src="{{$co->Image}}" alt="Card image cap">
@@ -187,10 +188,10 @@
                                                     <li class="list-inline-item">
                                                         <a href="/request"><i
                                                                 class="fa fab fa-angellist"></i>FINISHED</a>
-                                                    </li>
+                                                    </li><span class="SttausF">{{$co->Status}}</span>
                                                 </ul>                                            
                                             </div>
-                                            <span class="SttausF">{{$co->Status}}</span>
+                                            
                                         </div>
                                     </div>
                                 </div>

@@ -22,7 +22,6 @@ class CampaignController extends Controller
             $percent = ($total/$goal)*100;
             $progressBar[$i] = $percent;
         }
-        // dd($progressBar);
         return view('welcome',compact(['campaign','campaignMoney','campaignObject','progressBar']));
     }
 
@@ -50,6 +49,14 @@ class CampaignController extends Controller
         return view('search.food',compact(['campaign','campaignMoney','campaignObject']));
     }
 
+    function foodM()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        return view('search.foodM',compact(['campaign','campaignMoney','campaignObject']));
+    }
+
     function apparel()
     {
         $campaign = campaign::getAll();
@@ -57,6 +64,15 @@ class CampaignController extends Controller
         $campaignObject = campaign::getObject();
         return view('search.apparel',compact(['campaign','campaignMoney','campaignObject']));
     }
+
+    function apparelM()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        return view('search.apparelM',compact(['campaign','campaignMoney','campaignObject']));
+    }
+
 
     function medicine()
     {
@@ -66,11 +82,41 @@ class CampaignController extends Controller
         return view('search.medicine',compact(['campaign','campaignMoney','campaignObject']));
     }
 
+    function medicineM()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        return view('search.medicineM',compact(['campaign','campaignMoney','campaignObject']));
+    }
+
     function money()
     {
         $campaign = campaign::getAll();
         $campaignMoney = campaign::getMoney();
         $campaignObject = campaign::getObject();
-        return view('search.money',compact(['campaign','campaignMoney','campaignObject']));
+        $progressBar = Array();
+        for($i = 0 ; $i < sizeof($campaignMoney); $i++){
+            $total = $campaignMoney[$i]->total;
+            $goal = $campaignMoney[$i]->Goal;
+            $percent = ($total/$goal)*100;
+            $progressBar[$i] = $percent;
+        }
+        return view('search.money',compact(['campaign','campaignMoney','campaignObject','progressBar']));
+    }
+
+    function moneyM()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        $progressBar = Array();
+        for($i = 0 ; $i < sizeof($campaignMoney); $i++){
+            $total = $campaignMoney[$i]->total;
+            $goal = $campaignMoney[$i]->Goal;
+            $percent = ($total/$goal)*100;
+            $progressBar[$i] = $percent;
+        }
+        return view('search.moneyM',compact(['campaign','campaignMoney','campaignObject','progressBar']));
     }
 }

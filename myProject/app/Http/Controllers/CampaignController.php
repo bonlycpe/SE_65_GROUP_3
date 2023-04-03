@@ -57,6 +57,14 @@ class CampaignController extends Controller
         return view('search.foodM',compact(['campaign','campaignMoney','campaignObject']));
     }
 
+    function foodU()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        return view('search.foodU',compact(['campaign','campaignMoney','campaignObject']));
+    }
+
     function apparel()
     {
         $campaign = campaign::getAll();
@@ -73,6 +81,13 @@ class CampaignController extends Controller
         return view('search.apparelM',compact(['campaign','campaignMoney','campaignObject']));
     }
 
+    function apparelU()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        return view('search.apparelU',compact(['campaign','campaignMoney','campaignObject']));
+    }
 
     function medicine()
     {
@@ -88,6 +103,14 @@ class CampaignController extends Controller
         $campaignMoney = campaign::getMoney();
         $campaignObject = campaign::getObject();
         return view('search.medicineM',compact(['campaign','campaignMoney','campaignObject']));
+    }
+
+    function medicineU()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        return view('search.medicineU',compact(['campaign','campaignMoney','campaignObject']));
     }
 
     function money()
@@ -118,6 +141,21 @@ class CampaignController extends Controller
             $progressBar[$i] = $percent;
         }
         return view('search.moneyM',compact(['campaign','campaignMoney','campaignObject','progressBar']));
+    }
+
+    function moneyU()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        $progressBar = Array();
+        for($i = 0 ; $i < sizeof($campaignMoney); $i++){
+            $total = $campaignMoney[$i]->total;
+            $goal = $campaignMoney[$i]->Goal;
+            $percent = ($total/$goal)*100;
+            $progressBar[$i] = $percent;
+        }
+        return view('search.moneyU',compact(['campaign','campaignMoney','campaignObject','progressBar']));
     }
 
     function editCampaign($id){

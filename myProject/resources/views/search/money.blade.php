@@ -56,12 +56,12 @@
                                 <li class="nav-item @@home">
                                     <a class="nav-link" href="{{url('/home')}}">หน้าหลัก</a>
                                 </li>
-                                <li class="nav-item @@profile">
+                                {{-- <li class="nav-item @@profile">
                                     <a class="nav-link" href="{{url('/profile')}}">โปรไฟล์</a>
                                 </li>
                                 <li class="nav-item @@profile">
                                     <a class="nav-link" href="{{url('/requestVerify')}}">ขอสิทธ์เป็นผู้เปิดแคมเปญ</a>
-                                </li>
+                                </li> --}}
                                 <ul class="navbar-nav ml-auto mt-10">
                                     <li class="nav-item">
                                         <a class="nav-link login-button" href="{{url('/login')}}">เข้าสู่ระบบ</a>
@@ -121,11 +121,11 @@
                                                 <p class="card-text">${{$money->Goal}}</p>
                                                 <div class="row">
                                                     <ul class="list-inline product-meta">
-                                                        <li class="list-inline-item">
+                                                        {{-- <li class="list-inline-item">
                                                             <a href="/donate"><i class="fa fab fa-angellist"></i>บริจาคเงิน</a>
                                                         </li>
                                                         <a
-                                                            href="/donate/{{$money->campaign_money_id}}"><button>บริจาคเงิน</button></a>
+                                                            href="/donate/{{$money->campaign_money_id}}"><button>บริจาคเงิน</button></a> --}}
                                                             <span class="SttausA">{{$money->Status}}</span>
                                                     </ul>
                                                 </div>
@@ -181,9 +181,8 @@
                                                 <h4 class="cardt"><a href="single.html">{{$money->Name}}</a></h4>
                                                 <p class="cardd">{{$money->Description}}</p>
                                                 <ul class="list-inline product-meta">
-                                                    <li class="list-inline-item">
-                                                        <a href="/request"><i
-                                                                class="fa fab fa-angellist"></i>FINISHED</a>
+                                                    <li class="list-inline-item"><i
+                                                                class="fa fab fa-angellist"></i>FINISHED
                                                     </li><span class="SttausF">{{$money->Status}}</span>
                                                 </ul>                                              
                                             </div>

@@ -105,9 +105,8 @@
                                                 <p class="cardd">{{$co->Description}}</p>
                                                 <p class="badges">{{$co->Tag}}</p>
                                                 <ul class="list-inline product-meta">
-                                                    <li class="list-inline-item">
-                                                        <a href="/request"><i
-                                                                class="fa fab fa-angellist"></i>FINISHED</a>
+                                                    <li class="list-inline-item"><i
+                                                                class="fa fab fa-angellist"></i>FINISHED
                                                     </li><span class="SttausF">{{$co->Status}}</span>
                                                 </ul>                                            
                                             </div>

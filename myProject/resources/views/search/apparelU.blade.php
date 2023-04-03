@@ -1,4 +1,4 @@
-@extends('layouts.MainLayoutWithMPermission')
+@extends('layouts.MainLayoutUser')
 
 @section('content')
         <section class="popular-deals section bg-gray">
@@ -7,10 +7,10 @@
                     <div class="col-md-12">
                         <div class="section-title">
                             <a>หมวดหมู่ : </a>
-                            <a href="/foodM">อาหาร</a>
-                            <a href="/apparelM">เครื่องนุ่งห่ม</a>
-                            <a href="/medicineM">ยา</a>
-                            <a href="/moneyM">บริจาคเงิน</a>
+                            <a href="/foodU">อาหาร</a>
+                            <a href="/apparelU">เครื่องนุ่งห่ม</a>
+                            <a href="/medicineU">ยา</a>
+                            <a href="/moneyU">บริจาคเงิน</a>
                         </div>
                     </div>
                 </div>
@@ -78,11 +78,12 @@
                                             </div>
                                             <div class="card-body">
                                                 <h4 class="cardt"><a href="">{{$co->Name}}</a></h4>
+                                                <p class="cardd">{{$co->Description}}</p>
                                                 <p class="badges">{{$co->Tag}}</p>
                                                 <ul class="list-inline product-meta">
                                                     <li class="list-inline-item">
                                                         <i class="fa fas fa-ban">ยุติแคมเปญ</i>
-                                                    </li>  <span class="SttausT">{{$co->Status}}</span>                                                
+                                                    </li>   <span class="SttausT">{{$co->Status}}</span>                                               
                                                 </ul>
                                             </div>
                                             

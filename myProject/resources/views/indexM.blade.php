@@ -63,29 +63,33 @@
                         </div>
                     </div>
                     @elseif ($money->Status == "TERMINATE")
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="product-item bg-light">
-                            <div class="cardcard">
-                                <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="cardt">{{$money->Name}}</h4>
-                                    <p class="cardd">{{$money->Description}}</p>
-                                    <p class="card-text">${{$money->Goal}}</p>
-                                    <ul class="list-inline product-meta">
-                                        <li class="list-inline-item">
-                                            <i class="fa fas fa-ban"></i>บริจาคเงิน
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <i class="fa fas fa-ban"></i>บริจาค
-                                        </li><span class="SttausT">{{$money->Status}}</span>
-                                    </ul>
-                                    
+                    
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="product-item bg-light">
+                               {{-- <div class="cardcardcard" >  --}}
+                                <div class="cardcardcard">
+                                    <div class="thumb-content">
+                                        <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="cardt">{{$money->Name}}</h4>
+                                        <p class="cardd">{{$money->Description}}</p>
+                                        <p class="card-text">${{$money->Goal}}</p>
+                                        <ul class="list-inline product-meta">
+                                            <li class="list-inline-item">
+                                                <i class="fa fas fa-ban"></i>บริจาคเงิน
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="fa fas fa-ban"></i>บริจาค
+                                            </li><span class="SttausT">{{$money->Status}}</span>
+                                        </ul>
+                                        
+                                    </div>
+                                    <div class="ima " ></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {{-- </div> --}}
                     @elseif ( $money->Status == 'FINISHED' )
                     <div class="col-sm-12 col-lg-4">
                         <div class="product-item bg-light">
@@ -158,8 +162,7 @@
                                     <div class="row">
                                         <ul class="list-inline product-meta">
                                             <li class="list-inline-item">
-                                                <a href="/request"><i
-                                                        class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
+                                                <i class="fa fab fa-angellist"></i>{{$object->Tag}}
                                             </li>
                                             <a
                                                 href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a><span class="SttausA">{{$object->Status}}</span>
@@ -200,8 +203,7 @@
                                     <div class="row">
                                         <ul class="list-inline product-meta">
                                             <li class="list-inline-item">
-                                                <a href="/request"><i
-                                                        class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
+                                                <i class="fa fab fa-angellist"></i>{{$object->Tag}}
                                             </li>
                                             <a
                                                 href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a><span class="SttausF">{{$object->Status}}</span>

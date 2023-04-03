@@ -32,7 +32,7 @@
                                 <div class="form-group">
                                     <label for="last-name">จำนวน</label>
                                     <input type="number" name="amount" class="form-control" id="last-name" value=""
-                                        required pattern="\d{10}" title="จำนวนควรเป็นตัวเลข">
+                                        required min=0 pattern="[0-9]+" title="จำนวนควรเป็นตัวเลข">
                                 </div>
                                 <div class="form-group">
                                     <label for="last-name">อัพโหลดรูปภาพ</label>

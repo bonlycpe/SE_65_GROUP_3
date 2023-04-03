@@ -26,7 +26,7 @@
                                 <div class="form-group">
                                     <label for="last-name">จำนวน</label>
                                     <input type="number" name="surname" class="form-control" id="time" value=""
-                                        required>
+                                        required min=0 pattern="[0-9]+">
                                 </div>
                                 <div class="form-group">
                                     <label for="last-name">รายละเอียด</label>

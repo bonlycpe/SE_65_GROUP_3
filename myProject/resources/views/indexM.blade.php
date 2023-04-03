@@ -7,10 +7,10 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <a>หมวดหมู่ : </a>
-                    <a href="/food">อาหาร</a>
-                    <a href="/apparel">เครื่องนุ่งห่ม</a>
-                    <a href="/medicine">ยา</a>
-                    <a href="/money">บริจาคเงิน</a>
+                    <a href="/foodM">อาหาร</a>
+                    <a href="/apparelM">เครื่องนุ่งห่ม</a>
+                    <a href="/medicineM">ยา</a>
+                    <a href="/moneyM">บริจาคเงิน</a>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                                                 <a href="/donate"><i class="fa fab fa-angellist"></i>บริจาคเงิน</a>
                                             </li>
                                             <a
-                                                href="/donate/{{$money->campaign_money_id}}"><button>บริจาคเงิน</button></a>
+                                                href="/donate/{{$money->campaign_money_id}}"><button>บริจาคเงิน</button></a> <span class="SttausA">{{$money->Status}}</span>
                                         </ul>
                                     </div>
 
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <span class="SttausA">{{$money->Status}}</span>
+                               
                             </div>
                         </div>
                     </div>
@@ -79,9 +79,9 @@
                                         </li>
                                         <li class="list-inline-item">
                                             <i class="fa fas fa-ban"></i>บริจาค
-                                        </li>
+                                        </li><span class="SttausT">{{$money->Status}}</span>
                                     </ul>
-                                    <span class="SttausT">{{$money->Status}}</span>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                                                 <a href="/donate"><i class="fa fab fa-angellist"></i>บริจาคเงิน</a>
                                             </li>
                                             <a
-                                                href="/donate/{{$money->campaign_money_id}}"><button>บริจาคเงิน</button></a>
+                                                href="/donate/{{$money->campaign_money_id}}"><button>บริจาคเงิน</button></a><span class="SttausF">{{$money->Status}}</span>
                                         </ul>
                                     </div>
                                     <div class="product-ratings">
@@ -118,7 +118,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <span class="SttausF">{{$money->Status}}</span>
+                                
                             </div>
                         </div>
                     </div>
@@ -162,11 +162,11 @@
                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
                                             <a
-                                                href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a>
+                                                href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a><span class="SttausA">{{$object->Status}}</span>
                                         </ul>
                                         
                                     </div>
-                                    <span class="SttausA">{{$object->Status}}</span>
+                                    
                                 </div>
 
 
@@ -184,10 +184,10 @@
                                             </li>
                                             <li class="list-inline-item">
                                                 <i class="fa fas fa-ban"></i>บริจาค
-                                            </li>
+                                            </li><span class="SttausT">{{$object->Status}}</span>
                                         </ul>
                                     </div>
-                                    <span class="SttausT">{{$object->Status}}</span>
+                                    
                                 </div>
                                 @elseif ($object->Status == "FINISHED")
                                 <div class="thumb-content">
@@ -204,10 +204,10 @@
                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
                                             <a
-                                                href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a>
+                                                href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a><span class="SttausF">{{$object->Status}}</span>
                                         </ul>
                                     </div>
-                                    <span class="SttausF">{{$object->Status}}</span>
+                                    
                                 </div>
                                 @endif
                             </div>

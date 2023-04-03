@@ -56,12 +56,6 @@
                                 <li class="nav-item @@home">
                                     <a class="nav-link" href="{{url('/')}}">หน้าหลัก</a>
                                 </li>
-                                <li class="nav-item @@profile">
-                                    <a class="nav-link" href="{{url('/profile')}}">โปรไฟล์</a>
-                                </li>
-                                <li class="nav-item @@profile">
-                                    <a class="nav-link" href="{{url('/requestVerify')}}">ขอสิทธ์เป็นผู้เปิดแคมเปญ</a>
-                                </li>
                                 <ul class="navbar-nav ml-auto mt-10">
                                     <li class="nav-item">
                                         <a class="nav-link login-button" href="{{url('/login')}}">เข้าสู่ระบบ</a>
@@ -124,7 +118,7 @@
                                                     <ul class="list-inline product-meta">
                                                         <li class="list-inline-item">
                                                             <i class="fa fab fa-angellist"> .... </i>
-                                                        </li>
+                                                        </li><span class="SttausA">{{$money->Status}}</span>
                                                     </ul>
                                                 </div>
 
@@ -140,7 +134,7 @@
 
                                                 
                                             </div>
-                                            <span class="SttausA">{{$money->Status}}</span>
+                                            
                                         </div>
                                     </div>
                                 </div> 
@@ -159,10 +153,10 @@
                                                 <ul class="list-inline product-meta">
                                                     <li class="list-inline-item">
                                                         <i class="fa fas fa-ban"> ยุติแคมเปญ</i>
-                                                    </li>                                                  
+                                                    </li> <span class="SttausT">{{$money->Status}}</span>                                                 
                                                 </ul>
                                             </div>
-                                            <span class="SttausT">{{$money->Status}}</span>
+                                            
                                         </div>
                                     </div>
                                 </div> 
@@ -182,10 +176,10 @@
                                                 <ul class="list-inline product-meta">
                                                     <li class="list-inline-item">
                                                         <i class="fa fab fa-angellist"> FINISHED</i>
-                                                    </li>
+                                                    </li><span class="SttausF">{{$money->Status}}</span>
                                                 </ul>                                              
                                             </div>
-                                            <span class="SttausF">{{$money->Status}}</span>
+                                            
                                         </div>
                                     </div>
                                 </div>                            
@@ -228,12 +222,12 @@
                                                     <ul class="list-inline product-meta">
                                                         <li class="list-inline-item">
                                                             <i class="fa fab fa-angellist"> ....</i>
-                                                        </li>
+                                                        </li><span class="SttausA">{{$co->Status}}</span>
 
                                                     </ul>
                                                 </div>                                             
                                             </div>
-                                            <span class="SttausA">{{$co->Status}}</span>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -254,10 +248,10 @@
                                                 <ul class="list-inline product-meta">
                                                     <li class="list-inline-item">
                                                         <i class="fa fas fa-ban">ยุติแคมเปญ</i>
-                                                    </li>                                                  
+                                                    </li>   <span class="SttausT">{{$co->Status}}</span>                                               
                                                 </ul>
                                             </div>
-                                            <span class="SttausT">{{$co->Status}}</span>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -279,10 +273,10 @@
                                                 <ul class="list-inline product-meta">
                                                     <li class="list-inline-item">
                                                         <i class="fa fab fa-angellist"> FINISHED</i>
-                                                    </li>
+                                                    </li><span class="SttausF">{{$co->Status}}</span>
                                                 </ul>                                            
                                             </div>
-                                            <span class="SttausF">{{$co->Status}}</span>
+                                            
                                         </div>
                                     </div>
                                 </div>

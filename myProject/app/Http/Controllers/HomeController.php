@@ -48,12 +48,12 @@ class HomeController extends Controller
                 return view('staff.staff_verify', compact(['managers', 'allApprove']));
             } else {
                 return view('index', ['user' => $user]);
-                $campaignMoney = MoneyCampaign::getAll();
+                $campaignMoney = MoneyCampaign::getAllNotTerminate();
                 $campaignObject = ObjectCampaign::getAll();
                 return view('index', ['campaignMoney' => $campaignMoney], ['campaignObject' => $campaignObject]);
             }
         } else {
-            $campaignMoney = MoneyCampaign::getAll();
+            $campaignMoney = MoneyCampaign::getAllNotTerminate();
             $campaignObject = ObjectCampaign::getAll();
             $progressBar = Array();
             for($i = 0 ; $i < sizeof($campaignMoney); $i++){

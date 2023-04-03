@@ -1,4 +1,4 @@
-@extends('layouts.LayoutProfile')
+@extends('layouts.MainLayoutUser')
 
 @section('content')
 <section class="dashboard section">
@@ -16,9 +16,12 @@
                                 height="50%">
                         </div>
                         <!-- User Name -->
-                        <h5>คุณ {{$user->name}} {{$user->surname}}</h5>
-                        <p>เข้าร่วมเมื่อ {{$user->created_at}}</p>
-                        <a href="editProfile" class="btn btn-main-sm">Edit Profile</a>
+                        <div class="justify-content-center align-items-center">
+                            <h5>คุณ {{$user->name}} {{$user->surname}}</h5>
+                            <p>เข้าร่วมเมื่อ {{$user->created_at}}</p>
+                            <a href="{{url('/editProfile')}}"><button class="btn btn-primary">Edit
+                                    Profile</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,23 +40,22 @@
                         <tbody>
                             @foreach($statusObject as $so)
                             <tr>
-                                <td class="product-details">
-                                    <h3 class="title">{{$so->Name}}</h3>
-                                    <span class="add-id">{{$so->Description}}</span>
+                                <td class="text-center">
+                                    <h56 class="title">{{$so->Name}}</h5>
                                 </td>
-                                <td class="product-details">
+                                <td class="text-center">
                                     <h5 class="title">{{$so->Amount}}</h5>
                                 </td>
-                                <td class="action" data-title="Action">
+                                <td class="text-center" data-title="Action">
                                     <div class="">
                                         <ul class="list-inline justify-content-center">
                                             <li class="list-inline-item">
-                                                <?php if($so->Status == "REQUEST") {echo "<span>รอยืนยันการรับบริจาค</span>";}
+                                                <?php if($so->Status == "REQUEST") {echo "<span style='color:#FAA300'>รอยืนยันการรับบริจาค</span>";}
                                                     else if($so->Status =="APPROVE"){
-                                                        echo "<span>รับบริจาคสำเร็จ</span>";
+                                                        echo "<span style='color:green'>รับบริจาคสำเร็จ</span>";
                                                     }
                                                     else{
-                                                        echo "<span>รับบริจาคไม่สำเร็จ</span>";
+                                                        echo "<span style='color:red'>รับบริจาคไม่สำเร็จ</span>";
                                                     }
                                                 ?>
                                             </li>
@@ -68,7 +70,7 @@
                 </div>
 
                 <a href="{{url('/profile')}}">
-                    <button>กลับ</button>
+                    <button class="btn btn-primary">กลับ</button>
                 </a>
             </div>
             <!-- Row End -->

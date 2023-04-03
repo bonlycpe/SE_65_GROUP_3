@@ -1,11 +1,11 @@
-@extends('layouts.LayoutProfile')
+@extends('layouts.MainLayoutUser')
 
 @section('content')
 <section class="dashboard section">
     <!-- Container Start -->
     <div class="container">
         <!-- Row Start -->
-        <div class="row">
+        <div class="row justify-content-center align-items-center">
             <div class="col-lg-4">
                 <div class="sidebar">
                     <!-- User Widget -->
@@ -18,7 +18,7 @@
                         <!-- User Name -->
                         <h5>คุณ {{$user->name}} {{$user->surname}}</h5>
                         <p>เข้าร่วมเมื่อ {{$user->created_at}}</p>
-                        <a href="editProfile" class="btn btn-main-sm">Edit Profile</a>
+                        <a href="{{url('/editProfile')}}"><button class="btn btn-primary">Edit Profile</button></a>
                     </div>
                 </div>
             </div>
@@ -37,23 +37,22 @@
                         <tbody>
                             @foreach($statusDonate as $ud)
                             <tr>
-                                <td class="product-details">
+                                <td class="text-center">
                                     <h3 class="title">{{$ud->Name}}</h3>
-                                    <span class="add-id">{{$ud->Description}}</span>
                                 </td>
-                                <td class="product-details">
-                                    <h5 class="title">{{$ud->Amount}}</h5>
+                                <td class="text-center">
+                                    <span>{{$ud->Amount}}</span>
                                 </td>
-                                <td class="action" data-title="Action">
+                                <td class="text-center" data-title="Action">
                                     <div class="">
                                         <ul class="list-inline justify-content-center">
                                             <li class="list-inline-item">
                                                 <?php if($ud->Status == "REQUEST") {echo "<span>รอยืนยันการบริจาค</span>";}
                                                     else if($ud->Status =="APPROVE"){
-                                                        echo "<span>บริจาคสำเร็จ</span>";
+                                                        echo "<span style='color:green'>บริจาคสำเร็จ</span>";
                                                     }
                                                     else{
-                                                        echo "<span>บริจาคไม่สำเร็จ</span>";
+                                                        echo "<span style='color:red'>บริจาคไม่สำเร็จ</span>";
                                                     }
                                                 ?>
                                             </li>
@@ -68,7 +67,7 @@
                 </div>
 
                 <a href="{{url('/profile')}}">
-                    <button>กลับ</button>
+                    <button class="btn btn-primary">กลับ</button>
                 </a>
             </div>
             <!-- Row End -->

@@ -19,6 +19,15 @@ class MoneyCampaign extends Model
         'Goal',
     ];
 
+    public static function getAllNotTerminate() {
+        $campaign = DB::table('campaign_money')
+        ->join('campaign','campaign_money_id','=','campaign.Id')
+        ->where('campaign.Status','!=',"TERMINATE")
+        ->select('campaign_money.campaign_money_id','campaign_money.Goal','campaign.Name','campaign.Description','campaign.Status','campaign_money.Image as Image','campaign_money.total')
+        ->get();
+        return $campaign;
+    }
+
     public static function getAll() {
         $campaign = DB::table('campaign_money')
         ->join('campaign','campaign_money_id','=','campaign.Id')

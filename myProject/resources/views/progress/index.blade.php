@@ -31,6 +31,9 @@
                 @else
                 <h1 style="color:cornflowerblue">ยังไม่มีความคืบหน้า</h1>
                 @endif
+                <a href="{{url('/home')}}">
+                    <button class="btn btn-primary">กลับ</button>
+                </a>
             </div>
         </div>
     </div>

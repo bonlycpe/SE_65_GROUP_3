@@ -1,4 +1,4 @@
-@extends('layouts.LayoutProfile')
+@extends('layouts.MainLayoutUser')
 
 @section('content')
 <section class="dashboard section">
@@ -16,7 +16,7 @@
                         <!-- User Name -->
                         <h5>คุณ {{$user->name}} {{$user->surname}}</h5>
                         <p>เข้าร่วมเมื่อ {{$user->created_at}}</p>
-                        <a href="editProfile" class="btn btn-main-sm">Edit Profile</a>
+                        <a href="editProfile"><button class="btn btn-primary">Edit Profile</button></a>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,9 @@
                             @endforeach
                         </tbody>
                     </table>
-
+                    <a href="{{url('/home')}}">
+                        <button class="btn btn-primary">กลับ</button>
+                    </a>
                 </div>
 
                 <!-- pagination 

@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\CampaignController::class, 'index'])->name('welcome');
+Route::get('/food', [App\Http\Controllers\CampaignController::class, 'food'])->name('food');
+Route::get('/apparel', [App\Http\Controllers\CampaignController::class, 'apparel'])->name('apparel');
+Route::get('/medicine', [App\Http\Controllers\CampaignController::class, 'medicine'])->name('medicine');
+Route::get('/money', [App\Http\Controllers\CampaignController::class, 'money'])->name('money');
 
 Route::get('auth/google', [App\Http\Controllers\GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [App\Http\Controllers\GoogleController::class, 'handleGoogleCallback']);
@@ -25,7 +27,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout']);
-
+Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::get('/indexM', [App\Http\Controllers\HomeController::class, 'index'])->name('indexM');
 
 //donate
 Route::get('/donate/{id}', [App\Http\Controllers\DonateController::class, 'index']);
@@ -43,6 +46,9 @@ Route::post('/updateProfile', [App\Http\Controllers\ProfileController::class, 'u
 
 //progress
 Route::get('/progress/{id}', [App\Http\Controllers\ProgressController::class, 'index']);
+Route::get('/addProgress/{id}', [App\Http\Controllers\ProgressController::class, 'toAddProgress'])->name('addProgress');;
+Route::get('/addProgressPage/{id}', [App\Http\Controllers\ProgressController::class, 'indexAdd']);
+Route::post('/add', [App\Http\Controllers\ProgressController::class, 'add']);
 
 //Request Manager Permission
 Route::get('/requestVerify', [App\Http\Controllers\RequestPermissionController::class, 'index']);
@@ -53,13 +59,14 @@ Route::get('/managerPage', [App\Http\Controllers\ManagerPageController::class, '
 Route::get('/openCampaignMoney', [App\Http\Controllers\openCampaignMoneyController::class, 'index']);
 Route::post('/openCampaignMoneyController/create', [App\Http\Controllers\openCampaignMoneyController::class, 'create']);
 
+// edit Money Campaign
+Route::get('/edit/{id}',[App\Http\Controllers\CampaignController::class, 'editCampaign']);
+Route::post('/updateCampaignMoney', [App\Http\Controllers\CampaignController::class, 'update']);
+
 //For Manager Open Object Campaign
 Route::get('/openCampaignObject/callOpenCampaign', [App\Http\Controllers\ManagerPageController::class, 'callOpenCampaign']);
 Route::get('/openCampaignObject', [App\Http\Controllers\openCampaignObjectController::class, 'index']);
 Route::post('/openCampaignObjectController/create', [App\Http\Controllers\openCampaignObjectController::class, 'create']);
-
-// Update Money Campaign Progress
-
 
 //Staff
 Route::get('/staff_money',[App\Http\Controllers\UserDonateController::class, 'index'])->name('staff_money');

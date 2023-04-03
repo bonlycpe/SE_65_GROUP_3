@@ -27,39 +27,39 @@ class openCampaignObjectController extends Controller
 
     public function create(Request $request){
 
-        // $user = Auth::user();
+        $user = Auth::user();
 
-        // $campaign_name = $request->campaignName;
-        // $object_name = $request->objectName;
-        // $description = $request->description;
-        // $object_amount = $request->objectAmount;
-        // $campaign_tag = $request->tag;
+        $campaign_name = $request->campaignName;
+        $object_name = $request->objectName;
+        $description = $request->description;
+        $object_amount = $request->objectAmount;
+        $campaign_tag = $request->tag;
 
-        // //campaign
-        // $campaign_image = $request->file('campaign_image');
-        // $campaign_image_name = $request->name.'.'.$campaign_image->getClientOriginalExtension();
-        // $path = $campaign_image->move(public_path('images/campaign'), $campaign_image_name);
+        //campaign
+        $campaign_image = $request->file('campaign_image');
+        $campaign_image_name = $request->name.'.'.$campaign_image->getClientOriginalExtension();
+        $path = $campaign_image->move(public_path('images/campaign'), $campaign_image_name);
 
-        // $campaign = new Campaign;
-        // $campaign->Name = $campaign_name;
-        // $campaign->Description = $description;
-        // $campaign->Status = 'ACTIVE';
-        // $campaign->Image = $campaign_image->getClientOriginalName();
-        // $campaign->save();
+        $campaign = new Campaign;
+        $campaign->Name = $campaign_name;
+        $campaign->Description = $description;
+        $campaign->Status = 'ACTIVE';
+        $campaign->Image = $campaign_image->getClientOriginalName();
+        $campaign->save();
 
-        // //campaign object
-        // $campaign_id = (Campaign::getByName($campaign_name))->Id;
-        // $object_campaign = new ObjectCampaign;
-        // $object_campaign->campaign_object_id = $campaign_id;
-        // $object_campaign->Tag = $campaign_tag;
-        // $object_campaign->save();
+        //campaign object
+        $campaign_id = (Campaign::getByName($campaign_name))->Id;
+        $object_campaign = new ObjectCampaign;
+        $object_campaign->campaign_object_id = $campaign_id;
+        $object_campaign->Tag = $campaign_tag;
+        $object_campaign->save();
 
-        // //object
-        // $object = new ObjectInCampaign;
-        // $object->Name = $object_name;
-        // $object->Amount = $object_amount;
-        // $object->campaign_object_id = $campaign_id;
-        // $object->save();
+        //object
+        $object = new ObjectInCampaign;
+        $object->Name = $object_name;
+        $object->Amount = $object_amount;
+        $object->campaign_object_id = $campaign_id;
+        $object->save();
         
         //Campaign manager
         $board_id = array($user->id,$request->id_board_1,$request->id_board_2,$request->id_board_3);

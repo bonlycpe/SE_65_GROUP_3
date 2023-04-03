@@ -9,6 +9,7 @@ use App\Models\UserDonate;
 use App\Models\MoneyCampaign;
 use App\Models\ObjectCampaign;
 use App\Models\User;
+use App\Models\UseInCampaign;
 class ManagerPageController extends Controller
 {
     function index()
@@ -22,7 +23,11 @@ class ManagerPageController extends Controller
             $percent = ($total/$goal)*100;
             $progressBar[$i] = $percent;
         }
-        return view('managerPage',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject,'progressBar'=>$progressBar]);
+
+        $user = Auth::user();
+        $myCampaign = UseInCampaign::getByUserId($user->Id);
+
+        return view('managerPage',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject,'progressBar'=>$progressBar,'myCampaign'=>$myCampaign]);
     }
 
     public function update(Request $request){

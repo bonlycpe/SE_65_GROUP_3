@@ -1,4 +1,4 @@
-@extends('layouts.LayoutManager')
+@extends('layouts.LayoutManagerOpenCampaign')
 
 @section('content')
 <!DOCTYPE html>
@@ -54,7 +54,7 @@
                             <label>จำนวนของที่ให้บริจาค</label>
                             <input name="objectAmount" id="objectAmount" type="number" class="form-control" required min=0 pattern="[0-9]+">
                         </div>
-                        <div class="container text-center">
+                        <div class="container m-1 my-3 text-center">
                             <label>Tag</label>
                             <select class="form-select" aria-label="Default select example" name="tag">
                                 <option value="Foods">Foods</option>
@@ -67,19 +67,19 @@
                             <p>* ต้องเป็นผู้ลงทะเบียนกับระบบ</p>
                             <p>* ต้องเป็นผู้มีสิทธิบริหารแคมเปญ</p>
                         </div>                          
-                        <div class="form-group text-center">
+                        <div class="form-group text-center d-flex align-items-center">
                             <label>Email </label>
                             <input name="board_01" id="board_01" type="text">
                             <input type="hidden" name="id_board_1" id="id_board_1" value="">
                             <span id="boardError1" class="text-danger"></span>
                         </div>
-                        <div class="form-group text-center">
+                        <div class="form-group text-center d-flex align-items-center">
                             <label>Email</label>
                             <input name="board_02" id="board_02" type="text" >
                             <input type="hidden" name="id_board_2" id="id_board_2" value="">
                             <span id="boardError2" class="text-danger"></span>
                         </div>                        
-                        <div class="form-group text-center">
+                        <div class="form-group text-center d-flex align-items-center">
                             <label>Email</label>
                             <input name="board_03" id="board_03" type="text">
                             <input type="hidden" name="id_board_3" id="id_board_3" value="">
@@ -100,6 +100,10 @@
 @endsection
 
 <script>
+var id_board_1;
+var id_board_2;
+var id_board_3;
+
 function emailValidation(email,board){
     const userEmail = {!! json_encode($userEmail) !!};
     if(userEmail == email) return 1;
@@ -109,11 +113,11 @@ function emailValidation(email,board){
             if(email == users[i].email){
                 if(users[i].permission == 'REQUEST' || users[i].permission == 'NULL' ) return 2;
                 if(board==1){
-                    document.getElementById("id_board_1").value = users[i].id;
+                    id_board_1 = users[i].Id;
                 }else if(board==2){
-                    document.getElementById("id_board_2").value = users[i].id;
+                    id_board_2 = users[i].Id;
                 }else if(board==3){
-                    document.getElementById("id_board_3").value = users[i].id;
+                    id_board_3 = users[i].Id;
                 }
                 return 0;
             }
@@ -144,6 +148,7 @@ function validateForm() {
             document.getElementById("boardError1").innerHTML = "อีเมลไม่ถูกต้อง";
             return false;
         }
+        document.getElementById("id_board_1").value = id_board_1;
     }
     if (board_02 == "") {
         document.getElementById("boardError2").innerHTML = "กรุณากรอกอีเมล";
@@ -163,6 +168,7 @@ function validateForm() {
             document.getElementById("boardError2").innerHTML = "อีเมลไม่ถูกต้อง";
             return false;
         }
+        document.getElementById("id_board_2").value = id_board_2;
     }
     if (board_03 == "") {
         document.getElementById("boardError3").innerHTML = "กรุณากรอกอีเมล";
@@ -182,6 +188,7 @@ function validateForm() {
             document.getElementById("boardError3").innerHTML = "อีเมลไม่ถูกต้อง";
             return false;
         }
+        document.getElementById("id_board_3").value = id_board_3;
     }
 }
 

@@ -15,4 +15,12 @@ class UseInCampaign extends Model
     public $timestamps = false;
     public $table = "campaign_project_user";
 
+    public static function getByUserId($id){
+        $myCampaign = DB::table('campaign_project_user')
+        ->where('user_id','=',$id)
+        ->select('campaign_project_user.campaign_id as campaign_id','campaign_project_user.Role as Role')
+        ->first();
+        return $myCampaign;
+    }
+
 }

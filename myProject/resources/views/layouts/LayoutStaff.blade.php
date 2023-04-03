@@ -51,6 +51,16 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url('/staff_verify')}}">คำรองขอสิทธิ์ผู้บริหารโครงการ</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url('/terminatereq')}}">คำรองขอการปิดโครงการ</a>
+                                </li>
+                            </ul>
                             <ul class="navbar-nav ml-auto mt-10">
                                 <li class="nav-item">
                                     <a class="nav-link login-button" href="{{url('/logout')}}">ออกจากระบบ</a>

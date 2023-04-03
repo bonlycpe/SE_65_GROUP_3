@@ -76,6 +76,10 @@ Route::post('/openCampaignObjectController/create', [App\Http\Controllers\openCa
 //Staff
 Route::get('/staff_money',[App\Http\Controllers\UserDonateController::class, 'index'])->name('staff_money');
 Route::get('/staff_verify',[App\Http\Controllers\ManagerController::class, 'index'])->name('staff_verify');
+Route::get('/terminatereq',[App\Http\Controllers\ManagerController::class, 'terminateCam'])->name('terminatereq');
+Route::get('/terminatereq/info/{id}',[App\Http\Controllers\ManagerController::class, 'terminateInfo'])->name('terminateinfo');
+Route::get('/terminatereq/deny/{id}',[App\Http\Controllers\ManagerController::class, 'terminateDeny'])->name('terminatedeny');
+Route::get('/terminatereq/approve/{id}',[App\Http\Controllers\ManagerController::class, 'terminateApprove'])->name('terminateapprove');
 
 Route::get('/staff_money/approve/{id}/{amount}/{campaign_money_id}',[App\Http\Controllers\UserDonateController::class, 'approve'])->name('staff_approve');
 Route::get('/staff_money/deny/{id}',[App\Http\Controllers\UserDonateController::class, 'deny'])->name('staff_deny');

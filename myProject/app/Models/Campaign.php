@@ -52,5 +52,33 @@ class Campaign extends Model
 
         return $campaignObject;
     }
+    public static function getReqCampaign(){
+        $campaign = DB::table('campaign')
+                ->where('Status','=','REQUEST_TERMINATE')
+                ->get();
+        return $campaign;
+    }
+    public static function getTerminateCampaign(){
+        $campaign = DB::table('campaign')
+                ->where('Status','=','TERMINATE')
+                ->get();
+        return $campaign;
+    }
+    public static function getReqCampaignById($id){
+        $campaign = DB::table('campaign')
+                ->where('Id','=',$id)
+                ->get();
+        return $campaign;
+    }
+    public static function terminateDeny($id){
+        $campaign = DB::table('campaign')
+                ->where('Id','=',$id)
+                ->update(['Status' => 'ACTIVE']);
+    }
+    public static function terminateApprove($id){
+        $campaign = DB::table('campaign')
+                ->where('Id','=',$id)
+                ->update(['Status' => 'TERMINATE']);
+    }
 
 }

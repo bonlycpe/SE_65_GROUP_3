@@ -24,6 +24,11 @@ Route::get('/apparelM', [App\Http\Controllers\CampaignController::class, 'appare
 Route::get('/medicineM', [App\Http\Controllers\CampaignController::class, 'medicineM'])->name('medicineM');
 Route::get('/moneyM', [App\Http\Controllers\CampaignController::class, 'moneyM'])->name('moneyM');
 
+Route::get('/foodU', [App\Http\Controllers\CampaignController::class, 'foodU'])->name('foodU');
+Route::get('/apparelU', [App\Http\Controllers\CampaignController::class, 'apparelU'])->name('apparelU');
+Route::get('/medicineU', [App\Http\Controllers\CampaignController::class, 'medicineU'])->name('medicineU');
+Route::get('/moneyU', [App\Http\Controllers\CampaignController::class, 'moneyU'])->name('moneyU');
+
 Route::get('auth/google', [App\Http\Controllers\GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [App\Http\Controllers\GoogleController::class, 'handleGoogleCallback']);
 

@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Progress;
 use App\Models\Campaign;
+use App\Models\User;
 use App\Models\moneyProgress;
 use App\Models\ObjectRequest;
+use App\Models\UseInCampaign;
 class ProgressController extends Controller
 {
 
@@ -182,7 +184,7 @@ class ProgressController extends Controller
 
     function decisionObject($id)
     {
-        $progress = ObjectRequest::getAllByCampaignId($id);
+        $progress = ObjectRequest::getAllRequestByCampaignId($id);
         //dd($progress);
         for ($x = 0; $x < sizeof($progress); $x++) {
             $date = $progress[$x]->Date;
@@ -198,6 +200,38 @@ class ProgressController extends Controller
         return view('decisionObject',['progress'=>$progress,'campaign'=>$campaign]);
     }
 
+    function vote($id)
+    {
+        $data = UseInCampaign::getByCampaignId($id);
+        $objReq = ObjectRequest::getById($id);
+        if($data->Role =="BOARD"){
+            return view('vote',['objReq'=>$objReq]);
+        }
+        else{
+            $objReq = ObjectRequest::getNotChairmaneById($objReq->campaign_object_id,$objReq->campaign_project_user_id);
+            $nameCampaign = $objReq[0]->Name;
+            $campaignId = $objReq[0]->campaign_object_id ;
+            $board = array();
+            
+            for($i = 0;$i<sizeof($objReq);$i++){
+                $board[$i]['name'] = UseInCampaign::getById($objReq[$i]->campaign_project_user_id)->name;
+                $board[$i]['surname'] = UseInCampaign::getById($objReq[$i]->campaign_project_user_id)->surname;
+            }
+            return view('voteChairman',['objReq'=>$objReq,'nameCampaign'=>$nameCampaign,'Id'=>$id,'campaignId'=>$campaignId,'board'=>$board]);
+        }
+        
+    }
 
+    function voteChangeStatus($id,$bool){
+        $objReq = ObjectRequest::get($id);
+        $text = '/decisionObject/'.$objReq->campaign_object_id;
+        $status = "APPROVE";
+        if($bool == 0){
+            $status = "DENY";
+        }
+        DB::table('campaign_object_request')
+        ->where('campaign_object_request.Id','=',$id)->update(['status'=>$status]);
+        return redirect($text);
+    }
     
 }

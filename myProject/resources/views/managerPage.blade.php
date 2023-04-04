@@ -21,11 +21,11 @@
                             <div class="cardcard">
                                 <div class="thumb-content">
                                     <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}"
-                                    alt="Card image cap">
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="cardt"><a
-                                       >{{$money->Name}}</a></h4></h4>
+                                    <h4 class="cardt"><a>{{$money->Name}}</a></h4>
+                                    </h4>
                                     <p class="cardd">{{$money->Description}}</p>
                                     <p class="card-text">${{$money->Goal}}</p>
                                     <div class="row">
@@ -39,7 +39,7 @@
                                         </ul>
                                         <ul class="list-inline product-meta">
                                             <a
-                                            href="/requestTerminate/{{$money->campaign_money_id}}"><button>ขอยุติแคมเปญ</button></a>
+                                                href="/requestTerminate/{{$money->campaign_money_id}}"><button>ขอยุติแคมเปญ</button></a>
                                         </ul>
                                     </div>
                                 </div>
@@ -51,7 +51,8 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}"
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt">{{$money->Name}}</h4>
@@ -75,7 +76,8 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}"
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt">{{$money->Name}}</h4>
@@ -99,11 +101,11 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}"
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="cardt"><a
-                                        >{{$money->Name}}</a></h4>
+                                    <h4 class="cardt"><a>{{$money->Name}}</a></h4>
                                     <p class="cardd">{{$money->Description}}</p>
                                     <p class="card-text">${{$money->Goal}}</p>
                                     <div class="row">
@@ -147,7 +149,8 @@
                             <div class="cardcard">
                                 @if ($object->Status == "ACTIVE")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}"
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -162,14 +165,15 @@
                                             <a
                                                 href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
                                         </ul>
-                                        
+
                                     </div>
                                 </div>
 
 
                                 @elseif ($object->Status == "TERMINATE")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}"
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt">{{$object->Name}}</a></h4>
@@ -188,7 +192,8 @@
                                 </div>
                                 @elseif ($object->Status == "FINISHED")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}"
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a

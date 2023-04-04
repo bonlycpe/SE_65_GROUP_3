@@ -7,7 +7,7 @@
         <!-- Row Start -->
         <div class="row align-items-center justify-content-center">
 
-            <div class="col-lg-8">
+            <div class="col-lg-9">
                 <!-- Recently Favorited -->
                 <div class="widget dashboard-container my-adslist">
                     <h3 class="widget-header">แคมเปญ {{$campaign->Name}}</h3>
@@ -18,6 +18,8 @@
                                 <th class="text-center font-bold">วันที่</th>
                                 <th class="text-center font-bold">ชื่อ-นามสกุล</th>
                                 <th class="text-center font-bold">จำนวนที่ได้รับ</th>
+                                <th class="text-center font-bold">สถานะ</th>
+                                <th class="text-center font-bold">รายละเอียด</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,6 +33,13 @@
                                 </td>
                                 <td class="text-center" data-title="Action">
                                     <span class="title">{{$p->Amount}}</span>
+                                </td>
+                                <td class="text-center" data-title="Action">
+                                    <span class="title">{{$p->Status}}</span>
+                                </td>
+                                <td class="text-center" data-title="Action">
+                                    <a href="{{url('/decisionObjectVote/'.$p->Id)}}"
+                                        class="btn btn-primary">รายละเอียด</span>
                                 </td>
                             </tr>
                             @endforeach

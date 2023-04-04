@@ -15,10 +15,25 @@ class UseInCampaign extends Model
     public $timestamps = false;
     public $table = "campaign_project_user";
 
+    public static function getById($id){
+        $myCampaign = DB::table('campaign_project_user')
+        ->join('users','campaign_project_user.user_id','=','users.id')
+        ->where('campaign_project_user.Id','=',$id)
+        ->first();
+        return $myCampaign;
+    }
+
     public static function getByUserId($id){
         $myCampaign = DB::table('campaign_project_user')
         ->where('user_id','=',$id)
         ->select('campaign_project_user.campaign_id as campaign_id','campaign_project_user.Role as Role')
+        ->first();
+        return $myCampaign;
+    }
+
+    public static function getByCampaignId($id){
+        $myCampaign = DB::table('campaign_project_user')
+        ->where('campaign_id','=',$id)
         ->first();
         return $myCampaign;
     }
@@ -28,7 +43,7 @@ class UseInCampaign extends Model
         ->join('campaign','campaign_project_user.campaign_id','=','campaign.Id')
         ->join('campaign_money','campaign_project_user.campaign_id','=','campaign_money.campaign_money_id')
         ->where('user_id','=',$id)
-        ->select('campaign_money.campaign_money_id','campaign_money.Goal','campaign.Name','campaign.Description','campaign.Status','campaign_money.Image as Image','campaign_money.total')
+        ->select('campaign_money.campaign_money_id','campaign_money.Goal','campaign.Name','campaign.Description','campaign.Status','campaign.Image as Image','campaign_money.total')
         ->get();
         return $myCampaign;
     }

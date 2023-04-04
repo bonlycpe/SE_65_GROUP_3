@@ -64,6 +64,18 @@ class Campaign extends Model
                 ->get();
         return $campaign;
     }
+    public static function search($data){
+        $subquery = DB::table('campaign')
+                ->where('Status','=','TERMINATE');
+
+        $campaign = DB::table(DB::raw("({$subquery->toSql()}) AS US"))    
+        ->mergeBindings($subquery)
+        ->select('*')
+        ->orwhere('US.Name','LIKE','%'.$data.'%')
+        ->orWhere('US.Description','LIKE','%'.$data.'%')
+        ->get();
+        return $campaign;
+    }
     public static function getReqCampaignById($id){
         $campaign = DB::table('campaign')
                 ->where('Id','=',$id)

@@ -43,37 +43,11 @@
             </table>
         </div>
     </div>
-    </div>
-    <div class="container">
-        <h1 style="text-align: center;">โครงการที่ถูกปิดแล้ว</h1>
+    <div style="justify-content: center; display: flex;">
+        <a href="{{route('terminated')}}" class="btn btn-info">โครงการที่ถูกปิดแล้ว</a>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <table class="table table-striped mx-auto w-auto">
-                <thead>
-                    <tr>
-                        <th scope="col">ลำดับ</th>
-                        <th scope="col">ชื่อโครงการ</th>
-                        <th scope="col">รายละเอียด</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php($i=1)
-                    @foreach($campaign1 as $c)
-                    <tr>
-                        <th scope="row">{{$i++}}</th>
-                        <td>{{$c->Name}}</td>
-                        <td>
-                            <a href="{{route('terminateinfo', [$c->Id])}}" class="btn btn-info" style="justify-content: center;">รายละเอียด</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-    </div>
+
 </body>
 
 </html>

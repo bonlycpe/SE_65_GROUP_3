@@ -31,7 +31,26 @@ class UserDonate extends Model
 
         return $donate;
     }
+    public static function search($data){
+        $subquery = DB::table('campaign_user_donate')
+        ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
+        ->join('users','campaign_user_donate.user_id','=','users.Id')
+        ->where('campaign_user_donate.Status','!=','REQUEST')
+        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name AS cname','campaign_user_donate.Status');
 
+        $search = DB::table(DB::raw("({$subquery->toSql()}) AS US"))    
+        ->mergeBindings($subquery)
+        ->select('*')
+        ->orwhere('US.Id','LIKE','%'.$data.'%')
+        ->orWhere('US.name','LIKE','%'.$data.'%')
+        ->orWhere('US.surname','LIKE','%'.$data.'%')
+        ->orWhere('US.Amount','LIKE','%'.$data.'%')
+        ->orWhere('US.cname','LIKE','%'.$data.'%')
+        ->orWhere('US.Status','LIKE','%'.$data.'%')
+        ->get();
+
+        return $search;
+    }
     public static function getAllRequestAndUser($id) {
         $donate = DB::table('campaign_user_donate')
         ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')

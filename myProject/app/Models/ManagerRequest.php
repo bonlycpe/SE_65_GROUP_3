@@ -35,6 +35,23 @@ class ManagerRequest extends Model
                 ->get();
         return $managers;
     }
+    public static function search($data){
+        $subquery = DB::table('users')
+                ->where('permission','=','APPROVE')
+                ->select('Id','name','surname','email','username');
+        
+        $search = DB::table(DB::raw("({$subquery->toSql()}) AS US"))    
+                ->mergeBindings($subquery)
+                ->select('*')
+                ->orwhere('US.Id','LIKE','%'.$data.'%')
+                ->orWhere('US.name','LIKE','%'.$data.'%')
+                ->orWhere('US.email','LIKE','%'.$data.'%')
+                ->orWhere('US.surname','LIKE','%'.$data.'%')
+                ->orWhere('US.email','LIKE','%'.$data.'%')
+                ->orWhere('US.username','LIKE','%'.$data.'%')
+                ->get();
+        return $search;
+    }
 
 
     public static function approve($id){

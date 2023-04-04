@@ -15,43 +15,45 @@
 
 <body>
     <div class="container">
-        <h1 style="text-align: center;">Welcome to Staff Page</h1>
-        <h2 style="text-align: center;">คำร้องขอเป็นผู้บริหาร</h2>
+        <h1 style="text-align: center;">โครงการที่ถูกปิดแล้ว</h1>
     </div>
-
+    <div class="input-group mb-3" style="width: 30%; margin-left: 40%;">
+        <form action="{{ route('terminateSearch') }}" method="get"> 
+            <div class="input-group mb-3">
+                <input type="text"  name="searching" class="form-control" placeholder="Type Something..." aria-label="Search" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="submit" id="button-Search">Search</button>
+            </div>
+        </form>
+    </div>
     <div class="container">
         <div class="row">
-            <table class="table table-striped w-auto mx-auto">
+            <table class="table table-striped mx-auto w-auto">
                 <thead>
                     <tr>
                         <th scope="col">ลำดับ</th>
-                        <th scope="col">ชื่อ</th>
-                        <th scope="col">นามสกุล</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Info</th>
+                        <th scope="col">ชื่อโครงการ</th>
+                        <th scope="col">รายละเอียด</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php($i=1)
-                    @foreach($managers as $m)
+                    @foreach($campaign as $c)
                     <tr>
                         <th scope="row">{{$i++}}</th>
-                        <td>{{$m->name}}</td>
-                        <td>{{$m->surname}}</td>
-                        <td>{{$m->email}}</td>
-                        <td>{{$m->username}}</td>
+                        <td>{{$c->Name}}</td>
                         <td>
-                            <a href="{{route('info', [$m->Id])}}" class="btn btn-info">Info</a>
+                            <a href="{{route('terminateinfo', [$c->Id])}}" class="btn btn-info" style="justify-content: center;">รายละเอียด</a>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        <div style="justify-content: center; display: flex;">
-            <a href="{{route('approved')}}" class="btn btn-info" >คำร้องที่ยืนยันแล้ว</a>
-        </div>
+    </div>
+    <div style="justify-content: center; display: flex;">
+        <a href="{{route('terminatereq')}}" class="btn btn-secondary">Go Back</a>
+    </div>
 </body>
+
 </html>
 @endsection

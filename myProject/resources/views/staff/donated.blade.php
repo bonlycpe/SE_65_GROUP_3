@@ -1,4 +1,4 @@
-@extends('layouts.LayoutStaff')
+@extends('layouts.LayoutStaffMoney')
 
 @section('content')
 <!DOCTYPE html>
@@ -14,11 +14,15 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 style="text-align: center;">Welcome to Staff Page</h1>
-        <h1 style="text-align: center;">คำขอบริจาคเงิน</h1>
+    <h1 style="text-align: center;">การบริจาคทั้งหมด</h1>
+    <div class="input-group mb-3" style="width: 30%; margin-left: 40%;">
+        <form action="{{ route('donatedSearch') }}" method="get"> 
+            <div class="input-group mb-3">
+                <input type="text"  name="searching" class="form-control" placeholder="Type Something..." aria-label="Search" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="submit" id="button-Search">Search</button>
+            </div>
+        </form>
     </div>
-
     <div class="container">
         <div class="row">
             <table class="table table-striped w-auto mx-auto">
@@ -30,29 +34,32 @@
                         <th scope="col">บริจาคให้</th>
                         <th scope="col">จำนวนเงิน</th>
                         <th scope="col">E-Slip</th>
+                        <th scope="col">สถานะ</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php($i=1)
-                    @foreach($donate as $d)
+                    @foreach($donateAll as $d)
                     <tr>
-                        <th scope="row">{{$i++}}</th>
+                        <th scope="row">{{$d->Id}}</th>
                         <td>{{$d->name}}</td>
                         <td>{{$d->surname}}</td>
-                        <td>{{$d->Name}}</td>
+                        <td>{{$d->cname}}</td>
                         <td>{{$d->Amount}} บาท</td>
                         <td>
                             <a href="{{route('eslip', [$d->Id])}}" class="btn btn-info">Show E-Slip</a>
                         </td>
+                        <td>{{$d->Status}}</td>
 
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        <div style="justify-content: center; display: flex;">
-            <a href="{{route('donated')}}" class="btn btn-info" >การบริจาคทั้งหมด</a>
-        </div>
+    </div>
+    <div style="justify-content: center; display: flex;">
+        <a href="{{route('staff_money')}}" class="btn btn-secondary">Go Back</a>
+    </div>
 </body>
 
 </html>

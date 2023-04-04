@@ -17,6 +17,7 @@ class ManagerPageController extends Controller
         $user = Auth::user();
         $campaignMoney = UseInCampaign::getAllMoneyByUserId($user->id);
         $campaignObject = UseInCampaign::getAllObjectByUserId($user->id);
+        $progressBar = array();
         for($i = 0 ; $i < sizeof($campaignMoney); $i++){
             $total = $campaignMoney[$i]->total;
             $goal = $campaignMoney[$i]->Goal;

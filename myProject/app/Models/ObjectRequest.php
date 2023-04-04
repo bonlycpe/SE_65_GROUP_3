@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -66,16 +67,24 @@ class ObjectRequest extends Model
         ->where('campaign_object_request.campaign_object_id','=',$id)
         ->where('campaign_object_request.Status','=',"APPROVE")
         ->select('campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id')
-        ->get();    
+        ->get();
 
         return $donate;
     }
 
     public static function getAllByCampaignId($id) {
+        $user = Auth::user();
+
+        // $campaign_object_request = DB::table('campaign_project_user')
+        // ->join('users','campaign_project_user.user_id','=',$user->id)
+        // ->where('campaign_project_user.campaign_id','=',$id)
+        // ->get(); 
+
         $donate = DB::table('campaign_object_request')
+        ->join('campaign_project_user','campaign_object_request.campaign_project_user_id','=','campaign_project_user.Id')
         ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
         ->join('users','campaign_object_request.user_id','=','users.Id')
-        ->where('campaign_object_request.campaign_project_user_id ','=',20)
+        ->where('campaign_object_request.campaign_project_user_id','=',75)
         ->select('campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id')
         ->get();    
 

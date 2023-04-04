@@ -22,7 +22,6 @@ class CampaignController extends Controller
             $percent = ($total/$goal)*100;
             $progressBar[$i] = $percent;
         }
-        // dd($progressBar);
         return view('welcome',compact(['campaign','campaignMoney','campaignObject','progressBar']));
     }
 
@@ -42,12 +41,53 @@ class CampaignController extends Controller
         return view('indexM',compact(['campaign','campaignMoney','campaignObject','progressBar']));
     }
 
+    function search(){
+        $name =$_GET['name'];
+        $campaignMoney = null;
+        $campaignObject = null;
+        $progressBar = Array();
+        if($name=="บริจาคเงิน"){
+            $campaignMoney = MoneyCampaign::getAllNotTerminate();
+            for($i = 0 ; $i < sizeof($campaignMoney); $i++){
+                $total = $campaignMoney[$i]->total;
+                $goal = $campaignMoney[$i]->Goal;
+                $percent = ($total/$goal)*100;
+                $progressBar[$i] = $percent;
+            }
+        }else if($name ==""){
+            $campaignMoney = MoneyCampaign::getAllNotTerminate();
+            $campaignObject = ObjectCampaign::getAll();
+            for($i = 0 ; $i < sizeof($campaignMoney); $i++){
+                $total = $campaignMoney[$i]->total;
+                $goal = $campaignMoney[$i]->Goal;
+                $percent = ($total/$goal)*100;
+                $progressBar[$i] = $percent;
+            }
+        }
+        else{
+            $campaignObject = ObjectCampaign::searchByName($name);
+            if($campaignObject == null){
+                $campaignObject = ObjectCampaign::getAll();
+            }
+        }
+        
+        return view('search.search',['campaignObject'=>$campaignObject,'campaignMoney'=>$campaignMoney,'progressBar'=>$progressBar]);
+    }
+
     function food()
     {
         $campaign = campaign::getAll();
         $campaignMoney = campaign::getMoney();
         $campaignObject = campaign::getObject();
         return view('search.food',compact(['campaign','campaignMoney','campaignObject']));
+    }
+
+    function foodM()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        return view('search.foodM',compact(['campaign','campaignMoney','campaignObject']));
     }
 
     function apparel()
@@ -58,6 +98,15 @@ class CampaignController extends Controller
         return view('search.apparel',compact(['campaign','campaignMoney','campaignObject']));
     }
 
+    function apparelM()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        return view('search.apparelM',compact(['campaign','campaignMoney','campaignObject']));
+    }
+
+
     function medicine()
     {
         $campaign = campaign::getAll();
@@ -66,31 +115,76 @@ class CampaignController extends Controller
         return view('search.medicine',compact(['campaign','campaignMoney','campaignObject']));
     }
 
+    function medicineM()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        return view('search.medicineM',compact(['campaign','campaignMoney','campaignObject']));
+    }
+
     function money()
     {
         $campaign = campaign::getAll();
         $campaignMoney = campaign::getMoney();
         $campaignObject = campaign::getObject();
-        return view('search.money',compact(['campaign','campaignMoney','campaignObject']));
+        $progressBar = Array();
+        for($i = 0 ; $i < sizeof($campaignMoney); $i++){
+            $total = $campaignMoney[$i]->total;
+            $goal = $campaignMoney[$i]->Goal;
+            $percent = ($total/$goal)*100;
+            $progressBar[$i] = $percent;
+        }
+        return view('search.money',compact(['campaign','campaignMoney','campaignObject','progressBar']));
+    }
+
+    function moneyM()
+    {
+        $campaign = campaign::getAll();
+        $campaignMoney = campaign::getMoney();
+        $campaignObject = campaign::getObject();
+        $progressBar = Array();
+        for($i = 0 ; $i < sizeof($campaignMoney); $i++){
+            $total = $campaignMoney[$i]->total;
+            $goal = $campaignMoney[$i]->Goal;
+            $percent = ($total/$goal)*100;
+            $progressBar[$i] = $percent;
+        }
+        return view('search.moneyM',compact(['campaign','campaignMoney','campaignObject','progressBar']));
     }
 
     function editCampaign($id){
         $campaign = Campaign::getById($id);
         return view('progress.editMoneyCampaign',['campaign'=>$campaign]);
     }
-    
+
     function update($id){
         $campaign = Campaign::getById($id);
         if($request->hasFile('campaign_image')){
             $image = $request->file('campaign_image');
             $image_name = $request->name.'.'.$image->getClientOriginalExtension();
             $path = $image->move(public_path('images/campaign'), $image_name);
-            //$campaign->update($id,$request->name,$request->Description,$request->campaign_image);
+            $campaign->update($id,$request->name,$request->Description,$request->campaign_image);
         }
         else{
-            //$campaign->update($id,$request->name,$request->Description,NULL);
+            $campaign->update($id,$request->name,$request->Description,NULL);
         }
 
         return view('/managerPage');
     }
+
+    function requestTerminate($id){
+        $campaign = Campaign::getById($id);
+        return view('progress.requestTerminate',['campaign'=>$campaign]);
+    }
+
+    function request(Request $request)
+    {   
+        $campaign = Campaign::terminateRequest($request->id,$request->Description);
+
+        return redirect()->route('managerPage');
+    }
+
+
+
 }

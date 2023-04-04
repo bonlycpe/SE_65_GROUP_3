@@ -47,14 +47,13 @@ class Campaign extends Model
     public static function getObject(){
         $campaignObject = DB::table('campaign')
         ->Join('campaign_object', 'campaign.Id', '=', 'campaign_object.campaign_object_id')
-        ->leftJoin('campaign_object as cu', 'campaign.Id', '=', 'campaign_object.Tag')
-        ->select('campaign.Id','campaign.Name','campaign.Description','campaign.Status','campaign.Image','cu.Tag')
+        ->select('campaign.Id','campaign.Name','campaign.Description','campaign.Status','campaign.Image','campaign_object.Tag') 
         ->get();       
 
         return $campaignObject;
     }
 
-    // public static function update($Id,$Name,$Description,$Image){
+    //     public static function update($Id,$Name,$Description,$Image){
     //     if($image==NULL){
     //         DB::table('campaign')->where('Id',$Id)->update(['Name'=>$Name,'Description'=>$Description]);
     //     }else{
@@ -62,5 +61,12 @@ class Campaign extends Model
     //     }
 
     // }
+
+    public static function terminateRequest($Id,$Terminate_Description){
+        DB::table('campaign')->where('Id',$Id)->update(['Status'=>'REQUEST_TERMINATE','Terminate_Description'=>$Terminate_Description]);
+        return True;
+    }
+
+
 
 }

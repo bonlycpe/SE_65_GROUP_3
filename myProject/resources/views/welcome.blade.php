@@ -108,7 +108,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h4 class="cardt"><a
-                                                        href="/progress/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
+                                                        href="/progressGuest/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
                                                         class="SttausA">{{$money->Status}}</span>
                                                 </h4>
                                                 <p class="cardd">{{$money->Description}}</p>
@@ -152,7 +152,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h4 class="cardt"><a
-                                                        href="/progress/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
+                                                        href="/progressGuest/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
                                                         class="SttausF">{{$money->Status}}</span></h4>
 
                                                 <p class="cardd">{{$money->Description}}</p>
@@ -216,7 +216,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h4 class="cardt"><a
-                                                        href="/progressObject/{{$object->campaign_object_Id}}">{{$object->Name}}</a>
+                                                        href="/progressObjectGuest/{{$object->campaign_object_Id}}">{{$object->Name}}</a>
                                                     <span class="SttausA">{{$object->Status}}</span>
                                                 </h4>
                                                 <p class="cardd">{{$object->Description}}</p>
@@ -247,7 +247,7 @@
                                             </div>
                                             <div class="card-body">
                                                 <h4 class="cardt"><a
-                                                        href="/progressObject/{{$object->campaign_object_Id}}">{{$object->Name}}</a>
+                                                        href="/progressObjectGuest/{{$object->campaign_object_Id}}">{{$object->Name}}</a>
                                                     <span class="SttausF">{{$object->Status}}</span>
                                                 </h4>
                                                 <p class="cardd">{{$object->Description}}</p>

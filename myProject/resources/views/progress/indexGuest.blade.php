@@ -34,7 +34,7 @@
                 @endif
             </div>
             <div class="col-lg-8">
-                <a href="{{url('/home')}}">
+                <a href="{{url('/')}}">
                     <button class="btn btn-secondary">กลับ</button>
                 </a>
             </div>

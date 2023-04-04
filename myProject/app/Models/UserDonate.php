@@ -79,7 +79,7 @@ class UserDonate extends Model
         ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
         ->join('users','campaign_user_donate.user_id','=','users.Id')
         ->whereNot('campaign_user_donate.Status','=','REQUEST')
-        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name','campaign_user_donate.Status')
+        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name AS cname','campaign_user_donate.Status')
         ->get();    
 
         return $donate;

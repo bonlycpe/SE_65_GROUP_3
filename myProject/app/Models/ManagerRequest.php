@@ -45,7 +45,6 @@ class ManagerRequest extends Model
                 ->select('*')
                 ->orwhere('US.Id','LIKE','%'.$data.'%')
                 ->orWhere('US.name','LIKE','%'.$data.'%')
-                ->orWhere('US.email','LIKE','%'.$data.'%')
                 ->orWhere('US.surname','LIKE','%'.$data.'%')
                 ->orWhere('US.email','LIKE','%'.$data.'%')
                 ->orWhere('US.username','LIKE','%'.$data.'%')

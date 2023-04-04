@@ -127,7 +127,7 @@ class ProgressController extends Controller
     {
         
         $progress = ObjectRequest::getAllApproveByCampaignId($id);
-        dd($progress);
+        //dd($progress);
         for ($x = 0; $x < sizeof($progress); $x++) {
             $date = $progress[$x]->Date;
             $newDate = date("d M Y", strtotime($date));

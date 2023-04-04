@@ -25,13 +25,25 @@ class UseInCampaign extends Model
 
     public static function getAllMoneyByUserId($id){
         $myCampaign = DB::table('campaign_project_user')
-        ->join('campaign','campaign_project_user.campaign_Id','=','campaign.Id ')
-        ->join('campaign_money','campaign_project_user.campaign_Id','=','campaign_money.campaign_money_id')
+        ->join('campaign','campaign_project_user.campaign_id','=','campaign.Id')
+        ->join('campaign_money','campaign_project_user.campaign_id','=','campaign_money.campaign_money_id')
         ->where('user_id','=',$id)
-        ->select('campaign_money.Goal','campaign.Name','campaign.Description','campaign.Status','campaign_money.Image as Image','campaign_money.total')
+        ->select('campaign_money.campaign_money_id','campaign_money.Goal','campaign.Name','campaign.Description','campaign.Status','campaign_money.Image as Image','campaign_money.total')
         ->get();
         return $myCampaign;
     }
+
+    public static function getAllObjectByUserId($id){
+        $myCampaign = DB::table('campaign_project_user')
+        ->join('campaign','campaign_project_user.campaign_id','=','campaign.Id')
+        ->join('campaign_object','campaign_project_user.campaign_id','=','campaign_object.campaign_object_id')
+        ->where('user_id','=',$id)
+        ->select('campaign_object.campaign_object_Id','campaign.Name','campaign.Description','campaign.Status','Tag','campaign.Image')
+        ->get();
+        return $myCampaign;
+    }
+
+    
     
 
 }

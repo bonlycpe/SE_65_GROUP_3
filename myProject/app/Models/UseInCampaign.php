@@ -28,7 +28,7 @@ class UseInCampaign extends Model
         ->join('campaign','campaign_project_user.campaign_id','=','campaign.Id')
         ->join('campaign_money','campaign_project_user.campaign_id','=','campaign_money.campaign_money_id')
         ->where('user_id','=',$id)
-        ->select('campaign_money.campaign_money_id','campaign_money.Goal','campaign.Name','campaign.Description','campaign.Status','campaign_money.Image as Image','campaign_money.total')
+        ->select('campaign_money.campaign_money_id','campaign_money.Goal','campaign.Name','campaign.Description','campaign.Status','campaign.Image as Image','campaign_money.total')
         ->get();
         return $myCampaign;
     }

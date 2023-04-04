@@ -111,7 +111,7 @@ class ProgressController extends Controller
         //To add DB information
         $Description = $request->Description;
         $campaign_image = $request->file('progress_image');
-        $campaign_image_name = $request->name.'.'.$campaign_image->getClientOriginalExtension();
+        $campaign_image_name = $campaign_image->getClientOriginalName();
         $path = $campaign_image->move(public_path('images/progress'), $campaign_image_name);
 
         $moneyProgress = new moneyProgress;

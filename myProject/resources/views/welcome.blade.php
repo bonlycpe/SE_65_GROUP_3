@@ -103,8 +103,8 @@
                                         <div class="cardcard">
                                             <div class="thumb-content">
                                                 <img class="card-img-top img-fluid"
-                                                    src="{{url('images/campaign/'.$money->Image)}}"
-                                                    alt="Card image cap">
+                                                    src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap"
+                                                    width="70%" height="70%">
                                             </div>
                                             <div class="card-body">
                                                 <h4 class="cardt"><a
@@ -115,7 +115,7 @@
                                                 <div class="row">
                                                     <ul class="list-inline product-meta">
                                                         <li class="list-inline-item">
-                                                            <a href="/home"><i
+                                                            <a href="/"><i
                                                                     class="fa fab fa-angellist"></i>บริจาคเงิน</a>
                                                         </li>
                                                         <a href="/donate/{{$money->campaign_money_id}}"><button
@@ -147,8 +147,8 @@
                                         <div class="cardcard">
                                             <div class="thumb-content">
                                                 <img class="card-img-top img-fluid"
-                                                    src="{{url('images/campaign/'.$money->Image)}}"
-                                                    alt="Card image cap">
+                                                    src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap"
+                                                    width="70%" height="70%">
                                             </div>
                                             <div class="card-body">
                                                 <h4 class="cardt"><a
@@ -159,7 +159,7 @@
                                                 <div class="row">
                                                     <ul class="list-inline product-meta">
                                                         <li class="list-inline-item">
-                                                            <a href="/home"><i
+                                                            <a href="/"><i
                                                                     class="fa fab fa-angellist"></i>บริจาคเงิน</a>
                                                         </li>
 
@@ -212,7 +212,7 @@
                                             <div class="thumb-content">
                                                 <img class="card-img-top img-fluid"
                                                     src="{{url('images/campaign/'.$object->Image)}}"
-                                                    alt="Card image cap">
+                                                    alt="Card image cap" width="70%" height="70%">
                                             </div>
                                             <div class="card-body">
                                                 <h4 class="cardt"><a
@@ -223,7 +223,7 @@
                                                 <div class="row">
                                                     <ul class="list-inline product-meta">
                                                         <li class="list-inline-item">
-                                                            <a href="/home"><i
+                                                            <a href="/"><i
                                                                     class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                                         </li>
                                                         <a href="/request/{{$object->campaign_object_Id}}"><button
@@ -243,7 +243,7 @@
                                             <div class="thumb-content">
                                                 <img class="card-img-top img-fluid"
                                                     src="{{url('images/campaign/'.$object->Image)}}"
-                                                    alt="Card image cap">
+                                                    alt="Card image cap" width="70%" height="70%">
                                             </div>
                                             <div class="card-body">
                                                 <h4 class="cardt"><a
@@ -254,7 +254,7 @@
                                                 <div class="row">
                                                     <ul class="list-inline product-meta">
                                                         <li class="list-inline-item">
-                                                            <a href="/home"><i
+                                                            <a href="/"><i
                                                                     class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                                         </li>
                                                     </ul>

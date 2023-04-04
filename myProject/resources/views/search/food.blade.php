@@ -5,7 +5,7 @@
                 <div class="section-title">
                     <a>หมวดหมู่ : </a>
                     <input id="search" type="text" />
-                    <button class="btn btn-success btn-submit">ค้นหา</button>
+                    <button onclick="search()" class="btn btn-success btn-submit">ค้นหา</button>
                 </div>
             </div>
         </div>
@@ -22,10 +22,10 @@
             <div class="col-lg-12">
                 <div class="row">
                     @foreach($campaignObject as $object)
+                    @if ($object->Status == "ACTIVE")
                     <div class="col-sm-12 col-lg-4">
                         <div class="product-item bg-light">
                             <div class="cardcard">
-                                @if ($object->Status == "ACTIVE")
                                 <div class="thumb-content">
                                     <img class="card-img-top img-fluid" src="{{$object->Image}}" alt="Card image cap">
                                 </div>
@@ -48,7 +48,13 @@
                                     </div>
 
                                 </div>
-                                @elseif ($object->Status == "FINISHED")
+                            </div>
+                        </div>
+                    </div>
+                    @elseif ($object->Status == "FINISHED")
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="product-item bg-light">
+                            <div class="cardcard">
                                 <div class="thumb-content">
                                     <img class="card-img-top img-fluid" src="{{$object->Image}}" alt="Card image cap">
                                 </div>
@@ -68,14 +74,13 @@
                                     </div>
 
                                 </div>
-                                @endif
                             </div>
                         </div>
                     </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
 </section>
-

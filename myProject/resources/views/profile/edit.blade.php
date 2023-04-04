@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="row justify-content-around">
                                     <a href="{{url('/profile')}}">
-                                        <button class="btn btn-primary font-weight-bold mt-3">กลับ</button>
+                                        <button class="btn btn-secondary font-weight-bold mt-3">กลับ</button>
                                     </a>
                                     <button type="submit"
                                         class="btn btn-primary font-weight-bold mt-3">แก้ไขข้อมูล</button>

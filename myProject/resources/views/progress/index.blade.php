@@ -32,7 +32,7 @@
                 <h1 style="color:cornflowerblue">ยังไม่มีความคืบหน้า</h1>
                 @endif
                 <a href="{{url('/home')}}">
-                    <button class="btn btn-primary">กลับ</button>
+                    <button class="btn btn-secondary">กลับ</button>
                 </a>
             </div>
         </div>

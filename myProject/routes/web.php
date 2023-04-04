@@ -18,10 +18,6 @@ Route::get('/food', [App\Http\Controllers\CampaignController::class, 'food'])->n
 Route::get('/apparel', [App\Http\Controllers\CampaignController::class, 'apparel'])->name('apparel');
 Route::get('/medicine', [App\Http\Controllers\CampaignController::class, 'medicine'])->name('medicine');
 Route::get('/money', [App\Http\Controllers\CampaignController::class, 'money'])->name('money');
-Route::get('/foodU', [App\Http\Controllers\CampaignController::class, 'foodU'])->name('foodU');
-Route::get('/apparelU', [App\Http\Controllers\CampaignController::class, 'apparelU'])->name('apparelU');
-Route::get('/medicineU', [App\Http\Controllers\CampaignController::class, 'medicineU'])->name('medicineU');
-Route::get('/moneyU', [App\Http\Controllers\CampaignController::class, 'moneyU'])->name('moneyU');
 Route::get('/search', [App\Http\Controllers\CampaignController::class, 'search']);
 
 Route::get('/foodM', [App\Http\Controllers\CampaignController::class, 'foodM'])->name('foodM');
@@ -98,5 +94,4 @@ Route::get('/admin/createStaff/',[App\Http\Controllers\StaffController::class,'c
 Route::post('admin/postStaff', [App\Http\Controllers\StaffController::class,'createStaffFromCreatePage'])->name('createStaff');
 Route::get('admin/delete/{id}', [App\Http\Controllers\StaffController::class,'deleteStaff'])->name('deleteStaff');
 Route::get('admin/edit/{id}', [App\Http\Controllers\StaffController::class,'editStaff'])->name('editStaff');
-
 Route::get('admin/update/{id}', [App\Http\Controllers\StaffController::class,'updateStaff'])->name('updateStaff');

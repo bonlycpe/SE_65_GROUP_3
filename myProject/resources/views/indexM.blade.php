@@ -12,6 +12,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-lg-12 col-12">
                 <div class="sectione-title-wrap">
@@ -35,7 +36,7 @@
                                 <div class="card-body">
                                     <h4 class="cardt"><a
                                             href="/progress/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
-                                            class="SttausA">{{$money->Status}}</span></h4>
+                                            class="SttausA">{{$money->Status}}</span>
                                     </h4>
                                     <p class="cardd">{{$money->Description}}</p>
                                     <div class="row">
@@ -128,8 +129,8 @@
             <div class="col-lg-12">
                 <div class="row">
                     @foreach($campaignObject as $object)
+                    @if ($object->Status == "ACTIVE")
                     <div class="col-sm-12 col-lg-4">
-                        @if ($object->Status == "ACTIVE")
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
@@ -156,7 +157,9 @@
                                 </div>
                             </div>
                         </div>
-                        @elseif ($object->Status == "FINISHED")
+                    </div>
+                    @elseif ($object->Status == "FINISHED")
+                    <div class="col-sm-12 col-lg-4">
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
@@ -180,8 +183,9 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
                     </div>
+                    @endif
+
                     @endforeach
                 </div>
             </div>

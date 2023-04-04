@@ -58,10 +58,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link login-button" href="{{url('/logout')}}">ออกจากระบบ</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white add-button" href="ad-listing.html"><i
-                                            class="fa fa-plus-circle"></i> Add Listing</a>
-                                </li>
                             </ul>
                         </div>
                     </nav>

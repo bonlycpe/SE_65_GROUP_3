@@ -65,10 +65,6 @@
                                     <li class="nav-item">
                                         <a class="nav-link login-button" href="{{url('/logout')}}">ออกจากระบบ</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white add-button" href="ad-listing.html"><i
-                                                class="fa fa-plus-circle"></i> Add Listing</a>
-                                    </li>
                                 </ul>
                         </div>
                     </nav>
@@ -100,7 +96,7 @@
 Essential Scripts
 =====================================-->
     @yield('script')
-    
+
     <script src="{{ asset('plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{ asset('plugins/bootstrap/popper.min.js')}}"></script>
     <script src="{{ asset('plugins/bootstrap/bootstrap.min.js')}}"></script>

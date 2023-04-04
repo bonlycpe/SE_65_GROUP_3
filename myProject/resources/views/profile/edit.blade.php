@@ -35,7 +35,7 @@
 
                                         <i class="fa fa-amazon-pay text-center"></i>
                                         <input type="file" name="profile_image" class="form-control-file mt-2 pt-1"
-                                            id="input-file">
+                                            id="input-file" value="{{url('images/user/'.$user->Image)}}">
                                     </div>
                                 </div>
                                 <div class="row justify-content-around">

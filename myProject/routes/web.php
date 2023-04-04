@@ -18,12 +18,15 @@ Route::get('/food', [App\Http\Controllers\CampaignController::class, 'food'])->n
 Route::get('/apparel', [App\Http\Controllers\CampaignController::class, 'apparel'])->name('apparel');
 Route::get('/medicine', [App\Http\Controllers\CampaignController::class, 'medicine'])->name('medicine');
 Route::get('/money', [App\Http\Controllers\CampaignController::class, 'money'])->name('money');
-Route::get('/search', [App\Http\Controllers\CampaignController::class, 'search']);
-
+Route::get('/foodU', [App\Http\Controllers\CampaignController::class, 'foodU'])->name('foodU');
+Route::get('/apparelU', [App\Http\Controllers\CampaignController::class, 'apparelU'])->name('apparelU');
+Route::get('/medicineU', [App\Http\Controllers\CampaignController::class, 'medicineU'])->name('medicineU');
+Route::get('/moneyU', [App\Http\Controllers\CampaignController::class, 'moneyU'])->name('moneyU');
 Route::get('/foodM', [App\Http\Controllers\CampaignController::class, 'foodM'])->name('foodM');
 Route::get('/apparelM', [App\Http\Controllers\CampaignController::class, 'apparelM'])->name('apparelM');
 Route::get('/medicineM', [App\Http\Controllers\CampaignController::class, 'medicineM'])->name('medicineM');
 Route::get('/moneyM', [App\Http\Controllers\CampaignController::class, 'moneyM'])->name('moneyM');
+Route::get('/search', [App\Http\Controllers\CampaignController::class, 'search']);
 
 Route::get('auth/google', [App\Http\Controllers\GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [App\Http\Controllers\GoogleController::class, 'handleGoogleCallback']);
@@ -46,7 +49,7 @@ Route::post('/requested', [App\Http\Controllers\RequestController::class, 'creat
 //progress
 Route::get('/progress/{id}', [App\Http\Controllers\ProgressController::class, 'index']);
 Route::get('/progressObject/{id}', [App\Http\Controllers\ProgressController::class, 'indexObject']);
-Route::get('/addProgress/{id}', [App\Http\Controllers\ProgressController::class, 'toAddProgress'])->name('addProgress');;
+Route::get('/addProgress/{id}', [App\Http\Controllers\ProgressController::class, 'toAddProgress'])->name('addProgress');
 Route::get('/addProgressPage/{id}', [App\Http\Controllers\ProgressController::class, 'indexAdd']);
 Route::post('/add', [App\Http\Controllers\ProgressController::class, 'add']);
 
@@ -60,7 +63,7 @@ Route::post('/updateProfile', [App\Http\Controllers\ProfileController::class, 'u
 //Request Manager Permission
 Route::get('/requestVerify', [App\Http\Controllers\RequestPermissionController::class, 'index']);
 Route::post('/requestVerify/update', [App\Http\Controllers\RequestPermissionController::class, 'update']);
-Route::get('/managerPage', [App\Http\Controllers\ManagerPageController::class, 'index']);
+Route::get('/managerPage', [App\Http\Controllers\ManagerPageController::class, 'index'])->name('managerPage');;
 
 //For Manager Open Money Campaign
 Route::get('/openCampaignMoney', [App\Http\Controllers\openCampaignMoneyController::class, 'index']);
@@ -68,12 +71,19 @@ Route::post('/openCampaignMoneyController/create', [App\Http\Controllers\openCam
 
 // edit Money Campaign
 Route::get('/edit/{id}',[App\Http\Controllers\CampaignController::class, 'editCampaign']);
-Route::post('/updateCampaignMoney', [App\Http\Controllers\CampaignController::class, 'update']);
+Route::post('/update',[App\Http\Controllers\CampaignController::class, 'update']);
 
-//For Manager Open Object Campaign
+// object Request Manager
+Route::get('/decisionObject/{id}', [App\Http\Controllers\ProgressController::class, 'decisionObject']);
+
+// For Manager Open Object Campaign
 Route::get('/openCampaignObject/callOpenCampaign', [App\Http\Controllers\ManagerPageController::class, 'callOpenCampaign']);
 Route::get('/openCampaignObject', [App\Http\Controllers\openCampaignObjectController::class, 'index']);
 Route::post('/openCampaignObjectController/create', [App\Http\Controllers\openCampaignObjectController::class, 'create']);
+
+// campaign Terminate Request
+Route::get('/requestTerminate/{id}',[App\Http\Controllers\CampaignController::class, 'requestTerminate']);
+Route::post('/request', [App\Http\Controllers\CampaignController::class, 'request']);
 
 //Staff
 Route::get('/staff_money',[App\Http\Controllers\UserDonateController::class, 'index'])->name('staff_money');
@@ -86,6 +96,12 @@ Route::get('/staff_verify/eslip/{id}',[App\Http\Controllers\UserDonateController
 Route::get('/staff_verify/approve/{id}',[App\Http\Controllers\ManagerController::class, 'approve'])->name('verify_approve');
 Route::get('/staff_verify/deny/{id}',[App\Http\Controllers\ManagerController::class, 'deny'])->name('verify_deny');
 Route::get('/staff_verify/info/{id}',[App\Http\Controllers\ManagerController::class, 'info'])->name('info');
+
+Route::get('/terminatereq',[App\Http\Controllers\ManagerController::class, 'terminateCam'])->name('terminatereq');
+Route::get('/terminatereq/info/{id}',[App\Http\Controllers\ManagerController::class, 'terminateInfo'])->name('terminateinfo');
+Route::get('/terminatereq/deny/{id}',[App\Http\Controllers\ManagerController::class, 'terminateDeny'])->name('terminatedeny');
+Route::get('/terminatereq/approve/{id}',[App\Http\Controllers\ManagerController::class, 'terminateApprove'])->name('terminateapprove');
+
 
 //Admin
 Route::get('/admin',[App\Http\Controllers\StaffController::class,'index'])->name('admin');

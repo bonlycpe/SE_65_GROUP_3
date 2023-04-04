@@ -10,7 +10,7 @@
             <div class="col-lg-8">
                 <!-- Recently Favorited -->
                 <div class="widget dashboard-container my-adslist">
-                    <h3 class="widget-header">แคมเปญ {{$campaign->Name}}</h3>
+                    <h3 class="widget-header">รายการผู้รับสิ่งของจากแคมเปญ {{$campaign->Name}}</h3>
                     @if ($progress != null)
                     <table class="table table-responsive product-dashboard-table">
                         <thead>

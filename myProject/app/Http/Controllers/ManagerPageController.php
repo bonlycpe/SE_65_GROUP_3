@@ -16,18 +16,16 @@ class ManagerPageController extends Controller
     {
         $campaignMoney = MoneyCampaign::getAll();
         $campaignObject = ObjectCampaign::getAll();
-        $progressBar = Array();
         for($i = 0 ; $i < sizeof($campaignMoney); $i++){
             $total = $campaignMoney[$i]->total;
             $goal = $campaignMoney[$i]->Goal;
             $percent = ($total/$goal)*100;
             $progressBar[$i] = $percent;
         }
-
         $user = Auth::user();
-        $myCampaign = UseInCampaign::getByUserId($user->Id);
-
-        return view('managerPage',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject,'progressBar'=>$progressBar,'myCampaign'=>$myCampaign]);
+        //$myCampaign = UseInCampaign::getAllMoneyByUserId($user->id);
+        //dd($myCampaign);
+        return view('managerPage',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject,'progressBar'=>$progressBar]);
     }
 
     public function update(Request $request){

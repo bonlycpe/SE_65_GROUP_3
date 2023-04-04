@@ -44,9 +44,14 @@
                                             id="input-file">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                <a class="btn btn-secondary font-weight-bold mt-3" href="{{url('/home')}}">
+                                    กลับ
+                                </a>
                                 <button type="submit" class="btn btn-primary font-weight-bold mt-3">บริจาคเงิน</button>
-
+                                </div>
                             </form>
+
                         </div>
 
                     </div>

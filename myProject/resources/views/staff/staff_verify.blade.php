@@ -20,7 +20,7 @@
 
     <div class="container">
         <div class="row">
-            <table class="table table-striped">
+            <table class="table table-striped w-auto mx-auto">
                 <thead>
                     <tr>
                         <th scope="col">ลำดับ</th>
@@ -51,7 +51,7 @@
         <h1 style="text-align: center;">All Approved User(s)</h1>
         <div class="container">
             <div class="row">
-                <table class="table table-striped">
+                <table class="table table-striped w-auto mx-auto">
                     <thead>
                         <tr>
                             <th scope="col">ลำดับ</th>

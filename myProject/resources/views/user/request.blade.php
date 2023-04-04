@@ -8,7 +8,7 @@
         <div class="widget welcome-message">
             <h2>บริจาครับบริจาคของจากแคมเปญ {{$campaign->Name}}</h2>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center align-item-center">
             <div class="col-lg-12 col-md-8 align-item-center">
                 <!-- Edit Personal Info -->
                 <div class="row">
@@ -33,9 +33,12 @@
                                     <input type="text" name="description" class="form-control" id="time" value=""
                                         required>
                                 </div>
-                                <button type="submit"
-                                    class="btn btn-primary font-weight-bold mt-3">รับบริจาคของ</button>
-
+                                <div class="form-group">
+                                    <a class="btn btn-secondary font-weight-bold mt-3" href="{{url('/home')}}">
+                                        กลับ
+                                    </a>
+                                    <button type="submit" class="btn btn-primary font-weight-bold mt-3">บริจาคเงิน</button>
+                                    </div>
                             </form>
                         </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\ManagerRequest;
@@ -32,5 +33,22 @@ class ManagerController extends Controller
     {
         $info = ManagerRequest::info($id);
         return view('staff.userInfo',compact('info'));
+    }
+    function terminateCam(){
+        $campaign = Campaign::getReqCampaign();
+        $campaign1 = Campaign::getTerminateCampaign();
+        return view('staff.terminate',compact('campaign','campaign1'));
+    }
+    function terminateInfo($id){
+        $campaign = Campaign::getReqCampaignById($id);
+        return view('staff.terminateInfo',compact('campaign'));
+    }
+    function terminateDeny($id){
+        Campaign::terminateDeny($id);
+        return redirect('terminatereq');
+    }
+    function terminateApprove($id){
+        Campaign::terminateApprove($id);
+        return redirect('terminatereq');
     }
 }

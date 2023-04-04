@@ -26,6 +26,9 @@ class openCampaignObjectController extends Controller
     }
 
     public function create(Request $request){
+        $validatedData = $request->validate([
+            'campaign_image' => 'required|file',
+        ], );
 
         $user = Auth::user();
 
@@ -37,7 +40,7 @@ class openCampaignObjectController extends Controller
 
         //campaign
         $campaign_image = $request->file('campaign_image');
-        $campaign_image_name = $request->name.'.'.$campaign_image->getClientOriginalExtension();
+        $campaign_image_name = $campaign_image->getClientOriginalName();
         $path = $campaign_image->move(public_path('images/campaign'), $campaign_image_name);
 
         $campaign = new Campaign;

@@ -75,11 +75,6 @@ class ObjectRequest extends Model
     public static function getAllByCampaignId($id) {
         $user = Auth::user();
 
-        // $campaign_object_request = DB::table('campaign_project_user')
-        // ->join('users','campaign_project_user.user_id','=',$user->id)
-        // ->where('campaign_project_user.campaign_id','=',$id)
-        // ->get(); 
-
         $donate = DB::table('campaign_object_request')
         ->join('campaign_project_user','campaign_object_request.campaign_project_user_id','=','campaign_project_user.Id')
         ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
@@ -87,7 +82,7 @@ class ObjectRequest extends Model
         ->where('campaign_object_request.campaign_project_user_id','=',75)
         ->select('campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id')
         ->get();    
-
+        //dd(2141);
         return $donate;
     }
 

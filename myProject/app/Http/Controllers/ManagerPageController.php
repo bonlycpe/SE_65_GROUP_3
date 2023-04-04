@@ -12,12 +12,18 @@ use App\Models\User;
 use App\Models\UseInCampaign;
 class ManagerPageController extends Controller
 {
-    function index()
+function index()
     {
         $user = Auth::user();
         $campaignMoney = UseInCampaign::getAllMoneyByUserId($user->id);
         $campaignObject = UseInCampaign::getAllObjectByUserId($user->id);
-        $progressBar = array();
+        if(sizeof($campaignObject) == 0){
+            $campaignObject = null;
+        }
+        if(sizeof($campaignMoney) == 0){
+            $campaignMoney = null;
+        }
+        $progressBar=array();
         for($i = 0 ; $i < sizeof($campaignMoney); $i++){
             $total = $campaignMoney[$i]->total;
             $goal = $campaignMoney[$i]->Goal;

@@ -53,7 +53,8 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto main-nav ">
                                 <li class="nav-item @@home">
-                                    <a class="nav-link" href="{{url('/openCampaignObject')}}">เปิดแคมเปญให้ของ</a>
+                                    <a class="nav-link"
+                                        href="{{url('/openCampaignObject/callOpenCampaign')}}">เปิดแคมเปญให้ของ</a>
                                 </li>
                                 <li class="nav-item @@profile">
                                     <a class="nav-link" href="{{url('/openCampaignMoney')}}">เปิดแคมเปญบริจาคเงิน</a>

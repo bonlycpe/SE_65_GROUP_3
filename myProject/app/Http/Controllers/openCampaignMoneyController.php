@@ -24,28 +24,52 @@ class openCampaignMoneyController extends Controller
     }
 
     public function create(Request $request){
+        $validatedData = $request->validate([
+            'QR_image' => 'required|file',
+        ], );
+
         $user = Auth::user();
+
 
         $name = $request->campaignName;
         $description = $request->description;
         $goal = $request->goal;
 
         //for image
-        $campaign_image = $request->file('campaign_image');
-        $campaign_image_name = $request->name.'.'.$campaign_image->getClientOriginalExtension();
-        $path = $campaign_image->move(public_path('images/campaign'), $campaign_image_name);
+        // $campaign_image = $request->file('campaign_image');
+        // $campaign_image_name = $campaign_image->getClientOriginalName();
+        // $path = $campaign_image->move(public_path('images/campaign'), $campaign_image_name);
 
-        $campaign = new Campaign;
-        $campaign->Name = $name;
-        $campaign->Description = $description;
-        $campaign->Status = 'ACTIVE';
-        $campaign->Image = $campaign_image->getClientOriginalName();
-        $campaign->save();
+        // $campaign = new Campaign;
+        // $campaign->Name = $name;
+        // $campaign->Description = $description;
+        // $campaign->Status = 'ACTIVE';
+        // $campaign->Image = $campaign_image->getClientOriginalName();
+        // $campaign->save();
+
+        if($request->hasFile('campaign_image')){
+            $campaign_image = $request->file('campaign_image');
+            $campaign_image_name = $campaign_image->getClientOriginalName();
+            $path = $campaign_image->move(public_path('images/campaign'), $campaign_image_name);
+
+            $campaign = new Campaign;
+            $campaign->Name = $name;
+            $campaign->Description = $description;
+            $campaign->Status = 'ACTIVE';
+            $campaign->Image = $campaign_image->getClientOriginalName();
+            $campaign->save();
+        }else{
+            $campaign = new Campaign;
+            $campaign->Name = $name;
+            $campaign->Description = $description;
+            $campaign->Status = 'ACTIVE';
+            $campaign->save();
+        }
 
         $campaign_id = (Campaign::getByName($name))->Id;
         $qr_image = $request->file('QR_image');
-        $qr_image_name = $request->name.'.'.$qr_image->getClientOriginalExtension();
-        $path = $qr_image->move(public_path('images/campaign'), $qr_image_name);
+        $qr_image_name = $qr_image->getClientOriginalName();
+        $path = $qr_image->move(public_path('images/qrcode'), $qr_image_name);
 
         $money_campaign = new MoneyCampaign;
         $money_campaign->campaign_money_id = $campaign_id;

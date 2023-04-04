@@ -49,12 +49,12 @@ class HomeController extends Controller
             } else {
                 return view('index', ['user' => $user]);
                 $campaignMoney = MoneyCampaign::getAllNotTerminate();
-                $campaignObject = ObjectCampaign::getAll();
+                $campaignObject = ObjectCampaign::getAllNotTerminate();
                 return view('index', ['campaignMoney' => $campaignMoney], ['campaignObject' => $campaignObject]);
             }
         } else {
             $campaignMoney = MoneyCampaign::getAllNotTerminate();
-            $campaignObject = ObjectCampaign::getAll();
+            $campaignObject = ObjectCampaign::getAllNotTerminate();
             $progressBar = Array();
             for($i = 0 ; $i < sizeof($campaignMoney); $i++){
                 $total = $campaignMoney[$i]->total;

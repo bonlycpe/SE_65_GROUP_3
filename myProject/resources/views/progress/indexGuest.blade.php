@@ -1,4 +1,4 @@
-@extends('layouts.MainLayoutUser')
+@extends('layouts.MainLayout')
 
 @section('content')
 <section class="blog single-blog section">
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <br><br>
                 @endforeach
                 @else
@@ -34,9 +34,9 @@
                 @endif
             </div>
             <div class="col-lg-8">
-            <a href="{{url('/home')}}">
-                <button class="btn btn-secondary">กลับ</button>
-            </a>
+                <a href="{{url('/')}}">
+                    <button class="btn btn-secondary">กลับ</button>
+                </a>
             </div>
         </div>
     </div>

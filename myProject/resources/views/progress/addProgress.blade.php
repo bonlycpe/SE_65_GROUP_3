@@ -1,10 +1,11 @@
-@extends('layouts.LayoutProgress')
+@extends('layouts.LayoutBlank')
 
 @section('content')
 <section class="blog single-blog section">
     <div class="container">
         <h2>ความคืบหน้าของแคมเปญคุณ : {{$campaign->Name}}</h2>
         <div class="text-end">
+            <a type="submit" value="Submit" href="/managerPage" class="btn btn-main btn-success">กลับ<i class="icofont-simple-right ml-2"></i></a>
             <a href="/addProgressPage/{{$campaign->Id}}" class="btn btn-main btn-success ">เพิ่มความคืบหน้า</a>
         </div>
         <div class="row justify-content-center align-item-center">

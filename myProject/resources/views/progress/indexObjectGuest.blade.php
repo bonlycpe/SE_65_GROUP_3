@@ -1,4 +1,5 @@
-@extends('layouts.MainLayoutUser')
+@extends('layouts.MainLayout')
+
 
 @section('content')
 <section class="dashboard section">
@@ -41,7 +42,7 @@
                     @endif
                 </div>
 
-                <a href="{{url('/home')}}">
+                <a href="{{url('/')}}">
                     <button class="btn btn-secondary">กลับ</button>
                 </a>
 

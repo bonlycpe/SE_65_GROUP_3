@@ -8,7 +8,7 @@
         <div class="widget welcome-message">
             <h2>บริจาครับบริจาคของจากแคมเปญ {{$campaign->Name}}</h2>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center align-item-center">
             <div class="col-lg-12 col-md-8 align-item-center">
                 <!-- Edit Personal Info -->
                 <div class="row">
@@ -25,7 +25,7 @@
                                 <!-- Last Name -->
                                 <div class="form-group">
                                     <label for="last-name">จำนวน</label>
-                                    <input type="number" name="surname" class="form-control" id="time" value=""
+                                    <input type="number" name="amount" class="form-control" id="time" value=""
                                         required min=0 pattern="[0-9]+">
                                 </div>
                                 <div class="form-group">
@@ -33,9 +33,12 @@
                                     <input type="text" name="description" class="form-control" id="time" value=""
                                         required>
                                 </div>
-                                <button type="submit"
-                                    class="btn btn-primary font-weight-bold mt-3">รับบริจาคของ</button>
-
+                                <div class="form-group">
+                                    <a class="btn btn-secondary font-weight-bold mt-3" href="{{url('/home')}}">
+                                        กลับ
+                                    </a>
+                                    <button type="submit" class="btn btn-primary font-weight-bold mt-3">บริจาคเงิน</button>
+                                    </div>
                             </form>
                         </div>
 

@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group text-left">
                             <label>รูป QR CODE สำหรับโอนเงิน</label>
-                            <input type="file" name="QR_image" class="form-control-file mt-2 pt-1" id="input-file">
+                            <input type="file" name="QR_image" class="form-control-file mt-2 pt-1" id="input-file" required>
                         </div>
                    <button type="submit" class="btn btn-main btn-success btn-round-full">เปิดแคมเปญ<i class="icofont-simple-right ml-2"></i></button>
                    </div>

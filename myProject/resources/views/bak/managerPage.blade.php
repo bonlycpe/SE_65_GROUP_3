@@ -20,8 +20,7 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}"
-                                    alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -147,7 +146,7 @@
                             <div class="cardcard">
                                 @if ($object->Status == "ACTIVE")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -169,7 +168,7 @@
 
                                 @elseif ($object->Status == "TERMINATE")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt">{{$object->Name}}</a></h4>
@@ -188,7 +187,7 @@
                                 </div>
                                 @elseif ($object->Status == "FINISHED")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a

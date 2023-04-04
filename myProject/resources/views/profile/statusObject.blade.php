@@ -70,7 +70,7 @@
                 </div>
 
                 <a href="{{url('/profile')}}">
-                    <button class="btn btn-primary">กลับ</button>
+                    <button class="btn btn-secondary">กลับ</button>
                 </a>
             </div>
             <!-- Row End -->

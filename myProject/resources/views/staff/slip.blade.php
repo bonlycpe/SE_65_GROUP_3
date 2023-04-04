@@ -20,7 +20,7 @@
         <h2 style="text-align: center;">E-Slip</h2>
         <br>
         <br>
-        <img src="images/eslip/{{$e->eSlip}}">
+        <img src="{{url('images/e-slip/'.$e->eSlip)}}" style="width: 75%;"  >
         <br>
         <h5>ชื่อผู้บริจาค</h5>
         <input class="form-control" type="text" value="{{$e->name}}" aria-label="Disabled input example" disabled readonly>

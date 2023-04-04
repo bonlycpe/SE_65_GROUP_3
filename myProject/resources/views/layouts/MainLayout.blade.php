@@ -43,7 +43,7 @@
                 <div class="col-md-12">
                     <nav class="navbar navbar-expand-lg navbar-light navigation">
                         <a class="navbar-brand" href="{{url('/')}}">
-                            <img src="images/logo.png" width="98" height="38">
+                            <img src="{{url('images/logo.png')}}" width="98" height="38">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -58,10 +58,6 @@
                                 <ul class="navbar-nav ml-auto mt-10">
                                     <li class="nav-item">
                                         <a class="nav-link login-button" href="{{url('/login')}}">เข้าสู่ระบบ</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-white add-button" href="ad-listing.html"><i
-                                                class="fa fa-plus-circle"></i> Add Listing</a>
                                     </li>
                                 </ul>
                         </div>

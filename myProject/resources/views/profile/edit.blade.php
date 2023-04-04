@@ -35,12 +35,12 @@
 
                                         <i class="fa fa-amazon-pay text-center"></i>
                                         <input type="file" name="profile_image" class="form-control-file mt-2 pt-1"
-                                            id="input-file">
+                                            id="input-file" value="{{url('images/user/'.$user->Image)}}">
                                     </div>
                                 </div>
                                 <div class="row justify-content-around">
                                     <a href="{{url('/profile')}}">
-                                        <button class="btn btn-primary font-weight-bold mt-3">กลับ</button>
+                                        <button class="btn btn-secondary font-weight-bold mt-3">กลับ</button>
                                     </a>
                                     <button type="submit"
                                         class="btn btn-primary font-weight-bold mt-3">แก้ไขข้อมูล</button>

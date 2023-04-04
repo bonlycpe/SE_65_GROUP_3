@@ -125,17 +125,6 @@ class ObjectRequest extends Model
         ->where('campaign_object_request.campaign_project_user_id','=',$PK->Id)
         ->select('campaign_object_request.Id','campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id','campaign_object_request.Status')
             ->get();
-        /*if($PK->Role == "CHAIRMAN"){
-                $donate = DB::table('campaign_object_request')
-            ->join('campaign_project_user','campaign_object_request.campaign_project_user_id','=','campaign_project_user.Id')
-            ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
-            ->join('users','campaign_object_request.user_id','=','users.Id')
-            ->where('campaign_object_request.campaign_object_id','=',$id)
-            ->where('campaign_object_request.Status','!=',"REQUEST")
-            ->where('campaign_object_request.campaign_project_user_id','!=',$PK->Id)
-            ->select('campaign_object_request.Id','campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id','campaign_object_request.Status')
-                ->get();
-        }  */  
         return $donate;
     }
 

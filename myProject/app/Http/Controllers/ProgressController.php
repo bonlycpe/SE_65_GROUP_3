@@ -217,7 +217,14 @@ class ProgressController extends Controller
                 $board[$i]['name'] = UseInCampaign::getById($objReq[$i]->campaign_project_user_id)->name;
                 $board[$i]['surname'] = UseInCampaign::getById($objReq[$i]->campaign_project_user_id)->surname;
             }
-            return view('voteChairman',['objReq'=>$objReq,'nameCampaign'=>$nameCampaign,'Id'=>$id,'campaignId'=>$campaignId,'board'=>$board]);
+            $objReqCheck = ObjectRequest::getById($id);
+            if($objReqCheck->permission != "APPROVE"){
+                return view('voteChairman',['objReq'=>$objReq,'nameCampaign'=>$nameCampaign,'Id'=>$id,'campaignId'=>$campaignId,'board'=>$board]);
+            }
+            else{
+                return redirect('/decisionObject/'.$objReqCheck->campaign_object_id);
+            }
+            
         }
         
     }

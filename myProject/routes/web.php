@@ -49,6 +49,8 @@ Route::post('/requested', [App\Http\Controllers\RequestController::class, 'creat
 //progress
 Route::get('/progress/{id}', [App\Http\Controllers\ProgressController::class, 'index']);
 Route::get('/progressObject/{id}', [App\Http\Controllers\ProgressController::class, 'indexObject']);
+Route::get('/progressGuest/{id}', [App\Http\Controllers\ProgressController::class, 'indexGuest']);
+Route::get('/progressObjectGuest/{id}', [App\Http\Controllers\ProgressController::class, 'indexObjectGuest']);
 Route::get('/addProgress/{id}', [App\Http\Controllers\ProgressController::class, 'toAddProgress'])->name('addProgress');
 Route::get('/addProgressPage/{id}', [App\Http\Controllers\ProgressController::class, 'indexAdd']);
 Route::post('/add', [App\Http\Controllers\ProgressController::class, 'add']);

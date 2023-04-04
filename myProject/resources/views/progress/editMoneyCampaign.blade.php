@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="widget personal-info">
-                            <form method="POST" action="updateCampaignMoney" enctype="multipart/form-data">
+                            <form method="POST" action="/update" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">ชื่อแคมเปญ</label>
@@ -24,17 +24,7 @@
                                     <label>รายละเอียดแคมเปญ</label>
                                     <textarea name="Description" id="Description" class="form-control" rows="3" style="width: 150%; height: 200px;" required>{{$campaign->Description}}</textarea>
                                 </div>
-                                {{-- <div class="form-group">
-                                    <label>คำเตือน ! หากเลือกยุติแคมเปญจะไม่สามารถอัพเดตความคืบหน้าและแก้ไขแคมเปญได้อีกต่อไป</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="TERMINATE" id="status" name="status">
-                                        <label class="form-check-label" for="status">
-                                            ยุติแคมเปญ
-                                        </label>
-                                    </div>
-                                </div> --}}
-                                
-
+                                <input type="hidden" name="id" id="id" value={{$campaign->Id}}>
                                 <!-- File chooser -->
                                 <div class="form-group">
                                     <label for="last-name">อัพโหลดรูปภาพ</label>

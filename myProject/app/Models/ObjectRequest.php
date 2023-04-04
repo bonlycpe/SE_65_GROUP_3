@@ -22,18 +22,6 @@ class ObjectRequest extends Model
         'CampaignObjectId'
     ];
 
-    public static function getAllApproveByCampaignId($id) {
-        $donate = DB::table('campaign_object_request')
-        ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
-        ->join('users','campaign_object_request.user_id','=','users.Id')
-        ->where('campaign_object_request.campaign_object_id','=',$id)
-        ->where('campaign_object_request.Status','=',"APPROVE")
-        ->select('campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id')
-        ->get();    
-
-        return $donate;
-    }
-
     public static function getAllRequestAndUser($id) {
         $donate = DB::table('campaign_object_request')
         ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
@@ -68,4 +56,28 @@ class ObjectRequest extends Model
 
         return $donate;
     }
+
+    public static function getAllApproveByCampaignId($id) {
+        $donate = DB::table('campaign_object_request')
+        ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
+        ->join('users','campaign_object_request.user_id','=','users.Id')
+        ->where('campaign_object_request.campaign_object_id','=',$id)
+        ->where('campaign_object_request.Status','=',"APPROVE")
+        ->select('campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id')
+        ->get();    
+
+        return $donate;
+    }
+
+    public static function getAllByCampaignId($id) {
+        $donate = DB::table('campaign_object_request')
+        ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
+        ->join('users','campaign_object_request.user_id','=','users.Id')
+        ->where('campaign_object_request.campaign_project_user_id ','=',20)
+        ->select('campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id')
+        ->get();    
+
+        return $donate;
+    }
+
 }

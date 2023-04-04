@@ -7,13 +7,12 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <a>หมวดหมู่ : </a>
-                    <a href="/foodM">อาหาร</a>
-                    <a href="/apparelM">เครื่องนุ่งห่ม</a>
-                    <a href="/medicineM">ยา</a>
-                    <a href="/moneyM">บริจาคเงิน</a>
+                    <input id="search" type="text" />
+                    <button onclick="search()" class="btn btn-success btn-submit">ค้นหา</button>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-lg-12 col-12">
                 <div class="sectione-title-wrap">
@@ -31,87 +30,28 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
-                                        href="/progress/{{$money->campaign_money_id}}">{{$money->Name}}</a></h4></h4>
+                                            href="/progress/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
+                                            class="SttausA">{{$money->Status}}</span></h4>
+                                    </h4>
                                     <p class="cardd">{{$money->Description}}</p>
-                                    <p class="card-text">${{$money->Goal}}</p>
                                     <div class="row">
                                         <ul class="list-inline product-meta">
                                             <li class="list-inline-item">
-                                                <a href="/donate"><i class="fa fab fa-angellist"></i>บริจาคเงิน</a>
+                                                <a href="/home"><i class="fa fab fa-angellist"></i>บริจาคเงิน</a>
                                             </li>
-                                            <a
-                                                href="/donate/{{$money->campaign_money_id}}"><button>บริจาคเงิน</button></a> <span class="SttausA">{{$money->Status}}</span>
+                                            <a href="/donate/{{$money->campaign_money_id}}"><button
+                                                    class="btn btn-primary">บริจาคเงิน</button></a>
                                         </ul>
                                     </div>
 
                                     <div class="product-ratings">
-                                        <div class="progress">
-                                            <?php echo '<div class="progress-bar" role="progressbar"
-                                                aria-valuemin="0" aria-valuemax="100"
-                                                style="width: '.$progressBar[$key].'%"> <span class="sr-only">
-                                                70% Complete</span>
-                                            </div>';?>
-                                        </div>
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                    @elseif ($money->Status == "TERMINATE")
-                    
-                        <div class="col-sm-12 col-lg-4">
-                            <div class="product-item bg-light">
-                               {{-- <div class="cardcardcard" >  --}}
-                                <div class="cardcardcard">
-                                    <div class="thumb-content">
-                                        <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
-                                    </div>
-                                    <div class="card-body">
-                                        <h4 class="cardt">{{$money->Name}}</h4>
-                                        <p class="cardd">{{$money->Description}}</p>
-                                        <p class="card-text">${{$money->Goal}}</p>
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <i class="fa fas fa-ban"></i>บริจาคเงิน
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <i class="fa fas fa-ban"></i>บริจาค
-                                            </li><span class="SttausT">{{$money->Status}}</span>
-                                        </ul>
-                                        
-                                    </div>
-                                    <div class="ima " ></div>
-                                </div>
-                            </div>
-                        </div>
-                    {{-- </div> --}}
-                    @elseif ( $money->Status == 'FINISHED' )
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="product-item bg-light">
-                            <div class="cardcard">
-                                <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="cardt"><a
-                                            href="/progress/{{$money->campaign_money_id}}">{{$money->Name}}</a></h4>
-                                    <p class="cardd">{{$money->Description}}</p>
-                                    <p class="card-text">${{$money->Goal}}</p>
-                                    <div class="row">
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <a href="/donate"><i class="fa fab fa-angellist"></i>บริจาคเงิน</a>
-                                            </li>
-                                            <a
-                                                href="/donate/{{$money->campaign_money_id}}"><button>บริจาคเงิน</button></a><span class="SttausF">{{$money->Status}}</span>
-                                        </ul>
-                                    </div>
-                                    <div class="product-ratings">
+                                        <h6>จำนวนเงิน({{$money->total}}/{{$money->Goal}})
+                                            <span class="pull-right">{{$progressBar[$key]}} %</span>
+                                        </h6>
                                         <div class="progress">
                                             <?php echo '<div class="progress-bar" role="progressbar"
                                                  aria-valuemin="0" aria-valuemax="100"
@@ -122,7 +62,46 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
+                            </div>
+                        </div>
+                    </div>
+                    @elseif ( $money->Status == 'FINISHED' )
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="product-item bg-light">
+                            <div class="cardcard">
+                                <div class="thumb-content">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="cardt"><a
+                                            href="/progress/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
+                                            class="SttausF">{{$money->Status}}</span></h4>
+
+                                    <p class="cardd">{{$money->Description}}</p>
+                                    <div class="row">
+                                        <ul class="list-inline product-meta">
+                                            <li class="list-inline-item">
+                                                <a href="/home"><i class="fa fab fa-angellist"></i>บริจาคเงิน</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="product-ratings">
+                                        <h6>จำนวนเงิน({{$money->total}}/{{$money->Goal}})
+                                            <span class="pull-right">{{$progressBar[$key]}} %</span>
+                                        </h6>
+                                        <div class="progress">
+                                            <?php echo '<div class="progress-bar" role="progressbar"
+                                                 aria-valuemin="0" aria-valuemax="100"
+                                                style="width: '.$progressBar[$key].'%"> <span class="sr-only">
+                                                70% Complete</span>
+                                            </div>';?>
+
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -153,63 +132,44 @@
                             <div class="cardcard">
                                 @if ($object->Status == "ACTIVE")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$object->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
-                                            href="/progress/{{$object->campaign_object_Id}}">{{$object->Name}}</a></h4>
+                                            href="/progressObject/{{$object->campaign_object_Id}}">{{$object->Name}}</a>
+                                        <span class="SttausA">{{$object->Status}}</span>
+                                    </h4>
                                     <p class="cardd">{{$object->Description}}</p>
                                     <div class="row">
                                         <ul class="list-inline product-meta">
                                             <li class="list-inline-item">
-                                                <i class="fa fab fa-angellist"></i>{{$object->Tag}}
+                                                <a href="/home"><i class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
-                                            <a
-                                                href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a><span class="SttausA">{{$object->Status}}</span>
+                                            <a href="/request/{{$object->campaign_object_Id}}"><button
+                                                    class="btn btn-primary">รับบริจาค</button></a>
                                         </ul>
-                                        
-                                    </div>
-                                    
-                                </div>
 
-
-                                @elseif ($object->Status == "TERMINATE")
-                                <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$object->Image}}" alt="Card image cap">
-                                </div>
-                                <div class="card-body">
-                                    <h4 class="cardt">{{$object->Name}}</a></h4>
-                                    <p class="cardd">{{$money->Description}}</p>
-                                    <div class=" row">
-                                        <ul class="list-inline product-meta">
-                                            <li class="list-inline-item">
-                                                <i class="fa fas fa-ban"></i>บริจาคเงิน
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <i class="fa fas fa-ban"></i>บริจาค
-                                            </li><span class="SttausT">{{$object->Status}}</span>
-                                        </ul>
                                     </div>
-                                    
+
                                 </div>
                                 @elseif ($object->Status == "FINISHED")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$object->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
-                                            href="/progress/{{$object->campaign_object_Id}}">{{$object->Name}}</a></h4>
+                                            href="/progressObject/{{$object->campaign_object_Id}}">{{$object->Name}}</a>
+                                        <span class="SttausF">{{$object->Status}}</span>
+                                    </h4>
                                     <p class="cardd">{{$object->Description}}</p>
                                     <div class="row">
                                         <ul class="list-inline product-meta">
                                             <li class="list-inline-item">
-                                                <i class="fa fab fa-angellist"></i>{{$object->Tag}}
+                                                <a href="/home"><i class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
-                                            <a
-                                                href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a><span class="SttausF">{{$object->Status}}</span>
                                         </ul>
                                     </div>
-                                    
+
                                 </div>
                                 @endif
                             </div>
@@ -221,4 +181,24 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function search() {
+    var name = $("#search").val();
+    $.ajax({
+        type: 'get',
+        url: "{{ url('search') }}",
+        data: {
+            "name": name,
+        },
+        success: function(response) {
+            $("#content").empty();
+            $("#content").html(response);
+        }
+    });
+}
+</script>
 @endsection

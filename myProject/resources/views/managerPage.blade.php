@@ -20,7 +20,7 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -36,28 +36,21 @@
                                             <a
                                                 href="/addProgress/{{$money->campaign_money_id}}"><button>เพิ่มความคืบหน้า</button></a>
                                         </ul>
-                                    </div>
-
-                                    <div class="product-ratings">
-                                        <div class="progress">
-                                            <?php echo '<div class="progress-bar" role="progressbar"
-                                                aria-valuemin="0" aria-valuemax="100"
-                                                style="width: '.$progressBar[$key].'%"> <span class="sr-only">
-                                                70% Complete</span>
-                                            </div>';?>
-                                        </div>
+                                        <ul class="list-inline product-meta">
+                                            <a
+                                            href="/requestTerminate/{{$money->campaign_money_id}}"><button>ขอยุติแคมเปญ</button></a>
+                                        </ul>
                                     </div>
                                 </div>
-                                <span class="SttausA">{{$money->Status}}</span>
                             </div>
                         </div>
                     </div>
-                    @elseif ($money->Status == "TERMINATE")
+                    @elseif ($money->Status == "REQUEST_TERMINATE")
                     <div class="col-sm-12 col-lg-4">
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt">{{$money->Name}}</h4>
@@ -71,7 +64,31 @@
                                             <i class="fa fas fa-ban"></i>บริจาค
                                         </li>
                                     </ul>
-                                    <span class="SttausT">{{$money->Status}}</span>
+                                    <span class="SttausT">กำลังรอการพิจารณายุติ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @elseif ($money->Status == "TERMINATE")
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="product-item bg-light">
+                            <div class="cardcard">
+                                <div class="thumb-content">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="cardt">{{$money->Name}}</h4>
+                                    <p class="cardd">{{$money->Description}}</p>
+                                    <p class="card-text">${{$money->Goal}}</p>
+                                    <ul class="list-inline product-meta">
+                                        <li class="list-inline-item">
+                                            <i class="fa fas fa-ban"></i>บริจาคเงิน
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <i class="fa fas fa-ban"></i>บริจาค
+                                        </li>
+                                    </ul>
+                                    <span class="SttausT">ยุติแคมเปญนี้</span>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +98,7 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -91,25 +108,14 @@
                                     <div class="row">
                                         <ul class="list-inline product-meta">
                                             <a
-                                                href="/donate/{{$money->campaign_money_id}}"><button>แก้ไขแคมเปญ</button></a>
+                                                href="/edit/{{$money->campaign_money_id}}"><button>แก้ไขแคมเปญ</button></a>
                                         </ul>
                                         <ul class="list-inline product-meta">
                                             <a
                                                 href="/addProgress/{{$money->campaign_money_id}}"><button>เพิ่มความคืบหน้า</button></a>
                                         </ul>
                                     </div>
-                                    <div class="product-ratings">
-                                        <div class="progress">
-                                            <?php echo '<div class="progress-bar" role="progressbar"
-                                                 aria-valuemin="0" aria-valuemax="100"
-                                                style="width: '.$progressBar[$key].'%"> <span class="sr-only">
-                                                70% Complete</span>
-                                            </div>';?>
-
-                                        </div>
-                                    </div>
                                 </div>
-                                <span class="SttausF">{{$money->Status}}</span>
                             </div>
                         </div>
                     </div>
@@ -140,7 +146,7 @@
                             <div class="cardcard">
                                 @if ($object->Status == "ACTIVE")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$object->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -153,17 +159,16 @@
                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
                                             <a
-                                                href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a>
+                                                href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
                                         </ul>
                                         
                                     </div>
-                                    <span class="SttausA">{{$object->Status}}</span>
                                 </div>
 
 
                                 @elseif ($object->Status == "TERMINATE")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$object->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt">{{$object->Name}}</a></h4>
@@ -182,7 +187,7 @@
                                 </div>
                                 @elseif ($object->Status == "FINISHED")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$object->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -195,10 +200,9 @@
                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
                                             <a
-                                                href="/request/{{$object->campaign_object_Id}}"><button>รับบริจาค</button></a>
+                                                href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
                                         </ul>
                                     </div>
-                                    <span class="SttausF">{{$object->Status}}</span>
                                 </div>
                                 @endif
                             </div>

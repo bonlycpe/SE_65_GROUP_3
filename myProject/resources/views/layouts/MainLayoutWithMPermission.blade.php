@@ -141,7 +141,9 @@
 
     <body>
         <!-- Container Start -->
-        @yield('content')
+        <div id='content'>
+            @yield('content')
+        </div>
         <!-- Container End -->
     </body>
 

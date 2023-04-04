@@ -51,6 +51,8 @@ Route::get('/progress/{id}', [App\Http\Controllers\ProgressController::class, 'i
 Route::get('/progressObject/{id}', [App\Http\Controllers\ProgressController::class, 'indexObject']);
 Route::get('/progressGuest/{id}', [App\Http\Controllers\ProgressController::class, 'indexGuest']);
 Route::get('/progressObjectGuest/{id}', [App\Http\Controllers\ProgressController::class, 'indexObjectGuest']);
+Route::get('/progressManager/{id}', [App\Http\Controllers\ProgressController::class, 'indexManager']);
+Route::get('/progressObjectManager/{id}', [App\Http\Controllers\ProgressController::class, 'indexObjectManager']);
 Route::get('/addProgress/{id}', [App\Http\Controllers\ProgressController::class, 'toAddProgress'])->name('addProgress');
 Route::get('/addProgressPage/{id}', [App\Http\Controllers\ProgressController::class, 'indexAdd']);
 Route::post('/add', [App\Http\Controllers\ProgressController::class, 'add']);
@@ -61,6 +63,13 @@ Route::get('/statusDonate/{id}', [App\Http\Controllers\ProfileController::class,
 Route::get('/statusObject/{id}', [App\Http\Controllers\ProfileController::class, 'statusObject']);
 Route::get('/editProfile', [App\Http\Controllers\ProfileController::class, 'editProfile']);
 Route::post('/updateProfile', [App\Http\Controllers\ProfileController::class, 'update']);
+
+//Profile
+Route::get('/profileManager', [App\Http\Controllers\ProfileManagerController::class, 'index']);
+Route::get('/statusDonateManager/{id}', [App\Http\Controllers\ProfileManagerController::class, 'statusDonate']);
+Route::get('/statusObjectManager/{id}', [App\Http\Controllers\ProfileManagerController::class, 'statusObject']);
+Route::get('/editProfileManager', [App\Http\Controllers\ProfileManagerController::class, 'editProfile']);
+Route::post('/updateProfileManager', [App\Http\Controllers\ProfileManagerController::class, 'update']);
 
 //Request Manager Permission
 Route::get('/requestVerify', [App\Http\Controllers\RequestPermissionController::class, 'index']);

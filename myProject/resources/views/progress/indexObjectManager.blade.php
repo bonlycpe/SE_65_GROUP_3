@@ -1,4 +1,4 @@
-@extends('layouts.MainLayoutUser')
+@extends('layouts.MainLayoutWithMPermission')
 
 
 @section('content')

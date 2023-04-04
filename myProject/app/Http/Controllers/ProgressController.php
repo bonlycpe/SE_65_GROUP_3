@@ -107,7 +107,7 @@ class ProgressController extends Controller
 
     function decisionObject($id)
     {
-        $progress = ObjectRequest::getAllByCampaignId($id);
+        $progress = ObjectRequest::getAllApproveByCampaignId($id);
         //dd($progress);
         for ($x = 0; $x < sizeof($progress); $x++) {
             $date = $progress[$x]->Date;

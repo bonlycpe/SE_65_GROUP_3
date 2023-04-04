@@ -12,7 +12,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-12 col-12">
                 <div class="sectione-title-wrap">
@@ -30,7 +29,8 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}"
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -71,7 +71,8 @@
                         <div class="product-item bg-light">
                             <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$money->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$money->Image)}}"
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -128,11 +129,12 @@
                 <div class="row">
                     @foreach($campaignObject as $object)
                     <div class="col-sm-12 col-lg-4">
+                        @if ($object->Status == "ACTIVE")
                         <div class="product-item bg-light">
                             <div class="cardcard">
-                                @if ($object->Status == "ACTIVE")
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$object->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}"
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -152,9 +154,14 @@
                                     </div>
 
                                 </div>
-                                @elseif ($object->Status == "FINISHED")
+                            </div>
+                        </div>
+                        @elseif ($object->Status == "FINISHED")
+                        <div class="product-item bg-light">
+                            <div class="cardcard">
                                 <div class="thumb-content">
-                                    <img class="card-img-top img-fluid" src="{{$object->Image}}" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="{{url('images/campaign/'.$object->Image)}}"
+                                        alt="Card image cap">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
@@ -171,9 +178,9 @@
                                     </div>
 
                                 </div>
-                                @endif
                             </div>
                         </div>
+                        @endif
                     </div>
                     @endforeach
                 </div>

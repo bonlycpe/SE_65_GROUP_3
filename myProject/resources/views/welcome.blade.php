@@ -84,7 +84,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-lg-12 col-12">
                                 <div class="sectione-title-wrap">
@@ -102,7 +101,8 @@
                                         <div class="product-item bg-light">
                                             <div class="cardcard">
                                                 <div class="thumb-content">
-                                                    <img class="card-img-top img-fluid" src="{{$money->Image}}"
+                                                    <img class="card-img-top img-fluid"
+                                                        src="{{url('images/campaign/'.$money->Image)}}"
                                                         alt="Card image cap">
                                                 </div>
                                                 <div class="card-body">
@@ -114,7 +114,7 @@
                                                     <div class="row">
                                                         <ul class="list-inline product-meta">
                                                             <li class="list-inline-item">
-                                                                <a href="/"><i
+                                                                <a href="/home"><i
                                                                         class="fa fab fa-angellist"></i>บริจาคเงิน</a>
                                                             </li>
                                                             <a href="/donate/{{$money->campaign_money_id}}"><button
@@ -145,7 +145,8 @@
                                         <div class="product-item bg-light">
                                             <div class="cardcard">
                                                 <div class="thumb-content">
-                                                    <img class="card-img-top img-fluid" src="{{$money->Image}}"
+                                                    <img class="card-img-top img-fluid"
+                                                        src="{{url('images/campaign/'.$money->Image)}}"
                                                         alt="Card image cap">
                                                 </div>
                                                 <div class="card-body">
@@ -157,7 +158,7 @@
                                                     <div class="row">
                                                         <ul class="list-inline product-meta">
                                                             <li class="list-inline-item">
-                                                                <a href="/"><i
+                                                                <a href="/home"><i
                                                                         class="fa fab fa-angellist"></i>บริจาคเงิน</a>
                                                             </li>
 
@@ -204,11 +205,12 @@
                                 <div class="row">
                                     @foreach($campaignObject as $object)
                                     <div class="col-sm-12 col-lg-4">
+                                        @if ($object->Status == "ACTIVE")
                                         <div class="product-item bg-light">
                                             <div class="cardcard">
-                                                @if ($object->Status == "ACTIVE")
                                                 <div class="thumb-content">
-                                                    <img class="card-img-top img-fluid" src="{{$object->Image}}"
+                                                    <img class="card-img-top img-fluid"
+                                                        src="{{url('images/campaign/'.$object->Image)}}"
                                                         alt="Card image cap">
                                                 </div>
                                                 <div class="card-body">
@@ -220,7 +222,7 @@
                                                     <div class="row">
                                                         <ul class="list-inline product-meta">
                                                             <li class="list-inline-item">
-                                                                <a href="/"><i
+                                                                <a href="/home"><i
                                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                                             </li>
                                                             <a href="/request/{{$object->campaign_object_Id}}"><button
@@ -230,9 +232,14 @@
                                                     </div>
 
                                                 </div>
-                                                @elseif ($object->Status == "FINISHED")
+                                            </div>
+                                        </div>
+                                        @elseif ($object->Status == "FINISHED")
+                                        <div class="product-item bg-light">
+                                            <div class="cardcard">
                                                 <div class="thumb-content">
-                                                    <img class="card-img-top img-fluid" src="{{$object->Image}}"
+                                                    <img class="card-img-top img-fluid"
+                                                        src="{{url('images/campaign/'.$object->Image)}}"
                                                         alt="Card image cap">
                                                 </div>
                                                 <div class="card-body">
@@ -244,16 +251,16 @@
                                                     <div class="row">
                                                         <ul class="list-inline product-meta">
                                                             <li class="list-inline-item">
-                                                                <a href="/"><i
+                                                                <a href="/home"><i
                                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                                             </li>
                                                         </ul>
                                                     </div>
 
                                                 </div>
-                                                @endif
                                             </div>
                                         </div>
+                                        @endif
                                     </div>
                                     @endforeach
                                 </div>

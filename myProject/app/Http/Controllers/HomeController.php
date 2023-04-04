@@ -54,7 +54,7 @@ class HomeController extends Controller
             }
         } else {
             $campaignMoney = MoneyCampaign::getAllNotTerminate();
-            $campaignObject = ObjectCampaign::getAll();
+            $campaignObject = ObjectCampaign::getAllNotTerminate();
             $progressBar = Array();
             for($i = 0 ; $i < sizeof($campaignMoney); $i++){
                 $total = $campaignMoney[$i]->total;

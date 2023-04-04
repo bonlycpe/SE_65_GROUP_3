@@ -15,7 +15,7 @@ class CampaignController extends Controller
     {
         $campaign = campaign::getAll();
         $campaignMoney = MoneyCampaign::getAllNotTerminate();
-        $campaignObject = ObjectCampaign::getAll();
+        $campaignObject = ObjectCampaign::getAllNotTerminate();
         $progressBar = Array();
         for($i = 0 ; $i < sizeof($campaignMoney); $i++){
             $total = $campaignMoney[$i]->total;
@@ -77,7 +77,7 @@ class CampaignController extends Controller
             }
         }else if($name ==""){
             $campaignMoney = MoneyCampaign::getAllNotTerminate();
-            $campaignObject = ObjectCampaign::getAll();
+            $campaignObject = ObjectCampaign::getAllNotTerminate();
             for($i = 0 ; $i < sizeof($campaignMoney); $i++){
                 $total = $campaignMoney[$i]->total;
                 $goal = $campaignMoney[$i]->Goal;

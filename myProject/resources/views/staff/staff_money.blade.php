@@ -1,4 +1,4 @@
-@extends('layouts.LayoutStaff')
+@extends('layouts.LayoutStaffMoney')
 
 @section('content')
 <!DOCTYPE html>

@@ -19,6 +19,10 @@ class UserDonateController extends Controller
         $donateAll = Userdonate::getAll();
         return view('staff.staff_money',compact(['donate','donateAll']));
     }
+    function donated(){
+        $donateAll = Userdonate::getAll();
+        return view('staff.donated',compact('donateAll'));
+    }
 
     function approve(Request $req){
         UserDonate::approve($req->id);
@@ -38,6 +42,11 @@ class UserDonateController extends Controller
     function eslip($id){
         $eslip = UserDonate::eslip($id);
         return view('staff.slip',compact('eslip'));
+    }
+    function search(Request $req){
+        $data = $req->searching;
+        $donateAll = UserDonate::search($data);
+        return view('staff.donated',compact('donateAll'));
     }
 
 }

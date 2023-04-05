@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
-                                            href="/progress/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
+                                            href="/progressManger/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
                                             class="SttausA">{{$money->Status}}</span>
                                     </h4>
                                     <p class="cardd">{{$money->Description}}</p>
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
-                                            href="/progress/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
+                                            href="/progressManger/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
                                             class="SttausF">{{$money->Status}}</span></h4>
 
                                     <p class="cardd">{{$money->Description}}</p>
@@ -142,9 +142,11 @@
                                             href="/progressObject/{{$object->campaign_object_Id}}">{{$object->Name}}</a>
                                         <span class="SttausA">{{$object->Status}}</span>
                                     </h4>
+
                                     <p class="cardd">{{$object->Description}}</p>
                                     <div class="row">
                                         <ul class="list-inline product-meta">
+                                            <p>จำนวนคงเหลือ : {{$object->Amount}}<br></p>
                                             <li class="list-inline-item">
                                                 <a href="/home"><i class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
@@ -171,9 +173,11 @@
                                             href="/progressObject/{{$object->campaign_object_Id}}">{{$object->Name}}</a>
                                         <span class="SttausF">{{$object->Status}}</span>
                                     </h4>
+
                                     <p class="cardd">{{$object->Description}}</p>
                                     <div class="row">
                                         <ul class="list-inline product-meta">
+                                            <p>จำนวนคงเหลือ : {{$object->Amount}}<br></p>
                                             <li class="list-inline-item">
                                                 <a href="/home"><i class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>

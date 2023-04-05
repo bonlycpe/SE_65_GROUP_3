@@ -6,10 +6,12 @@
         <div class="row justify-content-end align-items-center">
             <div class="col-lg-12">
                 <div class="heading text-center pb-5">
-                    <h2 class="font-weight-bold">ลงคะแนนแคมเปญ {{$nameCampaign}}
+                    <h2 class="font-weight-bold">ลงคะแนนแคมเปญ {{$nameCampaign}}<br>
                 </div>
             </div>
+            @if($objReq != null)
             <div class="row">
+
                 @foreach($objReq as $key => $obj)
 
                 <div class="col-lg-6 col-md-6">
@@ -41,6 +43,7 @@
                 </div>
 
                 @endforeach
+
             </div>
 
         </div>
@@ -48,7 +51,18 @@
         <div class="row justify-content-center align-items-center">
             <a href="{{ url('vote/'.$Id.'/bool/0')}}" class="btn btn-danger">ไม่ลงคะแนน</a>
             <a href="{{ url('vote/'.$Id.'/bool/1')}}" class="btn btn-primary">ลงคะแนน</a>
-        </div><a href="{{ url('decisionObject/'.$campaignId)}}" class="btn btn-secondary">กลับ</a>
+        </div>
+        @else
+        <div class="col-lg-12">
+            <div class="row justify-content-center align-items-center">
+                <h4>ยังไม่มีการลงคะแนน<br></h4>
+
+            </div>
+        </div>
+        @endif
+        <div class="col-lg-12 ">
+            <a href="{{ url('decisionObject/'.$campaignId)}}" class="btn btn-secondary">กลับ</a>
+        </div>
     </div>
 </section>
 @endsection

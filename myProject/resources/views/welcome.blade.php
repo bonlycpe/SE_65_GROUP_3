@@ -218,6 +218,7 @@
                                                 <p class="cardd">{{$object->Description}}</p>
                                                 <div class="row">
                                                     <ul class="list-inline product-meta">
+                                                        <p>จำนวนคงเหลือ : {{$object->Amount}}<br></p>
                                                         <li class="list-inline-item">
                                                             <a href="/"><i
                                                                     class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
@@ -249,6 +250,7 @@
                                                 <p class="cardd">{{$object->Description}}</p>
                                                 <div class="row">
                                                     <ul class="list-inline product-meta">
+                                                        <p>จำนวนคงเหลือ : {{$object->Amount}}<br></p>
                                                         <li class="list-inline-item">
                                                             <a href="/"><i
                                                                     class="fa fab fa-angellist"></i>{{$object->Tag}}</a>

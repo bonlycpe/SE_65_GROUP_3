@@ -52,8 +52,9 @@ class UseInCampaign extends Model
         $myCampaign = DB::table('campaign_project_user')
         ->join('campaign','campaign_project_user.campaign_id','=','campaign.Id')
         ->join('campaign_object','campaign_project_user.campaign_id','=','campaign_object.campaign_object_id')
+        ->join('object','object.campaign_object_id','=','campaign_project_user.campaign_id')
         ->where('user_id','=',$id)
-        ->select('campaign_object.campaign_object_Id','campaign.Name','campaign.Description','campaign.Status','Tag','campaign.Image')
+        ->select('campaign_object.campaign_object_Id','campaign.Name','campaign.Description','campaign.Status','Tag','campaign.Image','object.Amount')
         ->get();
         return $myCampaign;
     }

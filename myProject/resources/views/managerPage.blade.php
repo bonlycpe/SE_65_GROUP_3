@@ -24,12 +24,13 @@
                                         alt="Card image cap">
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="cardt"><a>{{$money->Name}}</a></h4><span
-                                    class="SttausA">{{$money->Status}}</span>
+                                    <h4 class="cardt"><a
+                                            href="/progressManager/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
+                                            class="SttausA">{{$money->Status}}</span>
                                     </h4>
                                     <p class="cardd">{{$money->Description}}</p>
                                     <p class="card-text">เป้าหมาย : ${{$money->Goal}}</p>
-                                    <div class="row">
+                                    <div class="row justify-content-center align-items-center">
                                         <ul class="list-inline product-meta">
                                             <a
                                                 href="/edit/{{$money->campaign_money_id}}"><button>แก้ไขแคมเปญ</button></a>
@@ -106,11 +107,12 @@
                                         alt="Card image cap">
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="cardt"><a>{{$money->Name}}</a></h4><span
-                                    class="SttausF">{{$money->Status}}</span></h4>
+                                    <h4 class="cardt"><a
+                                            href="/progressManager/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
+                                            class="SttausF">{{$money->Status}}</span></h4>
                                     <p class="cardd">{{$money->Description}}</p>
                                     <p class="card-text">เป้าหมาย : ${{$money->Goal}}</p>
-                                    <div class="row">
+                                    <div class="row justify-content-center align-items-center">
                                         <ul class="list-inline product-meta">
                                             <a
                                                 href="/edit/{{$money->campaign_money_id}}"><button>แก้ไขแคมเปญ</button></a>
@@ -156,20 +158,22 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
-                                            href="/progress/{{$object->campaign_object_Id}}">{{$object->Name}}</a></h4>
+                                            href="/progressObjectManager/{{$object->campaign_object_Id}}">{{$object->Name}}</a>
+                                    </h4>
                                     <p class="cardd">{{$object->Description}}</p>
-                                    <div class="row">
+                                    <div class="row justify-content-center align-items-center">
                                         <ul class="list-inline product-meta">
                                             <li class="list-inline-item">
+                                                <p>จำนวนคงเหลือ : {{$object->Amount}}<br></p>
                                                 <a href="/request"><i
                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
                                             <ul class="list-inline product-meta">
                                                 <a
-                                                    href="/edit/{{$object->campaign_object_Id}}"><button>แก้ไขแคมเปญ</button></a>
+                                                    href="/edit/{{$object->campaign_object_Id}}"><button>แก้ไขแคมเปญ</button></a><a
+                                                    href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
                                             </ul>
-                                            <a
-                                                href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
+
                                         </ul>
                                         <ul class="list-inline product-meta">
                                             <a
@@ -225,20 +229,22 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
-                                            href="/progress/{{$object->campaign_object_Id}}">{{$object->Name}}</a></h4>
+                                            href="/progressObjectManager/{{$object->campaign_object_Id}}">{{$object->Name}}</a>
+                                    </h4>
                                     <p class="cardd">{{$object->Description}}</p>
-                                    <div class="row">
+                                    <div class="row justify-content-center align-items-center">
                                         <ul class="list-inline product-meta">
                                             <li class="list-inline-item">
+                                                <p>จำนวนคงเหลือ : {{$object->Amount}}<br></p>
                                                 <a href="/request"><i
                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
                                             <ul class="list-inline product-meta">
                                                 <a
-                                                    href="/edit/{{$object->campaign_object_Id}}"><button>แก้ไขแคมเปญ</button></a>
+                                                    href="/edit/{{$object->campaign_object_Id}}"><button>แก้ไขแคมเปญ</button></a><a
+                                                    href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
                                             </ul>
-                                            <a
-                                                href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
+
                                         </ul>
                                     </div>
                                 </div>

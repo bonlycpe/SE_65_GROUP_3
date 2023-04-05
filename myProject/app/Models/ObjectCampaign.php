@@ -39,8 +39,9 @@ class ObjectCampaign extends Model
     public static function getAllNotTerminate() {
         $campaign = DB::table('campaign_object')
         ->join('campaign','campaign_object_Id','=','campaign.Id')
+        ->join('object','object.campaign_object_Id','=','campaign_object.campaign_object_Id')
         ->where('campaign.Status','!=',"TERMINATE")
-        ->select('campaign_object.campaign_object_Id','campaign.Name','campaign.Description','campaign.Status','Tag','campaign.Image')
+        ->select('campaign_object.campaign_object_Id','object.Amount','campaign.Name','campaign.Description','campaign.Status','Tag','campaign.Image')
         ->get(); 
         return $campaign;
     }

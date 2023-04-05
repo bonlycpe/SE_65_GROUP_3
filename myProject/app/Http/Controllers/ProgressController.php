@@ -212,17 +212,23 @@ class ProgressController extends Controller
         }
         else{
             $objReq = ObjectRequest::getNotChairmaneById($objReq->campaign_object_id,$objReq->campaign_project_user_id,$objReq->user_id,$objReq->Amount);
-            $nameCampaign = $objReq[0]->Name;
-            $campaignId = $objReq[0]->campaign_object_id ;
-            $board = array();
-            
-            for($i = 0;$i<sizeof($objReq);$i++){
-                $board[$i]['name'] = UseInCampaign::getById($objReq[$i]->campaign_project_user_id)->name;
-                $board[$i]['surname'] = UseInCampaign::getById($objReq[$i]->campaign_project_user_id)->surname;
-            }
             $objReqCheck = ObjectRequest::getById($id);
+            $nameCampaign = $objReqCheck->Name;
+            $campaignId = $objReqCheck->campaign_object_id ;
+            if(sizeof($objReq) != 0){
+                $board = array();
+                for($i = 0;$i<sizeof($objReq);$i++){
+                    $board[$i]['name'] = UseInCampaign::getById($objReq[$i]->campaign_project_user_id)->name;
+                    $board[$i]['surname'] = UseInCampaign::getById($objReq[$i]->campaign_project_user_id)->surname;
+                }
+                
+            }
+            else{
+                $objReq = null;
+                $board = null;
+            }
             if($objReqCheck->Status != "APPROVE"){
-                return view('voteChairman',['objReq'=>$objReq,'nameCampaign'=>$nameCampaign,'Id'=>$id,'campaignId'=>$campaignId,'board'=>$board]);
+                return view('voteChairman',['objReq'=> $objReq,'nameCampaign'=>$nameCampaign,'Id'=>$id,'campaignId'=>$campaignId,'board'=>$board]);
             }
             else{
                 return redirect('/decisionObject/'.$objReqCheck->campaign_object_id);

@@ -36,7 +36,7 @@ class ObjectRequest extends Model
         ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
         ->join('users','campaign_object_request.user_id','=','users.Id')
         ->where('campaign_object_request.Id','=',$id)
-        ->select('campaign_object_request.campaign_object_id','campaign_object_request.campaign_project_user_id','campaign_object_request.Id','campaign_object_request.Status','campaign_object_request.user_id','campaign_object_request.Amount')
+        ->select('campaign_object_request.campaign_object_id','campaign_object_request.campaign_project_user_id','campaign_object_request.Id','campaign_object_request.Status','campaign_object_request.user_id','campaign_object_request.Amount','campaign.Name')
         ->first();
         return $objectRequest;
     }
@@ -132,7 +132,9 @@ class ObjectRequest extends Model
         ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
         ->join('users','campaign_object_request.user_id','=','users.Id')
         ->where('campaign_object_request.campaign_project_user_id','=',$PK->Id)
+        ->orderBy('campaign_object_request.Status')
         ->select('campaign_object_request.Id','campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id','campaign_object_request.Status')
+        
         ->get();
         return $donate;
     }

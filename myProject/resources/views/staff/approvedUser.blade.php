@@ -1,4 +1,4 @@
-@extends('layouts.LayoutStaffMoney')
+@extends('layouts.LayoutStaff')
 
 @section('content')
 <!DOCTYPE html>
@@ -14,11 +14,15 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 style="text-align: center;">Welcome to Staff Page</h1>
-        <h1 style="text-align: center;">คำขอบริจาคเงิน</h1>
+    <h1 style="text-align: center;">All Approved User(s)</h1>
+    <div class="input-group mb-3" style="width: 30%; margin-left: 40%;">
+        <form action="{{ route('verifySearch') }}" method="get"> 
+            <div class="input-group mb-3">
+                <input type="text"  name="searching" class="form-control" placeholder="Type Something..." aria-label="Search" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="submit" id="button-Search">Search</button>
+            </div>
+        </form>
     </div>
-
     <div class="container">
         <div class="row">
             <table class="table table-striped w-auto mx-auto">
@@ -27,32 +31,32 @@
                         <th scope="col">ลำดับ</th>
                         <th scope="col">ชื่อ</th>
                         <th scope="col">นามสกุล</th>
-                        <th scope="col">บริจาคให้</th>
-                        <th scope="col">จำนวนเงิน</th>
-                        <th scope="col">E-Slip</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Username</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @php($i=1)
-                    @foreach($donate as $d)
+                    @foreach($allApprove as $a)
                     <tr>
                         <th scope="row">{{$i++}}</th>
-                        <td>{{$d->name}}</td>
-                        <td>{{$d->surname}}</td>
-                        <td>{{$d->Name}}</td>
-                        <td>{{$d->Amount}} บาท</td>
+                        <td>{{$a->name}}</td>
+                        <td>{{$a->surname}}</td>
+                        <td>{{$a->email}}</td>
+                        <td>{{$a->username}}</td>
                         <td>
-                            <a href="{{route('eslip', [$d->Id])}}" class="btn btn-info">Show E-Slip</a>
+                            <a href="{{route('info', [$a->Id])}}" class="btn btn-info">Info</a>
                         </td>
-
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        <div style="justify-content: center; display: flex;">
-            <a href="{{route('donated')}}" class="btn btn-info" >การบริจาคทั้งหมด</a>
-        </div>
+    </div>
+    <div style="justify-content: center; display: flex;">
+        <a href="{{route('staff_verify')}}" class="btn btn-secondary">Go Back</a>
+    </div>
 </body>
 
 </html>

@@ -88,7 +88,15 @@ Route::post('/request', [App\Http\Controllers\CampaignController::class, 'reques
 
 //Staff
 Route::get('/staff_money',[App\Http\Controllers\UserDonateController::class, 'index'])->name('staff_money');
+Route::get('/staff_money/donated',[App\Http\Controllers\UserDonateController::class, 'donated'])->name('donated');
+Route::get('/staff_money/donated/search',[App\Http\Controllers\UserDonateController::class, 'search'])->name('donatedSearch');
 Route::get('/staff_verify',[App\Http\Controllers\ManagerController::class, 'index'])->name('staff_verify');
+Route::get('/terminatereq',[App\Http\Controllers\ManagerController::class, 'terminateCam'])->name('terminatereq');
+Route::get('/terminatereq/info/{id}',[App\Http\Controllers\ManagerController::class, 'terminateInfo'])->name('terminateinfo');
+Route::get('/terminatereq/deny/{id}',[App\Http\Controllers\ManagerController::class, 'terminateDeny'])->name('terminatedeny');
+Route::get('/terminatereq/approve/{id}',[App\Http\Controllers\ManagerController::class, 'terminateApprove'])->name('terminateapprove');
+Route::get('/staff_verify/approved',[App\Http\Controllers\ManagerController::class, 'approved'])->name('approved');
+Route::get('/staff_verify/search',[App\Http\Controllers\ManagerController::class, 'search'])->name('verifySearch');
 
 Route::get('/staff_money/approve/{id}/{amount}/{campaign_money_id}',[App\Http\Controllers\UserDonateController::class, 'approve'])->name('staff_approve');
 Route::get('/staff_money/deny/{id}',[App\Http\Controllers\UserDonateController::class, 'deny'])->name('staff_deny');
@@ -99,6 +107,8 @@ Route::get('/staff_verify/deny/{id}',[App\Http\Controllers\ManagerController::cl
 Route::get('/staff_verify/info/{id}',[App\Http\Controllers\ManagerController::class, 'info'])->name('info');
 
 Route::get('/terminatereq',[App\Http\Controllers\ManagerController::class, 'terminateCam'])->name('terminatereq');
+Route::get('/terminatereq/terminated',[App\Http\Controllers\ManagerController::class, 'terminated'])->name('terminated');
+Route::get('/terminatereq/terminated/search',[App\Http\Controllers\ManagerController::class, 'terminateSearch'])->name('terminateSearch');
 Route::get('/terminatereq/info/{id}',[App\Http\Controllers\ManagerController::class, 'terminateInfo'])->name('terminateinfo');
 Route::get('/terminatereq/deny/{id}',[App\Http\Controllers\ManagerController::class, 'terminateDeny'])->name('terminatedeny');
 Route::get('/terminatereq/approve/{id}',[App\Http\Controllers\ManagerController::class, 'terminateApprove'])->name('terminateapprove');

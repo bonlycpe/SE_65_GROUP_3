@@ -10,15 +10,13 @@ class ManagerController extends Controller
 {
     function index()
     {
-        // $managers = DB::table('users')
-        //         ->where('permission','=','REQUEST')
-        //         ->select('firstname','lastname','email','username')
-        //         ->get();
         $managers = ManagerRequest::getAll();
-        $allApprove = ManagerRequest::getAllApprove();
-        return view('staff.staff_verify',compact(['managers','allApprove']));
+        return view('staff.staff_verify',compact('managers'));
     }
-
+    function approved(){
+        $allApprove = ManagerRequest::getAllApprove();
+        return view('staff.approvedUser',compact('allApprove'));
+    }
     function approve($id)
     {   
         ManagerRequest::approve($id);
@@ -39,6 +37,10 @@ class ManagerController extends Controller
         $campaign1 = Campaign::getTerminateCampaign();
         return view('staff.terminate',compact('campaign','campaign1'));
     }
+    function terminated(){
+        $campaign = Campaign::getTerminateCampaign();
+        return view('staff.closedCampaign',compact('campaign'));
+    }
     function terminateInfo($id){
         $campaign = Campaign::getReqCampaignById($id);
         return view('staff.terminateInfo',compact('campaign'));
@@ -50,5 +52,17 @@ class ManagerController extends Controller
     function terminateApprove($id){
         Campaign::terminateApprove($id);
         return redirect('terminatereq');
+    }
+    function search(Request $req){
+        $data = $req->searching;
+        $allApprove = ManagerRequest::search($data);
+
+        return view('staff.approvedUser',compact('allApprove'));
+    }
+
+    function terminateSearch(Request $req){
+        $data = $req->searching;
+        $campaign = Campaign::search($data);
+        return view('staff.closedCampaign',compact('campaign'));
     }
 }

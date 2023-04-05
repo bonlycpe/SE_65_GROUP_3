@@ -16,6 +16,7 @@
 <body>
     <div class="container">
         <h1 style="text-align: center;">Welcome to Staff Page</h1>
+        <h2 style="text-align: center;">คำร้องขอเป็นผู้บริหาร</h2>
     </div>
 
     <div class="container">
@@ -48,37 +49,8 @@
                 </tbody>
             </table>
         </div>
-        <h1 style="text-align: center;">All Approved User(s)</h1>
-        <div class="container">
-            <div class="row">
-                <table class="table table-striped w-auto mx-auto">
-                    <thead>
-                        <tr>
-                            <th scope="col">ลำดับ</th>
-                            <th scope="col">ชื่อ</th>
-                            <th scope="col">นามสกุล</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Username</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php($i=1)
-                        @foreach($allApprove as $a)
-                        <tr>
-                            <th scope="row">{{$i++}}</th>
-                            <td>{{$a->name}}</td>
-                            <td>{{$a->surname}}</td>
-                            <td>{{$a->email}}</td>
-                            <td>{{$a->username}}</td>
-                            <td>
-                                <a href="{{route('info', [$a->Id])}}" class="btn btn-info">Info</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+        <div style="justify-content: center; display: flex;">
+            <a href="{{route('approved')}}" class="btn btn-info" >คำร้องที่ยืนยันแล้ว</a>
         </div>
 </body>
 </html>

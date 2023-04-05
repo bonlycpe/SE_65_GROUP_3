@@ -185,6 +185,9 @@ class ProgressController extends Controller
     function decisionObject($id)
     {
         $progress = ObjectRequest::getAllRequestByCampaignId($id);
+        /*if($data->Role =="CHAIRMAN"){
+            $progress = ObjectRequest::getAllRequestChairmanByCampaignId($id);
+        }*/
         //dd($progress);
         for ($x = 0; $x < sizeof($progress); $x++) {
             $date = $progress[$x]->Date;
@@ -196,19 +199,19 @@ class ProgressController extends Controller
         if($p == 0){
             $progress = null;
         }
-
+        //dd($progress);
         return view('decisionObject',['progress'=>$progress,'campaign'=>$campaign]);
     }
 
     function vote($id)
     {
-        $data = UseInCampaign::getByCampaignId($id);
         $objReq = ObjectRequest::getById($id);
+        $data = UseInCampaign::getById($id);
         if($data->Role =="BOARD"){
             return view('vote',['objReq'=>$objReq]);
         }
         else{
-            $objReq = ObjectRequest::getNotChairmaneById($objReq->campaign_object_id,$objReq->campaign_project_user_id);
+            $objReq = ObjectRequest::getNotChairmaneById($objReq->campaign_object_id,$objReq->campaign_project_user_id,$objReq->user_id,$objReq->Amount);
             $nameCampaign = $objReq[0]->Name;
             $campaignId = $objReq[0]->campaign_object_id ;
             $board = array();
@@ -218,7 +221,7 @@ class ProgressController extends Controller
                 $board[$i]['surname'] = UseInCampaign::getById($objReq[$i]->campaign_project_user_id)->surname;
             }
             $objReqCheck = ObjectRequest::getById($id);
-            if($objReqCheck->permission != "APPROVE"){
+            if($objReqCheck->Status != "APPROVE"){
                 return view('voteChairman',['objReq'=>$objReq,'nameCampaign'=>$nameCampaign,'Id'=>$id,'campaignId'=>$campaignId,'board'=>$board]);
             }
             else{

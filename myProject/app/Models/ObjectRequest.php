@@ -31,21 +31,28 @@ class ObjectRequest extends Model
     
 
     public static function getById($id){
+        
         $objectRequest = DB::table('campaign_object_request')
         ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
         ->join('users','campaign_object_request.user_id','=','users.Id')
-        ->where('campaign_object_request.Id','=',$id)->first();
+        ->where('campaign_object_request.Id','=',$id)
+        ->select('campaign_object_request.campaign_object_id','campaign_object_request.campaign_project_user_id','campaign_object_request.Id','campaign_object_request.Status','campaign_object_request.user_id','campaign_object_request.Amount')
+        ->first();
         return $objectRequest;
     }
 
-    public static function getNotChairmaneById($id,$idPK){
+    public static function getNotChairmaneById($id,$idPK,$userId,$Amount){
         $objectRequest = DB::table('campaign_object_request')
         ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
         ->join('users','campaign_object_request.user_id','=','users.Id')
         ->where('campaign_object_request.campaign_project_user_id','!=',$idPK)
         ->where('campaign_object_request.campaign_object_id','=',$id)
+        ->where('campaign_object_request.user_id','=',$userId)
+        ->where('campaign_object_request.Amount','=',$Amount)
         ->select('campaign.Name as Name','campaign_object_request.Status','campaign_object_request.Description','users.name','users.surname','campaign_object_request.Amount','campaign_object_request.campaign_project_user_id','users.image','campaign_object_request.Id','campaign_object_request.campaign_object_id')   
+        ->distinct()
         ->get();
+        //dd($objectRequest);
         return $objectRequest;
     }
 
@@ -83,6 +90,8 @@ class ObjectRequest extends Model
 
         return $donate;
     }
+
+    
 
     public static function getAllApproveByCampaignId($id) {
         $donate = DB::table('campaign_object_request')
@@ -123,6 +132,24 @@ class ObjectRequest extends Model
         ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
         ->join('users','campaign_object_request.user_id','=','users.Id')
         ->where('campaign_object_request.campaign_project_user_id','=',$PK->Id)
+        ->select('campaign_object_request.Id','campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id','campaign_object_request.Status')
+        ->get();
+        return $donate;
+    }
+
+    public static function getAllRequestChairmanByCampaignId($id) {
+        $user = Auth::user();
+
+        $PK = DB::table('campaign_project_user')
+        ->where('campaign_id','=',$id)
+        ->where('user_Id','=',$user->id)
+        ->first();   
+        $donate = DB::table('campaign_object_request')
+        ->join('campaign_project_user','campaign_object_request.campaign_project_user_id','=','campaign_project_user.Id')
+        ->join('campaign','campaign_object_request.campaign_object_id','=','campaign.Id')
+        ->join('users','campaign_object_request.user_id','=','users.Id')
+        ->where('campaign_object_request.campaign_project_user_id','=',$PK->Id)
+        ->where('campaign_object_request.Status','=',"APPROVE")
         ->select('campaign_object_request.Id','campaign_object_request.Date','users.name','users.surname','Amount','campaign.Name','campaign_object_id','campaign_object_request.Status')
             ->get();
         return $donate;

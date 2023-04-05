@@ -56,7 +56,7 @@
                                     <a class="nav-link" href="{{url('/home')}}">หน้าหลัก</a>
                                 </li>
                                 <li class="nav-item @@profile">
-                                    <a class="nav-link" href="{{url('/profile')}}">โปรไฟล์</a>
+                                    <a class="nav-link" href="{{url('/profileManager')}}">โปรไฟล์</a>
                                 </li>
                                 <li class="nav-item @@profile">
                                     <a class="nav-link" href="{{url('/managerPage')}}">โครงการของฉัน</a>

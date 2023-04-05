@@ -14,6 +14,7 @@
             <!-- offer 01 -->
             <div class="col-lg-12">
                 <div class="row">
+                    @if($campaignMoney !=null)
                     @foreach($campaignMoney as $key => $money)
                     @if ($money->Status == "ACTIVE")
                     <div class="col-sm-12 col-lg-4">
@@ -32,15 +33,15 @@
                                     <p class="card-text">เป้าหมาย : ${{$money->Goal}}</p>
                                     <div class="row justify-content-center align-items-center">
                                         <ul class="list-inline product-meta">
-                                            <a
+                                            <a class="btn btn-secondary"
                                                 href="/edit/{{$money->campaign_money_id}}"><button>แก้ไขแคมเปญ</button></a>
                                         </ul>
                                         <ul class="list-inline product-meta">
-                                            <a
+                                            <a class="btn btn-primary"
                                                 href="/addProgress/{{$money->campaign_money_id}}"><button>เพิ่มความคืบหน้า</button></a>
                                         </ul>
                                         <ul class="list-inline product-meta">
-                                            <a
+                                            <a class="btn btn-danger"
                                                 href="/requestTerminate/{{$money->campaign_money_id}}"><button>ขอยุติแคมเปญ</button></a>
                                         </ul>
                                     </div>
@@ -114,11 +115,11 @@
                                     <p class="card-text">เป้าหมาย : ${{$money->Goal}}</p>
                                     <div class="row justify-content-center align-items-center">
                                         <ul class="list-inline product-meta">
-                                            <a
+                                            <a class="btn btn-secondary"
                                                 href="/edit/{{$money->campaign_money_id}}"><button>แก้ไขแคมเปญ</button></a>
                                         </ul>
                                         <ul class="list-inline product-meta">
-                                            <a
+                                            <a class="btn btn-primary"
                                                 href="/addProgress/{{$money->campaign_money_id}}"><button>เพิ่มความคืบหน้า</button></a>
                                         </ul>
                                     </div>
@@ -128,6 +129,9 @@
                     </div>
                     @endif
                     @endforeach
+                    @else
+                    <h5>ไม่มีแคมเปญของคุณ</h5>
+                    @endif
                 </div>
             </div>
         </div>
@@ -147,6 +151,7 @@
 
             <div class="col-lg-12">
                 <div class="row">
+                    @if($campaignObject != null)
                     @foreach($campaignObject as $object)
                     <div class="col-sm-12 col-lg-4">
                         <div class="product-item bg-light">
@@ -169,14 +174,15 @@
                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
                                             <ul class="list-inline product-meta">
-                                                <a
-                                                    href="/edit/{{$object->campaign_object_Id}}"><button>แก้ไขแคมเปญ</button></a><a
+                                                <a class="btn btn-secondary"
+                                                    href="/edit/{{$object->campaign_object_Id}}"><button>แก้ไขแคมเปญ</button></a>
+                                                <a class="btn btn-primary"
                                                     href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
                                             </ul>
 
                                         </ul>
                                         <ul class="list-inline product-meta">
-                                            <a
+                                            <a class="btn btn-danger"
                                                 href="/requestTerminate/{{$object->campaign_object_Id}}"><button>ขอยุติแคมเปญ</button></a>
                                         </ul>
 
@@ -240,8 +246,9 @@
                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
                                             <ul class="list-inline product-meta">
-                                                <a
-                                                    href="/edit/{{$object->campaign_object_Id}}"><button>แก้ไขแคมเปญ</button></a><a
+                                                <a class="btn btn-primary"
+                                                    href="/edit/{{$object->campaign_object_Id}}"><button>แก้ไขแคมเปญ</button></a>
+                                                <a class="btn btn-info"
                                                     href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
                                             </ul>
 
@@ -253,6 +260,9 @@
                         </div>
                     </div>
                     @endforeach
+                    @else
+                    <h5>ไม่มีแคมเปญของคุณ</h5>
+                    @endif
                 </div>
             </div>
         </div>

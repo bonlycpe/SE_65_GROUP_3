@@ -44,6 +44,8 @@ Route::get('/progressObjectManager/{id}', [App\Http\Controllers\ProgressControll
 Route::get('/addProgress/{id}', [App\Http\Controllers\ProgressController::class, 'toAddProgress'])->name('addProgress');
 Route::get('/addProgressPage/{id}', [App\Http\Controllers\ProgressController::class, 'indexAdd']);
 Route::post('/add', [App\Http\Controllers\ProgressController::class, 'add']);
+Route::get('/moneyProgress/{id}',[App\Http\Controllers\UserDonateController::class, 'moneyProgressPage']);
+Route::get('/moneyProgress/eslip/{id}',[App\Http\Controllers\UserDonateController::class, 'eSlipDonate']);
 
 //Profile
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index']);

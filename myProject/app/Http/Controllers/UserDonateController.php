@@ -19,6 +19,21 @@ class UserDonateController extends Controller
         $donateAll = Userdonate::getAll();
         return view('staff.staff_money',compact(['donate','donateAll']));
     }
+
+    function moneyProgressPage($id)
+    {
+        $donate = UserDonate::getAllRequest();
+        $donateAll = Userdonate::getAllApproveByCampaignId($id);
+        return view('moneyProgress',compact(['donate','donateAll']));
+    }
+
+    function eSlipDonate($id)
+    {
+        $eslip = UserDonate::eslip($id);
+        return view('progress.slip',compact('eslip'));
+    }
+
+
     function donated(){
         $donateAll = Userdonate::getAll();
         return view('staff.donated',compact('donateAll'));

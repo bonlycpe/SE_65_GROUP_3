@@ -31,6 +31,19 @@ class UserDonate extends Model
 
         return $donate;
     }
+
+    public static function getAllApproveByCampaignId($id) {
+        $donate = DB::table('campaign_user_donate')
+        ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')
+        ->join('users','campaign_user_donate.user_id','=','users.Id')
+        ->where('campaign_user_donate.Status','=','APPROVE')
+        ->where('campaign_user_donate.campaign_money_id','=',$id)
+        ->select('campaign_user_donate.Id','users.name','users.surname','Amount','campaign.Name')
+        ->get();    
+
+        return $donate;
+    }
+    
     public static function search($data){
         $subquery = DB::table('campaign_user_donate')
         ->join('campaign','campaign_user_donate.campaign_money_id','=','campaign.Id')

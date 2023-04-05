@@ -35,8 +35,8 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
-                                            href="/progressManger/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
-                                            class="SttausA">{{$money->Status}}</span>
+                                            href="/progressManager/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
+                                            class="SttausA" >{{$money->Status}}</span>
                                     </h4>
                                     <p class="cardd">{{$money->Description}}</p>
                                     <div class="row">
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h4 class="cardt"><a
-                                            href="/progressManger/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
+                                            href="/progressManager/{{$money->campaign_money_id}}">{{$money->Name}}</a><span
                                             class="SttausF">{{$money->Status}}</span></h4>
 
                                     <p class="cardd">{{$money->Description}}</p>

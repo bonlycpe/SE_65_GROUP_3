@@ -86,6 +86,6 @@ class openCampaignObjectController extends Controller
             $progressBar[$i] = $percent;
         }
 
-        return view('managerPage',['campaignMoney'=>$campaignMoney],['campaignObject'=>$campaignObject,'progressBar'=>$progressBar]);
+        return redirect('/managerPage');
     }
 }

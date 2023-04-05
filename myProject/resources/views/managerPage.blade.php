@@ -33,16 +33,16 @@
                                     <p class="card-text">เป้าหมาย : ${{$money->Goal}}</p>
                                     <div class="row justify-content-center align-items-center">
                                         <ul class="list-inline product-meta">
-                                            <a class="btn btn-secondary"
-                                                href="/edit/{{$money->campaign_money_id}}"><button>แก้ไขแคมเปญ</button></a>
+                                            <a 
+                                                href="/edit/{{$money->campaign_money_id}}"><button class="btn btn-secondary">แก้ไขแคมเปญ</button></a>
                                         </ul>
                                         <ul class="list-inline product-meta">
-                                            <a class="btn btn-primary"
-                                                href="/addProgress/{{$money->campaign_money_id}}"><button>เพิ่มความคืบหน้า</button></a>
+                                            <a 
+                                                href="/addProgress/{{$money->campaign_money_id}}"><button class="btn btn-primary">เพิ่มความคืบหน้า</button></a>
                                         </ul>
                                         <ul class="list-inline product-meta">
-                                            <a class="btn btn-danger"
-                                                href="/requestTerminate/{{$money->campaign_money_id}}"><button>ขอยุติแคมเปญ</button></a>
+                                            <a 
+                                                href="/requestTerminate/{{$money->campaign_money_id}}"><button class="btn btn-danger">ขอยุติแคมเปญ</button></a>
                                         </ul>
                                     </div>
                                 </div>
@@ -115,12 +115,12 @@
                                     <p class="card-text">เป้าหมาย : ${{$money->Goal}}</p>
                                     <div class="row justify-content-center align-items-center">
                                         <ul class="list-inline product-meta">
-                                            <a class="btn btn-secondary"
-                                                href="/edit/{{$money->campaign_money_id}}"><button>แก้ไขแคมเปญ</button></a>
+                                            <a 
+                                                href="/edit/{{$money->campaign_money_id}}"><button class="btn btn-secondary">แก้ไขแคมเปญ</button></a>
                                         </ul>
                                         <ul class="list-inline product-meta">
-                                            <a class="btn btn-primary"
-                                                href="/addProgress/{{$money->campaign_money_id}}"><button>เพิ่มความคืบหน้า</button></a>
+                                            <a 
+                                                href="/addProgress/{{$money->campaign_money_id}}"><button class="btn btn-primary">เพิ่มความคืบหน้า</button></a>
                                         </ul>
                                     </div>
                                 </div>
@@ -174,16 +174,16 @@
                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
                                             <ul class="list-inline product-meta">
-                                                <a class="btn btn-secondary"
-                                                    href="/edit/{{$object->campaign_object_Id}}"><button>แก้ไขแคมเปญ</button></a>
-                                                <a class="btn btn-primary"
-                                                    href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
+                                                <a 
+                                                    href="/edit/{{$object->campaign_object_Id}}"><button class="btn btn-secondary">แก้ไขแคมเปญ</button></a>
+                                                <a 
+                                                    href="/decisionObject/{{$object->campaign_object_Id}}"><button class="btn btn-primary">ตรวจสอบการบริจาค</button></a>
                                             </ul>
 
                                         </ul>
                                         <ul class="list-inline product-meta">
-                                            <a class="btn btn-danger"
-                                                href="/requestTerminate/{{$object->campaign_object_Id}}"><button>ขอยุติแคมเปญ</button></a>
+                                            <a 
+                                                href="/requestTerminate/{{$object->campaign_object_Id}}"><button class="btn btn-danger">ขอยุติแคมเปญ</button></a>
                                         </ul>
 
                                     </div>
@@ -246,10 +246,10 @@
                                                         class="fa fab fa-angellist"></i>{{$object->Tag}}</a>
                                             </li>
                                             <ul class="list-inline product-meta">
-                                                <a class="btn btn-primary"
-                                                    href="/edit/{{$object->campaign_object_Id}}"><button>แก้ไขแคมเปญ</button></a>
-                                                <a class="btn btn-info"
-                                                    href="/decisionObject/{{$object->campaign_object_Id}}"><button>ตรวจสอบการบริจาค</button></a>
+                                                <a 
+                                                    href="/edit/{{$object->campaign_object_Id}}"><button class="btn btn-primary">แก้ไขแคมเปญ</button></a>
+                                                <a 
+                                                    href="/decisionObject/{{$object->campaign_object_Id}}"><button class="btn btn-info">ตรวจสอบการบริจาค</button></a>
                                             </ul>
 
                                         </ul>
